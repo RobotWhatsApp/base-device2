@@ -26,22 +26,22 @@ liaacans: 'https://zenzapis.xyz',
 //━━━━━━━━━━━━━━━[ APIKEY ]━━━━━━━━━━━━━━━━━//
 
 global.APIKeys = {
-'https://zenzapis.xyz': '9d30efca66',
+'https://zenzapis.xyz': 'b6084a1b49',
 }
 
 //━━━━━━━━━━━━━━━[ SETTING ]━━━━━━━━━━━━━━━━━//
 global.thumb = fs.readFileSync('./image/thumbnail.jpg') // JGN DI UBAH!
-global.name = 'Aulia Rahman (Owner)', // GNTI NAMA LU!
-global.creator = 'LiaaCans BOT' // GANTI NAMA BOT LU BANH!
-global.owner = ['6285821676621'] // GNTI NOMOR LU!
-global.premium = ['6285821676621', '6285821310166']
+global.name = 'Andi Saputra (Owner)', // GNTI NAMA LU!
+global.creator = '𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬' // GANTI NAMA BOT LU BANH!
+global.owner = ['15622625999'] // GNTI NOMOR LU!
+global.premium = ['15622625999', '15622625854']
  // ADD PREM YG LU MAU BANH!!
-global.quotes = 'Kesempatan Anda Untuk Sukses Di Setiap Kondisi Selalu Dapat Diukur Oleh Seberapa Besar Kepercayaan Anda Pada Diri Sendiri' // Ganti Quotes, Tapi Trsrh Klian
-global.pulsa = ['081528965381'] // UBAH NOMOR YG AKTIF!
-global.botname = 'Created LiaaCans BOT' // GNTI NAMA BOT LU!
-global.packname = 'Nih Stikel Umtukmu' // TRSERAH MO GANTI AP!
-global.author = 'LiaaCans BOT' // GNTI NMA LU!
-global.fake = 'LIAACANS BOT VERIFIED' // GNTI NMA BOT LU BANH!
+global.quotes = 'Kehidupan itu seperti roda, kadang diatas kadang di bawah' // Ganti Quotes, Tapi Trsrh Klian
+global.pulsa = ['085923730473'] // UBAH NOMOR YG AKTIF!
+global.botname = 'SOFTBOTS' // GNTI NAMA BOT LU!
+global.packname = 'Stiker Bot by' // TRSERAH MO GANTI AP!
+global.author = 'AndiGansBrebes' // GNTI NMA LU!
+global.fake = 'SOFTBOTS VERIFIED' // GNTI NMA BOT LU BANH!
 global.prefa = ['','!','.','/','#','$']
 global.sp = '⭔' // JGN DI UBAH²! NTR EROR
 global.mess = {
