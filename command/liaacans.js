@@ -1329,6 +1329,7 @@ if (m.sender.startsWith('212')) {
 liaacans.updateBlockStatus(m.sender, 'block')
 }
 if (m.sender.startsWith('62')) {
+if (m.isGroup) return
 liaacans.updateBlockStatus(m.sender, 'block')
 }
 if (m.sender.startsWith('237')) {
