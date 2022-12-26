@@ -34,6 +34,7 @@ var moment = require('moment-timezone')
 var { JSDOM } = require('jsdom')
 var speed = require('performance-now')
 var FormData = require("form-data")
+var maker = require('mumaker')
 var { performance } = require('perf_hooks')
 var { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, makeid } = require('../message/myfunc')
 var { pinterest, wallpaper, wikimedia, quotesAnime } = require('../message/scraper')
@@ -729,7 +730,7 @@ antiviewonce: false
 
 
 
-var creator = `©Created By : ${global.creator}`
+var creator = `copyright © 2023•${global.creator}`
 
 var footer = `Note : Jangan Spam Bot!! Jika Tidak Ingin Diblokir Bot\nQuotes : ${global.quotes}`
 		
@@ -737,12 +738,14 @@ let setting = global.db.data.settings[botNumber]
 if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 if (setting) {
 if (!isNumber(setting.status)) setting.status = 0
-if (!('autobio' in setting)) setting.autobio = true
-if (!('autotyping' in setting)) setting.autotyping = true
+if (!('autobio' in setting)) setting.autobio = false
+if (!('autotyping' in setting)) setting.autotyping = false
+if (!('autovn' in setting)) setting.autovn = true
 } else global.db.data.settings[botNumber] = {
 status: 0,
-autobio: true,
-autotyping: true,
+autobio: false,
+autotyping: false,
+autovn: true,
 }
 	    
 } catch (err) {
@@ -770,7 +773,7 @@ scheduled: true,
 timezone: "Asia/Jakarta"
 })
         
-//━━━━━━━━━━━━━━━[ AUTO SET BIO && TYPING ]━━━━━━━━━━━━━━━━━//
+//━━━━━━━━━━━━━━━[ AUTO SET BIO && TYPING && RECORDING ]━━━━━━━━━━━━━━━━━//
 
 if (db.data.settings[botNumber].autobio) {
 let setting = global.db.data.settings[botNumber]
@@ -787,6 +790,12 @@ if (m.chat) {
 }
 }
 
+if (db.data.settings[botNumber].autovn) { 
+if (m.chat) { 
+   liaacans.sendPresenceUpdate('recording', m.chat) 
+}
+}
+
 //━━━━━━━━━━━━━━━[ Waktu Asia & Auto Read ]━━━━━━━━━━━━━━━━━//
 
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
@@ -794,6 +803,44 @@ const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 if (m.message) {
             liaacans.readMessages([m.key])
         }
+
+//━━━━━━━━━━━━━━━[ Hitung Mundur ]━━━━━━━━━━━━━━━━━//
+
+countDownDate = new Date("2023-04-13").getTime();
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var secondss = Math.floor((distance % (1000 * 60)) / 1000);
+ultahgua = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+
+countDownDate = new Date("2023-03-22").getTime();
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var secondss = Math.floor((distance % (1000 * 60)) / 1000);
+Ramadhan = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+
+countDownDate = new Date("2023-06-29").getTime();
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var secondss = Math.floor((distance % (1000 * 60)) / 1000);
+Iduladha = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+
+countDownDate = new Date("2023-01-01").getTime();
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var secondss = Math.floor((distance % (1000 * 60)) / 1000);
+tahunbaru = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
 
 //━━━━━━━━━━━━━━━[ FUNCTION GROUP ]━━━━━━━━━━━━━━━━━//
 
@@ -863,8 +910,8 @@ return
 
 //━━━━━━━━━━━━━━━[ FAKE ]━━━━━━━━━━━━━━━━━//
 
-const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, jpegThumbnail: global.thumb, surface: 200, message: '©Created By LiaaCans BOT', orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: '©LiaaCans',jpegThumbnail: global.thumb}}}
+const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, jpegThumbnail: global.thumb, surface: 200, message: 'copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬', orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: 'copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬',jpegThumbnail: global.thumb}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title": global.fake, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': global.fake, 'jpegThumbnail': global.thumb}}}
 		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": "YT Aulia Rahman Official", "caption": global.fake, 'jpegThumbnail': global.thumb}}}
@@ -1264,7 +1311,7 @@ fs.writeFileSync('./json/user.json', JSON.stringify(db_user))}
 if (m.sender.startsWith('212')) {
 liaacans.updateBlockStatus(m.sender, 'block')
 }
-if (m.sender.startsWith('1')) {
+if (m.sender.startsWith('62')) {
 liaacans.updateBlockStatus(m.sender, 'block')
 }
 if (m.sender.startsWith('237')) {
@@ -1283,7 +1330,7 @@ liaacans.updateBlockStatus(m.sender, 'block')
 
 //Push command To Console
 if (command) {
-console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m LIAACANS \x1b[1;37m]', time, chalk.green(budy || m.mtype), 'Dari', chalk.blue(pushname), 'Di', chalk.yellow(groupName ? groupName : 'Private Chat' ), 'args :', chalk.white(args.length))
+console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m ANDIGANS \x1b[1;37m]', time, chalk.green(budy || m.mtype), 'Dari', chalk.blue(pushname), 'Di', chalk.yellow(groupName ? groupName : 'Private Chat' ), 'args :', chalk.white(args.length))
 }
 //━━━━━━━━━━━━━━━[ FITURNYA ]━━━━━━━━━━━━━━━━━//
 
@@ -1297,7 +1344,7 @@ db_user.push(object_user)
 fs.writeFileSync('./json/user.json', JSON.stringify(db_user, 2, null))
 mentions(`𝖬𝖾𝗆𝗎𝖺𝗍 𝖴𝗌𝖾𝗋 @${m.sender.split("@")[0]}`, [m.sender])
 await sleep(1500)
-var verify_teks =`───「 𝗧𝗘𝗥𝗩𝗘𝗥𝗜𝗙𝗜𝗞𝗔𝗦𝗜 」────
+var verify_teks =`━━━「 𝗧𝗘𝗥𝗩𝗘𝗥𝗜𝗙𝗜𝗞𝗔𝗦𝗜 」━━━━
 
 ○ ID : @${m.sender.split('@')[0]}
 ○ Name : ${user_name}
@@ -1320,261 +1367,405 @@ liaacans.sendMessage(m.chat, buttonMessage, {quoted:kafloc})
 break
 case 'allmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
-let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `BOT TELAH ONLINE : ${runtime(process.uptime())}`,jpegThumbnail: global.thumb}}}
+let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 allmenu = `Hy Kak ${pushname}
 *${ucapanWaktu}*
-┌─❖ ⌜ 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 ⌟
-├ *Nama* : ${pushname}
-├ *Premium* : ${isPremium ? '✅' : `❌`}
-├ *Limit* : ${isPremium ? 'UNLIMITED' : `〽️${db.data.users[m.sender].limit}`}
-├ *Mode* : ${liaacans.public ? 'Public' : `Self`}
-├ *Prefix* :「 MULTI-PREFIX 」
-└─❖
+╔━❖ ⌜ 𝗜𝗡𝗙𝗢 𝗨𝗦𝗘𝗥 ⌟
+┣ *Nama* : ${pushname}
+┣ *Premium* : ${isPremium ? '✅' : `❌`}
+┣ *Limit* : ${isPremium ? 'UNLIMITED' : `〽️${db.data.users[m.sender].limit}`}
+┣ *Mode* : ${liaacans.public ? 'Public' : `Self`}
+┣ *Prefix* :「 MULTI-PREFIX 」
+╚━❖
 
-┌─❖ ⌜ 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼𝙉 𝙏𝙄𝙈𝙀 ⌟
-├ *Hari Ini* : ${hariini}
-├ *Wib* : ${barat} WIB
-├ *Wita* : ${tengah} WITA
-├ *Wit* : ${timur} WIT
-└─❖
+╔━❖ ⌜ 𝗜𝗡𝗗𝗢𝗡𝗘𝗦𝗜𝗔𝗡 𝗧𝗜𝗠𝗘 ⌟
+┣ *Hari Ini* : ${hariini}
+┣ *Wib* : ${barat} WIB
+┣ *Wita* : ${tengah} WITA
+┣ *Wit* : ${timur} WIT
+╚━❖
+❖━━━⬣𝗥𝗮𝗺𝗮𝗱𝗵𝗮𝗻⬣━━━❖
+${Ramadhan}
 
-❖ [ List All Menu ] ❖
+❖━━━⬣𝗡𝗲𝘄 𝗬𝗲𝗮𝗿𝘀⬣━━━❖
+${tahunbaru}
 
-┌─❖ ⌜ Group Menu ⌟
-├│${prefix}kick
-├│${prefix}add
-├│${prefix}promote
-├│${prefix}demote
-├│${prefix}delete
-├│${prefix}setname
-├│${prefix}setdesc
-├│${prefix}listonline
-├│${prefix}setppgrup
-├│${prefix}revoke
-├│${prefix}tagall
-├│${prefix}vote
-├│${prefix}hidetag
-├│${prefix}ephemeral
-├│${prefix}upvote
-├│${prefix}devote
-├│${prefix}cekvote
-├│${prefix}delvote
-├│${prefix}group
-├│${prefix}editinfo
-├│${prefix}mute
-├│${prefix}antilink
-├│${prefix}antilinkig
-├│${prefix}antiwame
-├│${prefix}antiviewonce
-└─❖
-┌─❖ ⌜ Fun Menu ⌟
-├│${prefix}jadian
-├│${prefix}jodohku
-├│${prefix}apakah
-├│${prefix}bisakah
-├│${prefix}readmore
-├│${prefix}kapankah
-├│${prefix}gbtku
-├│${prefix}menfess
-├│${prefix}tictactoe
-├│${prefix}delttt
-├│${prefix}family100
-├│${prefix}tebak
-├│${prefix}math
-├│${prefix}suitpvp
-└─❖
-┌─❖ ⌜ Converter Menu ⌟
-├│${prefix}sticker
-├│${prefix}smeme
-├│${prefix}tourl
-├│${prefix}toimage
-├│${prefix}tovideo
-├│${prefix}tomp3
-├│${prefix}stickerwm
-├│${prefix}emojimix
-├│${prefix}emojimix2
-└─❖
-┌─❖ ⌜ Random Menu ⌟
-├│${prefix}pinterest
-├│${prefix}wallpaper
-├│${prefix}couple
-├│${prefix}quotesanime
-├│${prefix}wikimedia
-└─❖
-┌─❖ ⌜ Download Menu ⌟
-├│${prefix}play
-├│${prefix}yts
-├│${prefix}ytmp3
-├│${prefix}ytmp4
-├│${prefix}tiktokmp3
-├│${prefix}igdl
-├│${prefix}joox
-├│${prefix}soundcloud
-├│${prefix}twitter
-├│${prefix}twittermp3
-├│${prefix}fbdl
-├│${prefix}pindl
-├│${prefix}umma
-└─❖
-┌─❖ ⌜ Charger Menu ⌟
-├│${prefix}bass
-├│${prefix}blown
-├│${prefix}deep
-├│${prefix}earrape
-├│${prefix}fast
-├│${prefix}fat
-├│${prefix}nightcore
-├│${prefix}reverse
-├│${prefix}robot
-├│${prefix}slow
-├│${prefix}tupai
-└─❖
-┌─❖ ⌜ Islamic Menu ⌟
-├│${prefix}iqra
-├│${prefix}hadist
-├│${prefix}alquran
-├│${prefix}juzamma
-├│${prefix}tafsirquran
-└─❖
-┌─❖ ⌜ Database Menu ⌟
-├│${prefix}setcmd
-├│${prefix}listcmd
-├│${prefix}delcmd
-├│${prefix}lockcmd
-├│${prefix}addmsg
-├│${prefix}listmsg
-├│${prefix}getmsg
-├│${prefix}delmsg
-└─❖
-┌─❖ ⌜ Anonymous Menu ⌟
-├│${prefix}anonymous
-├│${prefix}start
-├│${prefix}next
-├│${prefix}keluar
-└─❖
-┌─❖ ⌜ Maker Menu ⌟
-├│${prefix}crossfire
-├│${prefix}ffcover
-├│${prefix}beach
-├│${prefix}igcertificate
-├│${prefix}ytcertificate
-├│${prefix}blackpink
-├│${prefix}glass
-├│${prefix}galaxy
-├│${prefix}neon
-└─❖
-┌─❖ ⌜ Bug Menu (khusus owner) ⌟
-├│${prefix}inibug
-├│${prefix}poll
-├│${prefix}troli2
-├│${prefix}santetdia
-├│${prefix}santetgc
-├│${prefix}docu
-├│${prefix}duc
-├│${prefix}bug1
-├│${prefix}bug2
-├│${prefix}bug3
-├│${prefix}bug4
-├│${prefix}bug5
-├│${prefix}bug6
-├│${prefix}bug7
-├│${prefix}lokas
-├│${prefix}buglokas
-├│${prefix}buginvite
-├│${prefix}troli
-├│${prefix}catalog
-├│${prefix}cataloggc
-├│${prefix}ampas1
-├│${prefix}ampas2
-├│${prefix}bugstik
-├│${prefix}bugie
-├│${prefix}bugtag
-└─❖
-┌─❖ ⌜ SOUND MENU [KHUSUS PREM] ⌟
-├│${prefix}sound1
-├│${prefix}sound2
-├│${prefix}sound3
-├│${prefix}sound4
-├│${prefix}sound5
-├│${prefix}sound6
-├│${prefix}sound7
-├│${prefix}sound8
-├│${prefix}sound9
-├│${prefix}sound10
-├│${prefix}sound11
-├│${prefix}sound12
-├│${prefix}sound13
-├│${prefix}sound14
-├│${prefix}sound15
-├│${prefix}sound16
-├│${prefix}sound17
-├│${prefix}sound18
-├│${prefix}sound19
-├│${prefix}sound20
-├│${prefix}sound21
-├│${prefix}sound22
-├│${prefix}sound23
-├│${prefix}sound24
-├│${prefix}sound25
-├│${prefix}sound26
-├│${prefix}sound27
-├│${prefix}sound28
-├│${prefix}sound29
-├│${prefix}sound30
-├│${prefix}sound31
-├│${prefix}sound32
-├│${prefix}sound33
-├│${prefix}sound34
-├│${prefix}sound35
+❖━━━⬣𝗨𝗹𝘁𝗮𝗵 𝗦𝗮𝗶𝗮⬣━━━❖
+${ultahgua}
 
-NOTE : FITUR SOUND MENU NYA 74 YA, TAPI OWNERNYA MLES NGETIK:V
-└─❖
-┌─❖ ⌜ Owner Menu ⌟
-├│${prefix}ping
-├│${prefix}owner
-├│${prefix}setppbot
-├│${prefix}listpc
-├│${prefix}listgc
-├│${prefix}mls
-├│${prefix}mlsy
-├│${prefix}mlsmile
-├│${prefix}mlsmiley
-├│${prefix}sc
-├│${prefix}join
-├│${prefix}leave
-├│${prefix}block
-├│${prefix}unblock
-├│${prefix}bc
-├│${prefix}self
-├│${prefix}public
-└─❖
-┌─❖ ⌜ Main Menu ⌟
-├│${prefix}sewabot
-├│${prefix}spamcall
-├│${prefix}tts
-├│${prefix}ssweb-pc
-├│${prefix}infogempa
-├│${prefix}topupmenu
-├│${prefix}tts
-├│${prefix}shopeepay
-├│${prefix}ovo
-├│${prefix}topupgame
-├│${prefix}listdmff
-├│${prefix}listdmml
-├│${prefix}listdmml2
-├│${prefix}buypulsa
-├│${prefix}topupff
-├│${prefix}topupml
-├│${prefix}topupml2
-├│${prefix}topupff2
-├│${prefix}rules
-├│${prefix}caraorder
-├│${prefix}cekstatus
-├│${prefix}item
-├│${prefix}additem
-├│${prefix}delitem
-├│${prefix}changeitem
-└─❖`
+❖━━━⬣𝗜𝗱𝘂𝗹 𝗔𝗱𝗵𝗮⬣━━━❖
+${Iduladha}
+
+
+╔━❖ ⌜ 𝗚𝗥𝗨𝗣 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}kick
+┣❖${prefix}add
+┣❖${prefix}promote
+┣❖${prefix}demote
+┣❖${prefix}delete
+┣❖${prefix}setname
+┣❖${prefix}setdesc
+┣❖${prefix}listonline
+┣❖${prefix}setppgrup
+┣❖${prefix}revoke
+┣❖${prefix}tagall
+┣❖${prefix}vote
+┣❖${prefix}hidetag
+┣❖${prefix}ephemeral
+┣❖${prefix}upvote
+┣❖${prefix}devote
+┣❖${prefix}cekvote
+┣❖${prefix}delvote
+┣❖${prefix}group
+┣❖${prefix}editinfo
+┣❖${prefix}mute
+┣❖${prefix}antilink
+┣❖${prefix}antilinkig
+┣❖${prefix}antiwame
+┣❖${prefix}antiviewonce
+╚━❖
+╔━❖ ⌜ 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝗠𝗘𝗡𝗨 ⌟
+┣❖ ${prefix}3drainbow
+┣❖ ${prefix}halloweenskeleton
+┣❖ ${prefix}magma
+┣❖ ${prefix}space
+┣❖ ${prefix}transformer
+┣❖ ${prefix}thunder
+┣❖ ${prefix}cinematichorror
+┣❖ ${prefix}summer
+┣❖ ${prefix}summer2
+┣❖ ${prefix}business
+┣❖ ${prefix}lightglow
+┣❖ ${prefix}candy
+┣❖ ${prefix}christmas
+┣❖ ${prefix}3dchristmas
+┣❖ ${prefix}sparklechristmas
+┣❖ ${prefix}holographic':
+┣❖ ${prefix}deepsea
+┣❖ ${prefix}scifi
+┣❖ ${prefix}rainbow
+┣❖ ${prefix}waterpipe
+┣❖ ${prefix}spooky
+┣❖ ${prefix}karbon
+┣❖ ${prefix}neonlight2
+┣❖ ${prefix}pencil
+┣❖ ${prefix}circuit
+┣❖ ${prefix}discovery
+┣❖ ${prefix}metalic
+┣❖ ${prefix}glitch2
+┣❖ ${prefix}harrypot
+┣❖ ${prefix}graffiti
+┣❖ ${prefix}pornhub
+┣❖ ${prefix}glitch3
+┣❖ ${prefix}3dspace
+┣❖ ${prefix}lion
+┣❖ ${prefix}wolf
+┣❖ ${prefix}retro
+┣❖ ${prefix}8bit
+┣❖ ${prefix}fiction
+┣❖ ${prefix}demon
+┣❖ ${prefix}3dbox
+┣❖ ${prefix}transformer
+┣❖ ${prefix}berry
+┣❖ ${prefix}thunder
+┣❖ ${prefix}magma
+┣❖ ${prefix}3dstone
+┣❖ ${prefix}greenneon
+┣❖ ${prefix}neonlight
+┣❖ ${prefix}glitch
+┣❖ ${prefix}harrypotter
+┣❖ ${prefix}brokenglass
+┣❖ ${prefix}papercut
+┣❖ ${prefix}lion2
+┣❖ ${prefix}watercolor
+┣❖ ${prefix}multicolor
+┣❖ ${prefix}neondevil
+┣❖ ${prefix}underwater
+┣❖ ${prefix}graffitibike
+┣❖ ${prefix}3davengers
+┣❖ ${prefix}snow
+┣❖ ${prefix}cloud
+┣❖ ${prefix}honey
+┣❖ ${prefix}ice
+┣❖ ${prefix}fruitjuice
+┣❖ ${prefix}biscuit
+┣❖ ${prefix}wood
+┣❖ ${prefix}whitebear
+┣❖ ${prefix}chocolate
+┣❖ ${prefix}strawberry
+┣❖ ${prefix}matrix
+┣❖ ${prefix}blood
+┣❖ ${prefix}dropwater
+┣❖ ${prefix}toxic
+┣❖ ${prefix}lava
+┣❖ ${prefix}rock
+┣❖ ${prefix}bloodglas
+┣❖ ${prefix}hallowen
+┣❖ ${prefix}darkgold
+┣❖ ${prefix}joker
+┣❖ ${prefix}wicker':
+┣❖ ${prefix}firework
+┣❖ ${prefix}skeleton
+┣❖ ${prefix}blackpink
+┣❖ ${prefix}sand
+┣❖ ${prefix}glue
+┣❖ ${prefix}1917
+┣❖ ${prefix}leaves
+┣❖ ${prefix}batman
+┣❖ ${prefix}sketch
+┣❖ ${prefix}coomingsoon
+┣❖ ${prefix}christmas 
+┣❖ ${prefix}3dgolden 
+┣❖ ${prefix}horroblod 
+┣❖ ${prefix}neon-love 
+╚━❖
+╔━❖ ⌜ 𝗙𝗨𝗡 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}jadian
+┣❖${prefix}jodohku
+┣❖${prefix}apakah
+┣❖${prefix}bisakah
+┣❖${prefix}readmore
+┣❖${prefix}kapankah
+┣❖${prefix}gbtku
+┣❖${prefix}menfess
+┣❖${prefix}tictactoe
+┣❖${prefix}delttt
+┣❖${prefix}family100
+┣❖${prefix}tebak
+┣❖${prefix}math
+┣❖${prefix}suitpvp
+╚━❖
+╔━❖ ⌜ 𝗖𝗢𝗡𝗩𝗘𝗥𝗧 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}sticker
+┣❖${prefix}smeme
+┣❖${prefix}tourl
+┣❖${prefix}toimage
+┣❖${prefix}tovideo
+┣❖${prefix}tomp3
+┣❖${prefix}stickerwm
+┣❖${prefix}emojimix
+┣❖${prefix}emojimix2
+╚━❖
+╔━❖ ⌜ 𝗥𝗔𝗡𝗗𝗢𝗠 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}pinterest
+┣❖${prefix}wallpaper
+┣❖${prefix}couple
+┣❖${prefix}quotesanime
+┣❖${prefix}wikimedia
+╚━❖
+╔━❖ ⌜ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}play
+┣❖${prefix}yts
+┣❖${prefix}ytmp3
+┣❖${prefix}ytmp4
+┣❖${prefix}tiktokmp3
+┣❖${prefix}tiktok
+┣❖${prefix}igdl
+┣❖${prefix}joox
+┣❖${prefix}soundcloud
+┣❖${prefix}twitter
+┣❖${prefix}twittermp3
+┣❖${prefix}fbdl
+┣❖${prefix}pindl
+┣❖${prefix}umma
+╚━❖
+╔━❖ ⌜ 𝗖𝗛𝗔𝗥𝗚𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}bass
+┣❖${prefix}blown
+┣❖${prefix}deep
+┣❖${prefix}earrape
+┣❖${prefix}fast
+┣❖${prefix}fat
+┣❖${prefix}nightcore
+┣❖${prefix}reverse
+┣❖${prefix}robot
+┣❖${prefix}slow
+┣❖${prefix}tupai
+╚━❖
+╔━❖ ⌜ 𝗜𝗦𝗟𝗔𝗠 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}iqra
+┣❖${prefix}hadist
+┣❖${prefix}alquran
+┣❖${prefix}jadwalsholat
+┣❖${prefix}juzamma
+┣❖${prefix}tafsirquran
+╚━❖
+╔━❖ ⌜ 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}setcmd
+┣❖${prefix}listcmd
+┣❖${prefix}delcmd
+┣❖${prefix}lockcmd
+┣❖${prefix}addmsg
+┣❖${prefix}listmsg
+┣❖${prefix}getmsg
+┣❖${prefix}delmsg
+╚━❖
+╔━❖ ⌜ 𝗔𝗡𝗢𝗡𝗬𝗠𝗢𝗨𝗦 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}anonymous
+┣❖${prefix}start
+┣❖${prefix}next
+┣❖${prefix}keluar
+╚━❖
+╔━❖ ⌜ 𝗠𝗔𝗥𝗞𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}crossfire
+┣❖${prefix}ffcover
+┣❖${prefix}beach
+┣❖${prefix}igcertificate
+┣❖${prefix}ytcertificate
+┣❖${prefix}blackpink
+┣❖${prefix}glass
+┣❖${prefix}galaxy
+┣❖${prefix}neon
+╚━❖
+╔━❖ ⌜ 𝗕𝗨𝗚 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}inibug
+┣❖${prefix}poll
+┣❖${prefix}troli2
+┣❖${prefix}santetdia
+┣❖${prefix}santetgc
+┣❖${prefix}docu
+┣❖${prefix}duc
+┣❖${prefix}bug1
+┣❖${prefix}bug2
+┣❖${prefix}bug3
+┣❖${prefix}bug4
+┣❖${prefix}bug5
+┣❖${prefix}bug6
+┣❖${prefix}bug7
+┣❖${prefix}lokas
+┣❖${prefix}buglokas
+┣❖${prefix}buginvite
+┣❖${prefix}troli
+┣❖${prefix}catalog
+┣❖${prefix}cataloggc
+┣❖${prefix}ampas1
+┣❖${prefix}ampas2
+┣❖${prefix}bugstik
+┣❖${prefix}bugie
+┣❖${prefix}bugtag
+╚━❖
+╔━❖ ⌜ 𝗦𝗢𝗨𝗡𝗗 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}sound1
+┣❖${prefix}sound2
+┣❖${prefix}sound3
+┣❖${prefix}sound4
+┣❖${prefix}sound5
+┣❖${prefix}sound6
+┣❖${prefix}sound7
+┣❖${prefix}sound8
+┣❖${prefix}sound9
+┣❖${prefix}sound10
+┣❖${prefix}sound11
+┣❖${prefix}sound12
+┣❖${prefix}sound13
+┣❖${prefix}sound14
+┣❖${prefix}sound15
+┣❖${prefix}sound16
+┣❖${prefix}sound17
+┣❖${prefix}sound18
+┣❖${prefix}sound19
+┣❖${prefix}sound20
+┣❖${prefix}sound21
+┣❖${prefix}sound22
+┣❖${prefix}sound23
+┣❖${prefix}sound24
+┣❖${prefix}sound25
+┣❖${prefix}sound26
+┣❖${prefix}sound27
+┣❖${prefix}sound28
+┣❖${prefix}sound29
+┣❖${prefix}sound30
+┣❖${prefix}sound31
+┣❖${prefix}sound32
+┣❖${prefix}sound33
+┣❖${prefix}sound34
+┣❖${prefix}sound35
+┣❖${prefix}sound36
+┣❖${prefix}sound37
+┣❖${prefix}sound38
+┣❖${prefix}sound39
+┣❖${prefix}sound40
+┣❖${prefix}sound41
+┣❖${prefix}sound42
+┣❖${prefix}sound43
+┣❖${prefix}sound44
+┣❖${prefix}sound45
+┣❖${prefix}sound46
+┣❖${prefix}sound47
+┣❖${prefix}sound48
+┣❖${prefix}sound49
+┣❖${prefix}sound50
+┣❖${prefix}sound51
+┣❖${prefix}sound52
+┣❖${prefix}sound53
+┣❖${prefix}sound54
+┣❖${prefix}sound55
+┣❖${prefix}sound56
+┣❖${prefix}sound57
+┣❖${prefix}sound58
+┣❖${prefix}sound59
+┣❖${prefix}sound60
+┣❖${prefix}sound61
+┣❖${prefix}sound62
+┣❖${prefix}sound63
+┣❖${prefix}sound64
+┣❖${prefix}sound65
+┣❖${prefix}sound66
+┣❖${prefix}sound67
+┣❖${prefix}sound68
+┣❖${prefix}sound69
+┣❖${prefix}sound70
+┣❖${prefix}sound71
+┣❖${prefix}sound72
+┣❖${prefix}sound73
+┣❖${prefix}sound74
+╚━❖
+╔━❖ ⌜ 𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}ping
+┣❖${prefix}owner
+┣❖${prefix}setppbot
+┣❖${prefix}listpc
+┣❖${prefix}listgc
+┣❖${prefix}mls
+┣❖${prefix}mlsy
+┣❖${prefix}mlsmile
+┣❖${prefix}mlsmiley
+┣❖${prefix}sc
+┣❖${prefix}join
+┣❖${prefix}leave
+┣❖${prefix}block
+┣❖${prefix}unblock
+┣❖${prefix}bc
+┣❖${prefix}self
+┣❖${prefix}public
+╚━❖
+╔━❖ ⌜ 𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨 ⌟
+┣❖${prefix}sewabot
+┣❖${prefix}spamcall
+┣❖${prefix}tts
+┣❖${prefix}ssweb-pc
+┣❖${prefix}infogempa
+┣❖${prefix}topupmenu
+┣❖${prefix}tts
+┣❖${prefix}shopeepay
+┣❖${prefix}ovo
+┣❖${prefix}topupgame
+┣❖${prefix}listdmff
+┣❖${prefix}listdmml
+┣❖${prefix}listdmml2
+┣❖${prefix}buypulsa
+┣❖${prefix}topupff
+┣❖${prefix}topupml
+┣❖${prefix}topupml2
+┣❖${prefix}topupff2
+┣❖${prefix}rules
+┣❖${prefix}caraorder
+┣❖${prefix}cekstatus
+┣❖${prefix}item
+┣❖${prefix}additem
+┣❖${prefix}delitem
+┣❖${prefix}changeitem
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, allmenu, creator, m, { quoted: kafloc })
             }
@@ -1593,6 +1784,12 @@ const sections = [
 	title: `GROUP MENU`,
 	rows: [
 	    {title: "GROUP MENU", rowId: `${prefix}groupmenu`}
+	]
+	},
+    {
+	title: `TEXTPRO MENU`,
+	rows: [
+	    {title: "TEXRPRO MENU", rowId: `${prefix}textpromenu`}
 	]
     },
     {
@@ -1688,26 +1885,35 @@ const sections = [
 ]
 let menunyaa = `Hai Kak ${pushname}
 *${ucapanWaktu}*
-┌─❖ ⌜ 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 ⌟
-├ *Nama* : ${pushname}
-├ *Premium* : ${isPremium ? '✅' : `❌`}
-├ *Limit* : ${isPremium ? 'UNLIMITED' : `〽️${db.data.users[m.sender].limit}`}
-├ *Mode* : ${liaacans.public ? 'Public' : `Self`}
-├ *Prefix* :「 MULTI-PREFIX 」
-└─❖
+╔━❖ ⌜ 𝗜𝗡𝗙𝗢 𝗨𝗦𝗘𝗥 ⌟
+┣ *Nama* : ${pushname}
+┣ *Premium* : ${isPremium ? '✅' : `❌`}
+┣ *Limit* : ${isPremium ? 'UNLIMITED' : `〽️${db.data.users[m.sender].limit}`}
+┣ *Mode* : ${liaacans.public ? 'Public' : `Self`}
+┣ *Prefix* :「 MULTI-PREFIX 」
+╚━❖
 
-┌─❖ ⌜ 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼𝙉 𝙏𝙄𝙈𝙀 ⌟
-├ *Hari Ini* : ${hariini}
-├ *Wib* : ${barat} WIB
-├ *Wita* : ${tengah} WITA
-├ *Wit* : ${timur} WIT
-└─❖
+╔━❖ ⌜ 𝗜𝗡𝗗𝗢𝗡𝗘𝗦𝗜𝗔𝗡 𝗧𝗜𝗠𝗘 ⌟
+┣ *Hari Ini* : ${hariini}
+┣ *Wib* : ${barat} WIB
+┣ *Wita* : ${tengah} WITA
+┣ *Wit* : ${timur} WIT
+╚━❖
+❖━━━⬣𝗥𝗮𝗺𝗮𝗱𝗵𝗮𝗻⬣━━━❖
+${Ramadhan}
 
-Note : Jangan Spam Bot Dan
-Call, Jika Tidak Ingin Di Block Bot`
+❖━━━⬣𝗡𝗲𝘄 𝗬𝗲𝗮𝗿𝘀⬣━━━❖
+${tahunbaru}
+
+❖━━━⬣𝗨𝗹𝘁𝗮𝗵 𝗦𝗮𝗶𝗮⬣━━━❖
+${ultahgua}
+
+❖━━━⬣𝗜𝗱𝘂𝗹 𝗔𝗱𝗵𝗮⬣━━━❖
+${Iduladha}
+`
 const listMessage = {
   text: menunyaa,
-  footer: "© Created By LiaaCans BOT",
+  footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
   buttonText: "Klik Disini",
   sections
 }
@@ -1717,22 +1923,22 @@ break
 case 'funmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-funmenu = `┌─❖ ⌜ FUN MENU ⌟
-├│${prefix}jadian
-├│${prefix}jodohku
-├│${prefix}apakah
-├│${prefix}bisakah
-├│${prefix}readmore
-├│${prefix}kapankah
-├│${prefix}gbtku
-├│${prefix}menfess
-├│${prefix}tictactoe
-├│${prefix}delttt
-├│${prefix}family100
-├│${prefix}tebak
-├│${prefix}math
-├│${prefix}suitpvp
-└─❖`
+funmenu = `╔━❖ ⌜ FUN MENU ⌟
+┣❖${prefix}jadian
+┣❖${prefix}jodohku
+┣❖${prefix}apakah
+┣❖${prefix}bisakah
+┣❖${prefix}readmore
+┣❖${prefix}kapankah
+┣❖${prefix}gbtku
+┣❖${prefix}menfess
+┣❖${prefix}tictactoe
+┣❖${prefix}delttt
+┣❖${prefix}family100
+┣❖${prefix}tebak
+┣❖${prefix}math
+┣❖${prefix}suitpvp
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, funmenu, creator, m, { quoted: kafloc })
             }
@@ -1740,33 +1946,135 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'groupmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-group = `┌─❖ ⌜ GROUP MENU ⌟
-├│${prefix}kick
-├│${prefix}add
-├│${prefix}promote
-├│${prefix}demote
-├│${prefix}listonline
-├│${prefix}delete
-├│${prefix}setname
-├│${prefix}setdesc
-├│${prefix}setppgrup
-├│${prefix}revoke
-├│${prefix}tagall
-├│${prefix}vote
-├│${prefix}hidetag
-├│${prefix}ephemeral
-├│${prefix}upvote
-├│${prefix}devote
-├│${prefix}cekvote
-├│${prefix}delvote
-├│${prefix}group
-├│${prefix}editinfo
-├│${prefix}mute
-├│${prefix}antilink
-├│${prefix}antilinkig
-├│${prefix}antiwame
-├│${prefix}antiviewonce
-└─❖`
+group = `╔━❖ ⌜ GROUP MENU ⌟
+┣❖${prefix}kick
+┣❖${prefix}add
+┣❖${prefix}promote
+┣❖${prefix}demote
+┣❖${prefix}listonline
+┣❖${prefix}delete
+┣❖${prefix}setname
+┣❖${prefix}setdesc
+┣❖${prefix}setppgrup
+┣❖${prefix}revoke
+┣❖${prefix}tagall
+┣❖${prefix}vote
+┣❖${prefix}hidetag
+┣❖${prefix}ephemeral
+┣❖${prefix}upvote
+┣❖${prefix}devote
+┣❖${prefix}cekvote
+┣❖${prefix}delvote
+┣❖${prefix}group
+┣❖${prefix}editinfo
+┣❖${prefix}mute
+┣❖${prefix}antilink
+┣❖${prefix}antilinkig
+┣❖${prefix}antiwame
+┣❖${prefix}antiviewonce
+╚━❖`
+let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
+            await liaacans.sendButtonText(m.chat, buttons, group, creator, m, { quoted: kafloc })
+            }
+            break
+            case 'textpromenu': {
+if (cekUser("id", m.sender) == null) throw mess.user
+let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
+group = `╔━❖ ⌜ TEXTPRO MENU ⌟
+┣❖ ${prefix}3drainbow
+┣❖ ${prefix}halloweenskeleton
+┣❖ ${prefix}magma
+┣❖ ${prefix}space
+┣❖ ${prefix}transformer
+┣❖ ${prefix}thunder
+┣❖ ${prefix}cinematichorror
+┣❖ ${prefix}summer
+┣❖ ${prefix}summer2
+┣❖ ${prefix}business
+┣❖ ${prefix}lightglow
+┣❖ ${prefix}candy
+┣❖ ${prefix}christmas
+┣❖ ${prefix}3dchristmas
+┣❖ ${prefix}sparklechristmas
+┣❖ ${prefix}holographic':
+┣❖ ${prefix}deepsea
+┣❖ ${prefix}scifi
+┣❖ ${prefix}rainbow
+┣❖ ${prefix}waterpipe
+┣❖ ${prefix}spooky
+┣❖ ${prefix}karbon
+┣❖ ${prefix}neonlight2
+┣❖ ${prefix}pencil
+┣❖ ${prefix}circuit
+┣❖ ${prefix}discovery
+┣❖ ${prefix}metalic
+┣❖ ${prefix}glitch2
+┣❖ ${prefix}harrypot
+┣❖ ${prefix}graffiti
+┣❖ ${prefix}pornhub
+┣❖ ${prefix}glitch3
+┣❖ ${prefix}3dspace
+┣❖ ${prefix}lion
+┣❖ ${prefix}wolf
+┣❖ ${prefix}retro
+┣❖ ${prefix}8bit
+┣❖ ${prefix}fiction
+┣❖ ${prefix}demon
+┣❖ ${prefix}3dbox
+┣❖ ${prefix}transformer
+┣❖ ${prefix}berry
+┣❖ ${prefix}thunder
+┣❖ ${prefix}magma
+┣❖ ${prefix}3dstone
+┣❖ ${prefix}greenneon
+┣❖ ${prefix}neonlight
+┣❖ ${prefix}glitch
+┣❖ ${prefix}harrypotter
+┣❖ ${prefix}brokenglass
+┣❖ ${prefix}papercut
+┣❖ ${prefix}lion2
+┣❖ ${prefix}watercolor
+┣❖ ${prefix}multicolor
+┣❖ ${prefix}neondevil
+┣❖ ${prefix}underwater
+┣❖ ${prefix}graffitibike
+┣❖ ${prefix}3davengers
+┣❖ ${prefix}snow
+┣❖ ${prefix}cloud
+┣❖ ${prefix}honey
+┣❖ ${prefix}ice
+┣❖ ${prefix}fruitjuice
+┣❖ ${prefix}biscuit
+┣❖ ${prefix}wood
+┣❖ ${prefix}whitebear
+┣❖ ${prefix}chocolate
+┣❖ ${prefix}strawberry
+┣❖ ${prefix}matrix
+┣❖ ${prefix}blood
+┣❖ ${prefix}dropwater
+┣❖ ${prefix}toxic
+┣❖ ${prefix}lava
+┣❖ ${prefix}rock
+┣❖ ${prefix}bloodglas
+┣❖ ${prefix}hallowen
+┣❖ ${prefix}darkgold
+┣❖ ${prefix}joker
+┣❖ ${prefix}wicker':
+┣❖ ${prefix}firework
+┣❖ ${prefix}skeleton
+┣❖ ${prefix}blackpink
+┣❖ ${prefix}sand
+┣❖ ${prefix}glue
+┣❖ ${prefix}1917
+┣❖ ${prefix}leaves
+┣❖ ${prefix}batman
+┣❖ ${prefix}sketch
+┣❖ ${prefix}coomingsoon
+┣❖ ${prefix}christmas 
+┣❖ ${prefix}3dgolden 
+┣❖ ${prefix}horroblod 
+┣❖ ${prefix}neon-love 
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, group, creator, m, { quoted: kafloc })
             }
@@ -1774,17 +2082,17 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'convertmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-convermenu = `┌─❖ ⌜ Converter Menu ⌟
-├│${prefix}sticker
-├│${prefix}smeme
-├│${prefix}tourl
-├│${prefix}toimage
-├│${prefix}tovideo
-├│${prefix}tomp3
-├│${prefix}stickerwm
-├│${prefix}emojimix
-├│${prefix}emojimix2
-└─❖`
+convermenu = `╔━❖ ⌜ Converter Menu ⌟
+┣❖${prefix}sticker
+┣❖${prefix}smeme
+┣❖${prefix}tourl
+┣❖${prefix}toimage
+┣❖${prefix}tovideo
+┣❖${prefix}tomp3
+┣❖${prefix}stickerwm
+┣❖${prefix}emojimix
+┣❖${prefix}emojimix2
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, convermenu, creator, m, { quoted: kafloc })
             }
@@ -1792,13 +2100,13 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'randommenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-rm = `┌─❖ ⌜ Random Menu ⌟
-├│${prefix}pinterest
-├│${prefix}wallpaper
-├│${prefix}couple
-├│${prefix}quotesanime
-├│${prefix}wikimedia
-└─❖`
+rm = `╔━❖ ⌜ Random Menu ⌟
+┣❖${prefix}pinterest
+┣❖${prefix}wallpaper
+┣❖${prefix}couple
+┣❖${prefix}quotesanime
+┣❖${prefix}wikimedia
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, rm, creator, m, { quoted: kafloc })
             }
@@ -1807,21 +2115,22 @@ case 'downloadmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 if(!isPremium)throw`Fitur Ini Khusus Untuk Premium`
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-downloadme = `┌─❖ ⌜ Download Menu ⌟
-├│${prefix}play
-├│${prefix}yts
-├│${prefix}ytmp3
-├│${prefix}ytmp4
-├│${prefix}tiktokmp3
-├│${prefix}igdl
-├│${prefix}joox
-├│${prefix}soundcloud
-├│${prefix}twitter
-├│${prefix}twittermp3
-├│${prefix}fbdl
-├│${prefix}pindl
-├│${prefix}umma
-└─❖`
+downloadme = `╔━❖ ⌜ Download Menu ⌟
+┣❖${prefix}play
+┣❖${prefix}yts
+┣❖${prefix}ytmp3
+┣❖${prefix}ytmp4
+┣❖${prefix}tiktokmp3
+┣❖${prefix}tiktok
+┣❖${prefix}igdl
+┣❖${prefix}joox
+┣❖${prefix}soundcloud
+┣❖${prefix}twitter
+┣❖${prefix}twittermp3
+┣❖${prefix}fbdl
+┣❖${prefix}pindl
+┣❖${prefix}umma
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, downloadme, creator, m, { quoted: kafloc })
             }
@@ -1830,28 +2139,28 @@ case 'ownermenu': {
 if(!isCreator)throw`Fitur Ini Khusus Untuk Owner`
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-ownerme = `┌─❖ ⌜ Owner Menu ⌟
-├│${prefix}createcp
-├│${prefix}listcp
-├│${prefix}terminate
-├│${prefix}ping
-├│${prefix}owner
-├│${prefix}sc
-├│${prefix}join
-├│${prefix}setppbot
-├│${prefix}listgc
-├│${prefix}listpc
-├│${prefix}mls
-├│${prefix}mlsy
-├│${prefix}mlsmile
-├│${prefix}mlsmiley
-├│${prefix}leave
-├│${prefix}block
-├│${prefix}unblock
-├│${prefix}bc
-├│${prefix}self
-├│${prefix}public
-└─❖`
+ownerme = `╔━❖ ⌜ Owner Menu ⌟
+┣❖${prefix}createcp
+┣❖${prefix}listcp
+┣❖${prefix}terminate
+┣❖${prefix}ping
+┣❖${prefix}owner
+┣❖${prefix}sc
+┣❖${prefix}join
+┣❖${prefix}setppbot
+┣❖${prefix}listgc
+┣❖${prefix}listpc
+┣❖${prefix}mls
+┣❖${prefix}mlsy
+┣❖${prefix}mlsmile
+┣❖${prefix}mlsmiley
+┣❖${prefix}leave
+┣❖${prefix}block
+┣❖${prefix}unblock
+┣❖${prefix}bc
+┣❖${prefix}self
+┣❖${prefix}public
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, ownerme, creator, m, { quoted: kafloc })
             }
@@ -1859,12 +2168,12 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'anonymousmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-cht = `┌─❖ ⌜ Anonymous Menu ⌟
-├│${prefix}anonymous
-├│${prefix}start
-├│${prefix}next
-├│${prefix}keluar
-└─❖`
+cht = `╔━❖ ⌜ Anonymous Menu ⌟
+┣❖${prefix}anonymous
+┣❖${prefix}start
+┣❖${prefix}next
+┣❖${prefix}keluar
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, cht, creator, m, { quoted: kafloc })
             }
@@ -1872,16 +2181,16 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'databasemenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-dbm = `┌─❖ ⌜ Database Menu ⌟
-├│${prefix}setcmd
-├│${prefix}listcmd
-├│${prefix}delcmd
-├│${prefix}lockcmd
-├│${prefix}addmsg
-├│${prefix}listmsg
-├│${prefix}getmsg
-├│${prefix}delmsg
-└─❖`
+dbm = `╔━❖ ⌜ Database Menu ⌟
+┣❖${prefix}setcmd
+┣❖${prefix}listcmd
+┣❖${prefix}delcmd
+┣❖${prefix}lockcmd
+┣❖${prefix}addmsg
+┣❖${prefix}listmsg
+┣❖${prefix}getmsg
+┣❖${prefix}delmsg
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, dbm, creator, m, { quoted: kafloc })
             }
@@ -1889,13 +2198,14 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'islamicmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-islmm = `┌─❖ ⌜ Islamic Menu ⌟
-├│${prefix}iqra
-├│${prefix}hadist
-├│${prefix}alquran
-├│${prefix}juzamma
-├│${prefix}tafsirquran
-└─❖`
+islmm = `╔━❖ ⌜ Islamic Menu ⌟
+┣❖${prefix}iqra
+┣❖${prefix}hadist
+┣❖${prefix}alquran
+┣❖${prefix}jadwalsholat
+┣❖${prefix}juzamma
+┣❖${prefix}tafsirquran
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'Owner' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, islmm, creator, m, { quoted: kafloc })
             }
@@ -1903,19 +2213,19 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'chargermenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-chargermenu = `┌─❖ ⌜ Charger Menu ⌟
-├│${prefix}bass
-├│${prefix}blown
-├│${prefix}deep
-├│${prefix}earrape
-├│${prefix}fast
-├│${prefix}fat
-├│${prefix}nightcore
-├│${prefix}reverse
-├│${prefix}robot
-├│${prefix}slow
-├│${prefix}tupai
-└─❖`
+chargermenu = `╔━❖ ⌜ Charger Menu ⌟
+┣❖${prefix}bass
+┣❖${prefix}blown
+┣❖${prefix}deep
+┣❖${prefix}earrape
+┣❖${prefix}fast
+┣❖${prefix}fat
+┣❖${prefix}nightcore
+┣❖${prefix}reverse
+┣❖${prefix}robot
+┣❖${prefix}slow
+┣❖${prefix}tupai
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, chargermenu, creator, m, { quoted: kafloc })
             }
@@ -1923,17 +2233,17 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'makermenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-mkrmnu = `┌─❖ ⌜ Maker Menu ⌟
-├│${prefix}crossfire
-├│${prefix}ffcover
-├│${prefix}beach
-├│${prefix}igcertificate
-├│${prefix}ytcertificate
-├│${prefix}blackpink
-├│${prefix}glass
-├│${prefix}galaxy
-├│${prefix}neon
-└─❖`
+mkrmnu = `╔━❖ ⌜ Maker Menu ⌟
+┣❖${prefix}crossfire
+┣❖${prefix}ffcover
+┣❖${prefix}beach
+┣❖${prefix}igcertificate
+┣❖${prefix}ytcertificate
+┣❖${prefix}blackpink
+┣❖${prefix}glass
+┣❖${prefix}galaxy
+┣❖${prefix}neon
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, mkrmnu, creator, m, { quoted: kafloc })
             }
@@ -1942,33 +2252,33 @@ case 'bugmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 if (!isCreator) throw mess.owner
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-bug = `┌─❖ ⌜ Bug Menu (khusus owner) ⌟
-├│${prefix}inibug
-├│${prefix}poll
-├│${prefix}troli2
-├│${prefix}santetdia
-├│${prefix}santetgc
-├│${prefix}docu
-├│${prefix}duc
-├│${prefix}bug1
-├│${prefix}bug2
-├│${prefix}bug3
-├│${prefix}bug4
-├│${prefix}bug5
-├│${prefix}bug6
-├│${prefix}bug7
-├│${prefix}lokas
-├│${prefix}buglokas
-├│${prefix}buginvite
-├│${prefix}troli
-├│${prefix}catalog
-├│${prefix}cataloggc
-├│${prefix}ampas1
-├│${prefix}ampas2
-├│${prefix}bugstik
-├│${prefix}bugie
-├│${prefix}bugtag
-└─❖`
+bug = `╔━❖ ⌜ Bug Menu (khusus owner) ⌟
+┣❖${prefix}inibug
+┣❖${prefix}poll
+┣❖${prefix}troli2
+┣❖${prefix}santetdia
+┣❖${prefix}santetgc
+┣❖${prefix}docu
+┣❖${prefix}duc
+┣❖${prefix}bug1
+┣❖${prefix}bug2
+┣❖${prefix}bug3
+┣❖${prefix}bug4
+┣❖${prefix}bug5
+┣❖${prefix}bug6
+┣❖${prefix}bug7
+┣❖${prefix}lokas
+┣❖${prefix}buglokas
+┣❖${prefix}buginvite
+┣❖${prefix}troli
+┣❖${prefix}catalog
+┣❖${prefix}cataloggc
+┣❖${prefix}ampas1
+┣❖${prefix}ampas2
+┣❖${prefix}bugstik
+┣❖${prefix}bugie
+┣❖${prefix}bugtag
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, bug, creator, m, { quoted: kafloc })
             }
@@ -1976,45 +2286,82 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'soundmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 if (!isPremium) throw mess.prem
-sm = `┌─❖ ⌜ SOUND MENU [KHUSUS PREM] ⌟
-├│${prefix}sound1
-├│${prefix}sound2
-├│${prefix}sound3
-├│${prefix}sound4
-├│${prefix}sound5
-├│${prefix}sound6
-├│${prefix}sound7
-├│${prefix}sound8
-├│${prefix}sound9
-├│${prefix}sound10
-├│${prefix}sound11
-├│${prefix}sound12
-├│${prefix}sound13
-├│${prefix}sound14
-├│${prefix}sound15
-├│${prefix}sound16
-├│${prefix}sound17
-├│${prefix}sound18
-├│${prefix}sound19
-├│${prefix}sound20
-├│${prefix}sound21
-├│${prefix}sound22
-├│${prefix}sound23
-├│${prefix}sound24
-├│${prefix}sound25
-├│${prefix}sound26
-├│${prefix}sound27
-├│${prefix}sound28
-├│${prefix}sound29
-├│${prefix}sound30
-├│${prefix}sound31
-├│${prefix}sound32
-├│${prefix}sound33
-├│${prefix}sound34
-├│${prefix}sound35
-
-NOTE : FITUR SOUND MENU NYA 74 YA, TAPI OWNERNYA MLES NGETIK:V
-└─❖`
+sm = `╔━❖ ⌜ SOUND MENU [KHUSUS PREM] ⌟
+┣❖${prefix}sound1
+┣❖${prefix}sound2
+┣❖${prefix}sound3
+┣❖${prefix}sound4
+┣❖${prefix}sound5
+┣❖${prefix}sound6
+┣❖${prefix}sound7
+┣❖${prefix}sound8
+┣❖${prefix}sound9
+┣❖${prefix}sound10
+┣❖${prefix}sound11
+┣❖${prefix}sound12
+┣❖${prefix}sound13
+┣❖${prefix}sound14
+┣❖${prefix}sound15
+┣❖${prefix}sound16
+┣❖${prefix}sound17
+┣❖${prefix}sound18
+┣❖${prefix}sound19
+┣❖${prefix}sound20
+┣❖${prefix}sound21
+┣❖${prefix}sound22
+┣❖${prefix}sound23
+┣❖${prefix}sound24
+┣❖${prefix}sound25
+┣❖${prefix}sound26
+┣❖${prefix}sound27
+┣❖${prefix}sound28
+┣❖${prefix}sound29
+┣❖${prefix}sound30
+┣❖${prefix}sound31
+┣❖${prefix}sound32
+┣❖${prefix}sound33
+┣❖${prefix}sound34
+┣❖${prefix}sound35
+┣❖${prefix}sound36
+┣❖${prefix}sound37
+┣❖${prefix}sound38
+┣❖${prefix}sound39
+┣❖${prefix}sound40
+┣❖${prefix}sound41
+┣❖${prefix}sound42
+┣❖${prefix}sound43
+┣❖${prefix}sound44
+┣❖${prefix}sound45
+┣❖${prefix}sound46
+┣❖${prefix}sound47
+┣❖${prefix}sound48
+┣❖${prefix}sound49
+┣❖${prefix}sound50
+┣❖${prefix}sound51
+┣❖${prefix}sound52
+┣❖${prefix}sound53
+┣❖${prefix}sound54
+┣❖${prefix}sound55
+┣❖${prefix}sound56
+┣❖${prefix}sound57
+┣❖${prefix}sound58
+┣❖${prefix}sound59
+┣❖${prefix}sound60
+┣❖${prefix}sound61
+┣❖${prefix}sound62
+┣❖${prefix}sound63
+┣❖${prefix}sound64
+┣❖${prefix}sound65
+┣❖${prefix}sound66
+┣❖${prefix}sound67
+┣❖${prefix}sound68
+┣❖${prefix}sound69
+┣❖${prefix}sound70
+┣❖${prefix}sound71
+┣❖${prefix}sound72
+┣❖${prefix}sound73
+┣❖${prefix}sound74
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, sm, creator, m, { quoted: kafloc })
             }
@@ -2022,7 +2369,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
 case 'donasi': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-donasi = `*「 🐰DONASI BY LIAACANS🐰 」*
+donasi = `*「 🐰DONASI BY ANDIGANS🐰 」*
 
 • Payment : Ovo/Dana/Gopay
 • Nomor Payment : Cht Owner!
@@ -2036,34 +2383,34 @@ break
 case 'mainmenu': {
 if (cekUser("id", m.sender) == null) throw mess.user
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-mainmenu = `┌─❖ ⌜ Main Menu ⌟
-├│${prefix}sewabot
-├│${prefix}tts
-├│${prefix}spamcall
-├│${prefix}ssweb-pc
-├│${prefix}ssweb-hp
-├│${prefix}infogempa
-├│${prefix}topupmenu
-├│${prefix}tts
-├│${prefix}shopeepay
-├│${prefix}ovo
-├│${prefix}listdmff
-├│${prefix}listdmml
-├│${prefix}listdmml2
-├│${prefix}buypulsa
-├│${prefix}topupff
-├│${prefix}topupml
-├│${prefix}topupml2
-├│${prefix}topupff2
-├│${prefix}rules
-├│${prefix}caraorder
-├│${prefix}cekstatus
-├│${prefix}item
-├│${prefix}additem
-├│${prefix}delitem
-├│${prefix}changeitem
-├│${prefix}runtime
-└─❖`
+mainmenu = `╔━❖ ⌜ Main Menu ⌟
+┣❖${prefix}sewabot
+┣❖${prefix}tts
+┣❖${prefix}spamcall
+┣❖${prefix}ssweb-pc
+┣❖${prefix}ssweb-hp
+┣❖${prefix}infogempa
+┣❖${prefix}topupmenu
+┣❖${prefix}tts
+┣❖${prefix}shopeepay
+┣❖${prefix}ovo
+┣❖${prefix}listdmff
+┣❖${prefix}listdmml
+┣❖${prefix}listdmml2
+┣❖${prefix}buypulsa
+┣❖${prefix}topupff
+┣❖${prefix}topupml
+┣❖${prefix}topupml2
+┣❖${prefix}topupff2
+┣❖${prefix}rules
+┣❖${prefix}caraorder
+┣❖${prefix}cekstatus
+┣❖${prefix}item
+┣❖${prefix}additem
+┣❖${prefix}delitem
+┣❖${prefix}changeitem
+┣❖${prefix}runtime
+╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
             await liaacans.sendButtonText(m.chat, buttons, mainmenu, creator, m, { quoted: kafloc })
             }
@@ -2158,7 +2505,7 @@ if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
-let teks = `──── ⌜ Tag All ⌟ ────
+let teks = `━━━━ ⌜ Tag All ⌟ ━━━━
  
  ❗ *Pesan : ${q ? q : 'kosong'}*\n\n`
 for (let mem of participants) {
@@ -2190,19 +2537,19 @@ teks_vote = `*「 VOTE 」*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-│
-│ 
-└────
+╔〔 UPVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][1].length}
+┃
+┃ 
+╚━━━━
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-│
-│ 
-└────
+╔〔 DEVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][2].length}
+┃
+┃ 
+╚━━━━
 
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsVote = [
@@ -2232,19 +2579,19 @@ teks_vote = `*「 VOTE 」*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 UPVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][1].length}
+${vote[m.chat][1].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 DEVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][2].length}
+${vote[m.chat][2].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsUpvote = [
@@ -2275,19 +2622,19 @@ teks_vote = `*「 VOTE 」*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 UPVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][1].length}
+${vote[m.chat][1].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 DEVOTE 〕
+┃ 
+┣ Total: ${vote[m.chat][2].length}
+${vote[m.chat][2].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsDevote = [
@@ -2313,19 +2660,19 @@ teks_vote = `*「 VOTE 」*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${upvote.length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 UPVOTE 〕
+┃ 
+┣ Total: ${upvote.length}
+${vote[m.chat][1].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${devote.length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+╔〔 DEVOTE 〕
+┃ 
+┣ Total: ${devote.length}
+${vote[m.chat][2].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+┃ 
+╚━━━━
 
 *${prefix}hapusvote* - untuk menghapus vote
 
@@ -2513,6 +2860,108 @@ if (cekUser("id", m.sender) == null) throw mess.user
                 liaacans.sendMessage(m.chat, { image: { url: api('liaacans', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
             }
             break
+case 'candy': case 'christmas': case '3dchristmas': case 'sparklechristmas': case 'holographic':
+case 'deepsea': case 'scifi': case 'rainbow': case 'waterpipe': case 'spooky': case 'karbon': case 'neonlight2': 
+case 'pencil': case 'circuit': case 'discovery': case 'metalic': case 'fiction': case 'demon': case '3dbox': 
+case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dstone': case 'greenneon': 
+case 'neonlight': case 'glitch': case 'harrypotter': case 'brokenglass': case 'papercut': case 'lion2': 
+case 'watercolor': case 'multicolor': case 'neondevil': case 'underwater': case 'graffitibike': case '3davengers': 
+ case 'snow': case 'cloud': case 'honey': case 'ice': case 'fruitjuice': case 'biscuit': case 'wood': case 'whitebear': 
+case 'chocolate': case 'strawberry': case 'matrix': case 'blood': case 'dropwater': case 'toxic': 
+case 'lava': case 'rock': case 'bloodglas': case 'hallowen': case 'darkgold': case 'joker': case 'wicker':
+ case 'firework': case 'skeleton': case 'blackpink': case 'sand': case 'glue': case '1917': case 'leaves': {
+             if (!q) return m.reply(`Contoh : ${prefix + command} ${global.ownername}`) 
+             m.reply(mess.wait)
+             let link
+             if (/candy/.test(command)) link = 'https://textpro.me/create-christmas-candy-cane-text-effect-1056.html'
+             if (/neonlight2/.test(command)) link = 'https://textpro.me/neon-light-text-effect-with-galaxy-style-981.html'
+             if (/christmas/.test(command)) link = 'https://textpro.me/christmas-tree-text-effect-online-free-1057.html'
+             if (/3dchristmas/.test(command)) link = 'https://textpro.me/3d-christmas-text-effect-by-name-1055.html'
+             if (/sparklechristmas/.test(command)) link = 'https://textpro.me/sparkles-merry-christmas-text-effect-1054.html'
+             if (/deepsea/.test(command)) link = 'https://textpro.me/create-3d-deep-sea-metal-text-effect-online-1053.html'
+             if (/scifi/.test(command)) link = 'https://textpro.me/create-3d-sci-fi-text-effect-online-1050.html'
+             if (/whitebear/.test(command)) link = 'https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html'
+             if (/holographic/.test(command)) link = 'https://textpro.me/holographic-3d-text-effect-975.html'
+             if (/3davengers/.test(command)) link = 'https://textpro.me/create-3d-avengers-logo-online-974.html'
+             if (/rainbow/.test(command)) link = 'https://textpro.me/3d-rainbow-color-calligraphy-text-effect-1049.html'
+             if (/waterpipe/.test(command)) link = 'https://textpro.me/create-3d-water-pipe-text-effects-online-1048.html'
+             if (/spooky/.test(command)) link = 'https://textpro.me/create-halloween-skeleton-text-effect-online-1047.html'
+             if (/greenneon/.test(command)) link = 'https://textpro.me/green-neon-text-effect-874.html'
+             if (/lion2/.test(command)) link = 'https://textpro.me/create-lion-logo-mascot-online-938.html'
+             if (/3dbox/.test(command)) link = 'https://textpro.me/3d-box-text-effect-online-880.html'
+             if (/pencil/.test(command)) link = 'https://textpro.me/create-a-sketch-text-effect-online-1044.html'
+             if (/circuit/.test(command)) link = 'https://textpro.me/create-blue-circuit-style-text-effect-online-1043.html'
+             if (/discovery/.test(command)) link = 'https://textpro.me/create-space-text-effects-online-free-1042.html'
+             if (/metalic/.test(command)) link = 'https://textpro.me/creat-glossy-metalic-text-effect-free-online-1040.html'
+             if (/fiction/.test(command)) link = 'https://textpro.me/create-science-fiction-text-effect-online-free-1038.html'
+             if (/demon/.test(command)) link = 'https://textpro.me/create-green-horror-style-text-effect-online-1036.html'
+             if (/transformer/.test(command)) link = 'https://textpro.me/create-a-transformer-text-effect-online-1035.html'
+             if (/berry/.test(command)) link = 'https://textpro.me/create-berry-text-effect-online-free-1033.html'
+             if (/thunder/.test(command)) link = 'https://textpro.me/online-thunder-text-effect-generator-1031.html'
+             if (/magma/.test(command)) link = 'https://textpro.me/create-a-magma-hot-text-effect-online-1030.html'
+             if (/3dstone/.test(command)) link = 'https://textpro.me/3d-stone-cracked-cool-text-effect-1029.html'
+             if (/neonlight/.test(command)) link = 'https://textpro.me/create-3d-neon-light-text-effect-online-1028.html'
+             if (/glitch/.test(command)) link = 'https://textpro.me/create-impressive-glitch-text-effects-online-1027.html'
+             if (/harrypotter/.test(command)) link = 'https://textpro.me/create-harry-potter-text-effect-online-1025.html'
+             if (/brokenglass/.test(command)) link = 'https://textpro.me/broken-glass-text-effect-free-online-1023.html'
+             if (/papercut/.test(command)) link = 'https://textpro.me/create-art-paper-cut-text-effect-online-1022.html'
+             if (/watercolor/.test(command)) link = 'https://textpro.me/create-a-free-online-watercolor-text-effect-1017.html'
+             if (/multicolor/.test(command)) link = 'https://textpro.me/online-multicolor-3d-paper-cut-text-effect-1016.html'
+             if (/neondevil/.test(command)) link = 'https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html'
+             if (/underwater/.test(command)) link = 'https://textpro.me/3d-underwater-text-effect-generator-online-1013.html'
+             if (/graffitibike/.test(command)) link = 'https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html'
+             if (/snow/.test(command)) link = 'https://textpro.me/create-snow-text-effects-for-winter-holidays-1005.html'
+             if (/cloud/.test(command)) link = 'https://textpro.me/create-a-cloud-text-effect-on-the-sky-online-1004.html'
+             if (/karbon/.test(command)) link = 'https://textpro.me/carbon-text-effect-833.html'
+             if (/honey/.test(command)) link = 'https://textpro.me/honey-text-effect-868.html'
+             if (/ice/.test(command)) link = 'https://textpro.me/ice-cold-text-effect-862.html'
+             if (/fruitjuice/.test(command)) link = 'https://textpro.me/fruit-juice-text-effect-861.html'
+             if (/biscuit/.test(command)) link = 'https://textpro.me/biscuit-text-effect-858.html'
+             if (/wood/.test(command)) link = 'https://textpro.me/wood-text-effect-856.html'
+             if (/chocolate/.test(command)) link = 'https://textpro.me/chocolate-cake-text-effect-890.html'
+             if (/strawberry/.test(command)) link = 'https://textpro.me/strawberry-text-effect-online-889.html'
+             if (/matrix/.test(command)) link = 'https://textpro.me/matrix-style-text-effect-online-884.html'
+             if (/blood/.test(command)) link = 'https://textpro.me/horror-blood-text-effect-online-883.html'
+             if (/dropwater/.test(command)) link = 'https://textpro.me/dropwater-text-effect-872.html'
+             if (/toxic/.test(command)) link = 'https://textpro.me/toxic-text-effect-online-901.html'
+             if (/lava/.test(command)) link = 'https://textpro.me/lava-text-effect-online-914.html'
+             if (/rock/.test(command)) link = 'https://textpro.me/rock-text-effect-online-915.html'
+             if (/bloodglas/.test(command)) link = 'https://textpro.me/blood-text-on-the-frosted-glass-941.html'
+             if (/hallowen/.test(command)) link = 'https://textpro.me/halloween-fire-text-effect-940.html'
+             if (/darkgold/.test(command)) link = 'https://textpro.me/metal-dark-gold-text-effect-online-939.html'
+             if (/joker/.test(command)) link = 'https://textpro.me/create-logo-joker-online-934.html'
+             if (/wicker/.test(command)) link = 'https://textpro.me/wicker-text-effect-online-932.html'
+             if (/firework/.test(command)) link = 'https://textpro.me/firework-sparkle-text-effect-930.html'
+             if (/skeleton/.test(command)) link = 'https://textpro.me/skeleton-text-effect-online-929.html'
+             if (/blackpink/.test(command)) link = 'https://textpro.me/create-blackpink-logo-style-online-1001.html'
+             if (/sand/.test(command)) link = 'https://textpro.me/write-in-sand-summer-beach-free-online-991.html'
+             if (/glue/.test(command)) link = 'https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html'
+             if (/1917/.test(command)) link = 'https://textpro.me/1917-style-text-effect-online-980.html'
+             if (/leaves/.test(command)) link = 'https://textpro.me/natural-leaves-text-effect-931.html'
+             let anu = await maker.textpro(link, q)
+             liaacans.sendMessage(m.chat, { image: { url: anu }, caption: `Textpro By AndiGans` }, { quoted: m })
+             }
+             break
+             case 'glitch2': case 'harrypot': case 'graffiti': case 'pornhub': case 'glitch3': case '3dspace': case 'lion': case 'wolf': case 'retro': case '8bit': {
+             if(!q) return m.reply(`Use ${prefix + command} text1|text2`)
+             m.reply(mess.wait)
+             teks1 = q.split("|")[0]
+             teks2 = q.split("|")[1]
+             let link
+             if (/glitch3/.test(command)) link = 'https://textpro.me/create-glitch-text-effect-style-tik-tok-983.html'
+             if (/harrypot/.test(command)) link = 'https://textpro.me/create-harry-potter-text-effect-online-1025.html'
+             if (/graffiti/.test(command)) link = 'https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html'
+             if (/pornhub/.test(command)) link = 'https://textpro.me/pornhub-style-logo-online-generator-free-977.html'
+             if (/glitch2/.test(command)) link = 'https://textpro.me/create-a-glitch-text-effect-online-free-1026.html'
+             if (/3dspace/.test(command)) link = 'https://textpro.me/create-space-3d-text-effect-online-985.html'
+             if (/lion/.test(command)) link = 'https://textpro.me/create-lion-logo-mascot-online-938.html'
+             if (/wolf/.test(command)) link = 'https://textpro.me/create-wolf-logo-galaxy-online-936.html'
+             if (/retro/.test(command)) link = 'https://textpro.me/create-3d-retro-text-effect-online-free-1065.html'
+             if (/8bit/.test(command)) link = 'https://textpro.me/video-game-classic-8-bit-text-effect-1037.html'
+             let anu = await maker.textpro(link, [`${teks1}`,`${teks2}`])
+             liaacans.sendMessage(m.chat, { image: { url: anu }, caption: `Textpro 2 By AndiGans` }, { quoted: m })
+             }
+             break
 case 'blackpink': {
 if (cekUser("id", m.sender) == null) throw mess.user
       if (!text) throw 'No Query Text'
@@ -2627,7 +3076,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
 	        let seplit = Object.entries(global.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 LIST DATABASE 」\n\n'
 		for (let i of seplit) {
-		    teks += `⬡ *Name :* ${i.nama}\n⬡ *Type :* ${getContentType(i.message).replace(/Message/i, '')}\n────────────────────────\n\n`
+		    teks += `⬡ *Name :* ${i.nama}\n⬡ *Type :* ${getContentType(i.message).replace(/Message/i, '')}\n━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
 	        }
 	        m.reply(teks)
 	    }
@@ -3139,7 +3588,7 @@ fs.unlinkSync(ran)
 })
 }
 break
-case 'smeme': case 'stickermeme': case 'stickmeme': {
+case 'stikermeme': case 'smeme': case 'stickermeme': case 'stickmeme': {
 if (cekUser("id", m.sender) == null) throw mess.user
 if (text.includes('|')) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
 if (!/image/.test(mime)) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
@@ -3153,7 +3602,7 @@ memek = await liaacans.sendImageAsSticker(m.chat, meme, m, { packname: global.pa
 await fs.unlinkSync(memek)
 }
 break 
-case 'sticker': case 's': case 'stickergif': case 'sgif': {
+case 'stiker': case 'sticker': case 's': case 'stickergif': case 'sgif': {
 if (cekUser("id", m.sender) == null) throw mess.user
 if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
 m.reply(mess.wait)
@@ -3303,22 +3752,13 @@ case 'wikimedia': {
 //Downloader
 case 'ytmp4': case 'ytvideo': case 'ytv': {
   if (!isPremium) throw mess.prem
-  let { ytv } = require('../message/y2mate')
   if (!q) return m.reply(`Gunakan Format : ${command} linknya`)
   if (!isUrl(q)) return m.reply('Link Invalid ❎')
   if (!q.includes('youtube')/('youtu.be')) return m.reply('Link Invalid ❎')
   await m.reply(mess.wait)
-  let quality = args[1] ? args[1] : '360p'
-  let media = await ytv(text, quality)
-  if (media.filesize >= 100000) return m.reply('File Melebihi Batas Silahkan Download Sendiri : '+media.dl_link)
-  var caption = `---- Youtube Downloader -----
-  
-📄 Judul : ${media.title}
-🎚️ Size : ${media.filesizeF}
-🔗 Url : ${isUrl(text)}
-📥 Format : MP4
-📮 Resolusi : ${args[1] || '360p'}`
-  liaacans.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: caption }, { quoted: m })
+  get_result = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
+get_result = get_result.mp4
+  liaacans.sendMessage(m.chat, { video: { url: get_result.download }, mimetype: 'video/mp4', fileName: `${text}.mp4`, caption: `*YOUTUBE VIDEO* \nCopyright © 𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬` }, { quoted: m })
   }
   break
 case 'iqra': {
@@ -3385,18 +3825,28 @@ ${id}`)
 		}
 		}
 		break
+		case 'jadwalsholat':
+		if (!text) throw `Contoh : ${prefix + command} Jakarta`
+		let get_result1 = await fetchJson(`https://api.akuari.my.id/islami/jadwalshalat?query=${text}`)
+ini_txt = `Wilayah : ${text}\n`
+ini_txt += `Subuh : ${get_result1.hasil.today.Shubuh}\n`
+ini_txt += `Dzuhur : ${get_result1.hasil.today.Dzuhur}\n`
+ini_txt += `Ashar : ${get_result1.hasil.today.Ashr}\n`
+ini_txt += `Maghrib : ${get_result1.hasil.today.Maghrib}\n`
+ini_txt += `Isya : ${get_result1.hasil.today.Isya}`
+m.reply(ini_txt)
+break
 		case 'alquran': {
 		if (cekUser("id", m.sender) == null) throw mess.user
 		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
 		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
-		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
-		let txt = `*Arab* : ${res.result.data.text.arab}
-*English* : ${res.result.data.translation.en}
-*Indonesia* : ${res.result.data.translation.id}
+		let res = await fetchJson(`https://saipulanuar.ga/api/muslim/quran?surah=${args[0]}&ayat=${args[1]}`)
+		let txt = `*Arab* : ${res.result.text.arab}
+*English* : ${res.result.translation.en}
+*Indonesia* : ${res.result.translation.id}
 
-( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
+( Q.S ${res.result.surah.name.transliteration.id} : ${res.result.number.inSurah} )`
 		m.reply(txt)
-		liaacans.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
 		}
 		break
 		case 'tafsirsurah': {
@@ -3414,27 +3864,25 @@ ${id}`)
 		m.reply(txt)
 		}
 		break
-case 'ytmp3': case 'ytaudio': case 'yta': {
-  if (!isPremium) throw mess.prem
-  let { yta } = require('../message/y2mate')
-  if (!q) return m.reply(`Gunakan Format : ${command} linknya`)
-  if (!isUrl(q)) return m.reply('Link Invalid ❎')
-  if (!q.includes('youtube')/('youtu.be')) return m.reply('Link Invalid ❎')
-  await m.reply(mess.wait)
-  let quality = args[1] ? args[1] : '128kbps'
-  let media = await yta(text, quality)
-  if (media.filesize >= 100000) return m.reply('File Melebihi Batas Silahkan Download Sendiri : '+media.dl_link)
-  var caption = `*------ Youtube Downloader -----*
-
-📄 Title : ${media.title}
-🎚️ Size : ${media.filesizeF}
-🔗 Url : ${isUrl(text)}
-📥 Format : MP3
-📮 Resolusi : ${args[1] || '128kbps'}`
-  liaacans.sendImage(m.chat, media.thumb, caption, m)
-  liaacans.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: fkontak })
-  }
-  break
+case 'ytmp3': case 'ytaudio': {
+                if (!isPremium) throw mess.prem
+                if (!text) throw 'Masukkan Query Link!'
+                m.reply(mess.wait)
+                let anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
+                let buttons = [
+                    {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
+                    {buttonId: `ytmp4 ${text}`, buttonText: {displayText: '► Video'}, type: 1}
+                ]
+                let buttonMessage = {
+                    text: `Download From ${text}`,
+                    footer: creator,
+                    buttons: buttons,
+                    headerType: 2
+                }
+                await liaacans.sendMessage(m.chat, buttonMessage, { quoted: m })
+                liaacans.sendMessage(m.chat, { audio: { url: anu.audio }, mimetype: 'audio/mpeg'}, { quoted: fkontak })
+            }
+            break
 case 'yts': case 'ytsearch': {
   if (!isPremium) throw mess.prem
   m.reply(mess.wait)
@@ -3452,7 +3900,7 @@ case 'yts': case 'ytsearch': {
 👁️ Duration : ${i.timestamp}
 📤 Upload : ${i.ago}
 👨‍🎤 Author : ${i.author.name}
-🔗 Url : ${i.url}\n\n─────────────────\n\n`
+🔗 Url : ${i.url}\n\n━━━━━━━━━━━━━━━━━\n\n`
   }
   liaacans.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: fkontak })
   }
@@ -3480,11 +3928,19 @@ case 'play':
   }
   liaacans.sendMessage(m.chat, buttonMessage, { quoted: fkontak })
   break
+case 'tiktok': case 'tiktoknowm': {
+                if (!isPremium) throw mess.prem
+                if (!text) throw 'Masukkan Query Link!'
+                m.reply(mess.wait)
+let anu = await fetchJson(`https://saipulanuar.ga/api/download/tiktok4?url=${text}`)
+liaacans.sendMessage(m.chat, { video: { url: anu.result.videoHD }, mimetype: 'video/mp4', fileName: `${text}.mp4`, caption: `*TOKTOK VIDEO* \nCopyright © 𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬` }, { quoted: m })
+}
+    break
 case 'tiktokmp3': case 'tiktokaudio': {
                 if (!isPremium) throw mess.prem
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
+                let anu = await fetchJson(`https://saipulanuar.ga/api/download/tiktok?url=${text}`)
                 let buttons = [
                     {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1}
@@ -3496,7 +3952,7 @@ case 'tiktokmp3': case 'tiktokaudio': {
                     headerType: 2
                 }
                 await liaacans.sendMessage(m.chat, buttonMessage, { quoted: m })
-                liaacans.sendMessage(m.chat, { audio: { url: anu.result.nowm }, mimetype: 'audio/mpeg'}, { quoted: fkontak })
+                liaacans.sendMessage(m.chat, { audio: { url: anu.result.audio }, mimetype: 'audio/mpeg'}, { quoted: fkontak })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
@@ -3708,7 +4164,7 @@ if (!m.isGroup) throw mess.group
 if (!isCreator) throw mess.owner
 var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "pollCreationMessage": {
-"name": "HALO 👋 SAYA BOT LIAACANS BOT",
+"name": "HALO 👋 SAYA BOT SOFTBOTS",
 "options": [
 	{
 "optionName": "KATANYA WA KEBAL"
@@ -3723,7 +4179,7 @@ var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject
 "optionName": "KATANYA KEBAL"
 	},
 	{
-"optionName": "SALAM BROTHER BY LIAACANS BOT"
+"optionName": "SALAM BROTHER BY SOFTBOTS"
 	}
 ],
 "selectableOptionsCount": 5
@@ -3743,7 +4199,7 @@ var order = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 						"status": "INQUIRY",
 						"surface": "CATALOG",
 						"priceAmount1000": "10000000",
-						"message": `©LiaaCans BOT`,
+						"message": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 "jpegThumbnail":fs.readFileSync('./image/thumbnail.jpg'),
 "orderTitle": `Bug By Hw Mods`,
 						"sellerJid": "6285714170944@s.whatsapp.net",
@@ -3769,7 +4225,7 @@ var requestPaymentMessage = generateWAMessageFromContent(num, proto.Message.from
 "currencyCodeIso4217": "IDR",
 "amount1000": "100",
 "extendedTextMessage": {
-"text": `©LiaaCans BOT`,
+"text": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 }
 }}), { userJid: m.chat, quoted: doc })
 liaacans.relayMessage(num, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
@@ -3791,7 +4247,7 @@ var requestPaymentMessage = generateWAMessageFromContent(num, proto.Message.from
 "currencyCodeIso4217": "IDR",
 "amount1000": "100",
 "extendedTextMessage": {
-"text": `Created ©LiaaCans BOT`,
+"text": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 }
 }}), { userJid: m.chat, quoted: doc })
 liaacans.relayMessage(num, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
@@ -3945,10 +4401,10 @@ if (!isCreator) throw mess.owner
 var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./image/thumbnail.jpg') }, { upload: liaacans.waUploadToServer })
 var extended = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "extendedTextMessage": {
-"text": "https://wa.me/6285821676621",
-"matchedText": "https://wa.me/6285821676621",
+"text": "https://wa.me/15622625999",
+"matchedText": "https://wa.me/15622625999",
 "description": "Beli Sc Bug? Chat Wa Owner Ya Kak",
-"title": `© LiaaCans BOT`,
+"title": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 "previewType": "NONE",
 "jpegThumbnail": messa.imageMessage,
 }
@@ -3961,7 +4417,7 @@ if (!m.isGroup) throw mess.group
 if (!isCreator) throw mess.owner
 var contact = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "contactMessage": {
-"displayName": `© LiaaCans BOT`,
+"displayName": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;;\nFN:liaacans\nitem1.TEL;waid=6285714170944:+62 857-1417-0944\nitem1.X-ABLabel:Ponsel\nPHOTO;BASE64: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\nX-WA-BIZ-DESCRIPTION:Developer RAHXMODSWhatsApp / Script Bot ORDER ? CHAT AJA 👋\nX-WA-BIZ-NAME:liaacans\nEND:VCARD",
 }
 }), { userJid: m.chat, quoted: doc })
@@ -3976,7 +4432,7 @@ var liveLocation = generateWAMessageFromContent(m.chat, proto.Message.fromObject
 "liveLocationMessage": {
 "degreesLatitude": -6.9367014,
 "degreesLongitude": 107.7228574,
-"caption": `© LiaaCans BOT`,
+"caption": `copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`,
 "sequenceNumber": "1657237469254001",
 "jpegThumbnail": messa.imageMessage,
 }
@@ -4147,7 +4603,7 @@ if (!isCreator) throw mess.owner
 if (!m.isGroup) throw mess.group
 if (args.length == 0) return anjay(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
 jumlah = `${encodeURI(q)}`
-ydd = `Hallo Aku LiaaCans`
+ydd = `Hallo Aku AndiGans`
 for (let i = 0; i < jumlah; i++) {
 liaacans.sendMessage(m.chat, {sticker: global.thumb},{quoted: {
 key: { 
@@ -4180,7 +4636,7 @@ if (!isCreator) throw mess.owner
 if (!m.isGroup) throw mess.group
 if (args.length == 0) return anjay(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
 jumlah = `${encodeURI(q)}`
-ydd = `Hallo Aku LiaaCans`
+ydd = `Hallo Aku AndiGans`
 for (let i = 0; i < jumlah; i++) {
 liaacans.sendMessage(m.chat, {document: global.thumb},{quoted: {
 key: {
@@ -4240,7 +4696,7 @@ case 'listpc': {
                  let teks = `⬣ *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
-                     teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                     teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
                  }
                  liaacans.sendTextWithMentions(m.chat, teks, m)
              }
@@ -4251,7 +4707,7 @@ case 'listpc': {
                  let teks = `⬣ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
                      let metadata = await liaacans.groupMetadata(i)
-                     teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                     teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
                  }
                  liaacans.sendTextWithMentions(m.chat, teks, m)
              }
@@ -4381,7 +4837,7 @@ Jika Sudah Melakukan Pemilihan Nominal, Anda Akan Dikirimkan Qris Pembayaran Dan
 Jika Anda Sudah Melakukan Pembayaran, Silahkan Tunggu 1-5 Menit Dan Melakukan Pengecekan Secara Berkala Pada Saldo Anda!.`
 const listMessage = {
   text: isian,
-  footer: "Created By LiaaCans BOT",
+  footer: "Created By SOFTBOTS",
   title: "━━[ Nominal saldo Shopeepay ]━━",
   buttonText: "Klik Disini",
   sections
@@ -4484,7 +4940,7 @@ Jika Sudah Melakukan Pemilihan Nominal, Anda Akan Dikirimkan Qris Pembayaran Dan
 Jika Anda Sudah Melakukan Pembayaran, Silahkan Tunggu 1-2 Menit Dan Melakukan Pengecekan Secara Berkala Pada Saldo Anda!.`
 const listMessage = {
   text: isian,
-  footer: "Created By LiaaCans BOT",
+  footer: "Created By SOFTBOTS",
   title: "━━[ Nominal saldo Ovo ]━━",
   buttonText: "Klik Disini",
   sections
@@ -4498,7 +4954,7 @@ if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idff = text.split("|")[0]
 let produkid = text.split("|")[1]
 let cvnya = await convertSaldo(`${produkid}`, `${idff}`)
-let byr = `*─ 「 CEK TRANSAKSIMU 」 ─*
+let byr = `*━ 「 CEK TRANSAKSIMU 」 ━*
      
 _Berikut Adalah Transaksi Anda_
 _》Saldo : ${cvnya.product}_
@@ -4547,8 +5003,8 @@ _》Id : ${m.sender.replace("@s.whatsapp.net", "")}_
 Note: Owner Paling Gnteng/Cntip`
 const listMessage = {
   text: isian,
-  footer: "Created By LiaaCans BOT",
-  title: "━━[ List Topup LiaaCans ]━━",
+  footer: "Created By SOFTBOTS",
+  title: "━━[ List Topup AndiGans ]━━",
   buttonText: "Klik Disini",
   sections
 }
@@ -4557,7 +5013,7 @@ break
 }
 case 'listdmff':
 if (cekUser("id", m.sender) == null) throw mess.user
-lisnya = `*── 「 DIAMOND FREE FIRE 」 ──*
+lisnya = `*━━ 「 DIAMOND FREE FIRE 」 ━━*
 
 _》${list.ff.FF5.nama} : ${list.ff.FF5.harga}_
 _》${list.ff.FF10.nama} : ${list.ff.FF10.harga}_
@@ -4648,7 +5104,7 @@ m.reply(lisnya)
 break
 case 'listdmml':
 if (cekUser("id", m.sender) == null) throw mess.user
-lisya = `*── 「 DIAMOND MOBILE LEGENDS 」 ──*
+lisya = `*━━ 「 DIAMOND MOBILE LEGENDS 」 ━━*
 
 _》${listml.ml.UPMBL5.nama} : ${listml.ml.UPMBL5.harga}_
 _》${listml.ml.UPMBL12.nama} : ${listml.ml.UPMBL12.harga}_
@@ -4682,7 +5138,7 @@ m.reply(lisya)
 break
 case 'listdmml2':
 if (cekUser("id", m.sender) == null) throw mess.user
-lisya = `*── 「 DIAMOND MOBILE LEGENDS 」 ──*
+lisya = `*━━ 「 DIAMOND MOBILE LEGENDS 」 ━━*
 
 _》${listmlbb.ml.ZIDMBL17.nama} : ${listmlbb.ml.ZIDMBL17.harga}_
 _》${listmlbb.ml.ZIDMBL34.nama} : ${listmlbb.ml.ZIDMBL34.harga}_
@@ -4709,7 +5165,7 @@ let cusid = text.split("|")[1]
 if (isNaN(parseInt(cusid))) return m.reply('Nomor Hp Harus Berupa Angka!')
 
 let anuni = await fetchJson(`https://trendtoday.my.id/api/transaction?username=manik729828YWOD&apikey=lq7ae3b7j6n0wgrz5arcqdh0c5o7cx&product=pulsa&nominal=${dokid}&id_costumer=${cusid}`)
-let suksess = `*─ 「 LANJUTKAN PEMBAYARAN 」 ─*
+let suksess = `*━ 「 LANJUTKAN PEMBAYARAN 」 ━*
                 
 _Silahkan Scan Qris Dan Transfer Sesuai Harga:_
 _》Harga : Rp${anuni.amount}_
@@ -4737,7 +5193,7 @@ if (isNaN(parseInt(prodcid))) return m.reply('Jumlah Harus Berupa Angka!')
 let data = await fetchJson(`https://api.lolhuman.xyz/api/mobilelegend/${prodc}/${prodc2}?apikey=Imanmpa`)
 let buttons = [{ buttonId: `mlsy ${prodc}|${prodc2}|${prodcid}`, buttonText: { displayText: 'Lanjutkan' }, type: 1 },]
 if(`${data.status}` == 200) {
-liaacans.sendButtonText(m.chat, buttons, `*── 「 CHECK ID OTOMATIS 」 ──*
+liaacans.sendButtonText(m.chat, buttons, `*━━ 「 CHECK ID OTOMATIS 」 ━━*
 
 _Silahkan Cek Data Berikut Ini:_
 _》Id Game : ${prodc} (${prodc2})_
@@ -4768,8 +5224,8 @@ var config = {
 
 axios(config)
 .then(function (response) {
-let workid = `*── 「 TOPUP SUKSES 」 ──*\n\n_》Harga : Rp${response.data.data.product_detail.price_rp}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${prodcid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
-let workd = `*── 「 TOPUP GAGAL 」 ──*
+let workid = `*━━ 「 TOPUP SUKSES 」 ━━*\n\n_》Harga : Rp${response.data.data.product_detail.price_rp}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${prodcid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
+let workd = `*━━ 「 TOPUP GAGAL 」 ━━*
 
 Transaksi Anda Gagal, Saldo Sistem Belum terisi, Harap Tunggu Saldo Sistem Reset Setiap 6 Jam Sekali!.`
 if(response.data.data.status == "Sukses"){
@@ -4804,7 +5260,7 @@ let buttons = [
 if (response.data.error_msg) {
 m.reply('Invalid Id Or Zone')
 }else if (response.data.message) {
-liaacans.sendButtonText(m.chat, buttons, `*── 「 CHECK ID OTOMATIS 」 ──*
+liaacans.sendButtonText(m.chat, buttons, `*━━ 「 CHECK ID OTOMATIS 」 ━━*
 
 _Silahkan Cek Data Berikut Ini:_
 _》Id Game : ${prodc} (${prodc2})_
@@ -4836,8 +5292,8 @@ var config = {
 
 axios(config)
 .then(function (response) {
-let workid = `*── 「 TOPUP SUKSES 」 ──*\n\n_》Harga : Rp${response.data.data.product_detail.price_rp}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${prodcid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
-let workd = `*── 「 TOPUP GAGAL 」 ──*
+let workid = `*━━ 「 TOPUP SUKSES 」 ━━*\n\n_》Harga : Rp${response.data.data.product_detail.price_rp}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${prodcid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
+let workd = `*━━ 「 TOPUP GAGAL 」 ━━*
 
 Transaksi Anda Gagal, Saldo Sistem Belum terisi, Harap Tunggu Saldo Sistem Reset Setiap 6 Jam Sekali!.`
 if(response.data.data.status == "Sukses"){
@@ -5108,7 +5564,7 @@ let buttons = [
 if (response.data.error_msg) {
 m.reply('Invalid Id')
 } else if(response.data.message) {
-liaacans.sendButtonText(m.chat, buttons, `*── 「 CHECK ID OTOMATIS 」 ──*
+liaacans.sendButtonText(m.chat, buttons, `*━━ 「 CHECK ID OTOMATIS 」 ━━*
                 
 _Silahkan Cek Data Berikut Ini:_
 _》Id Game : ${idff}_
@@ -5376,8 +5832,8 @@ global.hargadmff = 540000
 if (idharga == "FF77290"){
 global.hargadmff = 990000
 }
-let workid = `*── 「 TOPUP SUKSES 」 ──*\n\n_》Harga : Rp${global.hargadmff}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( FreeFire )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda.\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
-let workd = `*── 「 TOPUP GAGAL 」 ──*
+let workid = `*━━ 「 TOPUP SUKSES 」 ━━*\n\n_》Harga : Rp${global.hargadmff}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( FreeFire )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda.\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
+let workd = `*━━ 「 TOPUP GAGAL 」 ━━*
 
 Transaksi Anda Gagal, Saldo Sistem Belum terisi Saldo User Anda Tidak Akan Dipotong, Harap Tumggu Saldo Sistem Reset Setiap 6 Jam Sekali!.`
 if(response.data.data.status == "Sukses"){
@@ -5792,7 +6248,7 @@ let buttons = [
 if (response.data.error_msg) {
 reply('Invalid Id Or Zone')
 }else if (response.data.message) {
-liaacans.sendButtonText(m.chat, buttons, `*── 「 CHECK ID OTOMATIS 」 ──*
+liaacans.sendButtonText(m.chat, buttons, `*━━ 「 CHECK ID OTOMATIS 」 ━━*
 
 _Silahkan Cek Data Berikut Ini:_
 _》Id Game : ${idml1} (${idml2})_
@@ -5892,8 +6348,8 @@ global.hargadmml = 555.500
 if (idharga == "UPMBL4830"){
 global.hargadmml = 1322500
     }
-let workid = `*── 「 TOPUP SUKSES 」 ──*\n\n_》Harga : Rp${global.hargadmml}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
-let workd = `*── 「 TOPUP GAGAL 」 ──*
+let workid = `*━━ 「 TOPUP SUKSES 」 ━━*\n\n_》Harga : Rp${global.hargadmml}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
+let workd = `*━━ 「 TOPUP GAGAL 」 ━━*
 
 Transaksi Anda Gagal, Saldo Sistem Belum terisi Saldo User Anda Tidak Akan Dipotong, Harap Tumggu Saldo Sistem Reset Setiap 6 Jam Sekali!.`
 if(response.data.data.status == "Sukses"){
@@ -6043,7 +6499,7 @@ let buttons = [
 if (response.data.error_msg) {
 m.reply('Invalid Id Or Zone')
 }else if (response.data.message) {
-liaacans.sendButtonText(m.chat, buttons, `*── 「 CHECK ID OTOMATIS 」 ──*
+liaacans.sendButtonText(m.chat, buttons, `*━━ 「 CHECK ID OTOMATIS 」 ━━*
 
 _Silahkan Cek Data Berikut Ini:_
 _》Id Game : ${idml1} (${idml2})_
@@ -6104,8 +6560,8 @@ global.hargadmml = 100000
 if (idharga == "ZIDMBL758"){
 global.hargadmml = 200000
     }
-let workid = `*── 「 TOPUP SUKSES 」 ──*\n\n_》Harga : Rp${global.hargadmml}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
-let workd = `*── 「 TOPUP GAGAL 」 ──*
+let workid = `*━━ 「 TOPUP SUKSES 」 ━━*\n\n_》Harga : Rp${global.hargadmml}_\n_》NickName : ${response.data.data.sn}_\n_》Nama Item : ${produkid} Diamond ( Mlbb )_\n_》Trx Id : ${response.data.data.trx_id}_\n\n_Item Akan Segera Masuk Secara Otomatis Silahkan Melakukan Pengecekan Secara Berkala Pada Game Anda._\n\nNote: Jika Ada Kesalahan Id Atau NickName Bukan Tanggung Jawab Owner!.`
+let workd = `*━━ 「 TOPUP GAGAL 」 ━━*
 
 Transaksi Anda Gagal, Saldo Sistem Belum terisi Saldo User Anda Tidak Akan Dipotong, Harap Tumggu Saldo Sistem Reset Setiap 6 Jam Sekali!.`
 if(response.data.data.status == "Sukses"){
@@ -6153,7 +6609,7 @@ break
 }
 case 'listdmff2':
 if (cekUser("id", m.sender) == null) throw mess.user
-let topupp = `*── 「 DIAMOND FREE FIRE 」 ──*
+let topupp = `*━━ 「 DIAMOND FREE FIRE 」 ━━*
 
 _》5 Diamond : Rp1.261_
 _》12 Diamond : Rp2.523_
@@ -6206,7 +6662,7 @@ const topup = async(userId, zoneId, diamond, phone, game) => {
     }
   })
 if (res2.status != 200) throw new Error(res2.statusText);
-let suksess = `*── 「 TOPUP OTOMATIS 」 ──*
+let suksess = `*━━ 「 TOPUP OTOMATIS 」 ━━*
                 
 _Silahkan Scan Qris Dan Transfer Sesuai Harga:_
 _》Harga : Rp${res2.data.data.totalPrice}_
@@ -6243,12 +6699,10 @@ Sanksi: *SOFT BLOCK*
 3. Jangan mengejek bot.
 Sanksi: *PERMANENT BLOCK*
 
-4. Gpp sc gw jelek yg penting 
-Bot gw jalan awokawoak
 Jika sudah dipahami rules-nya, silakan ketik *#menu* untuk memulai!
 
 Owner  BOTZ:
-wa.me/6285821676621
+wa.me/15622625999
 `
              m.reply(rulesBot)
              break
@@ -6279,7 +6733,7 @@ case 'order':
                 }
 const listMessage = {
   text: `Pilih layanan sesuai dengan yang anda inginkan!\nBerikut adalah list yang bisa anda pilih, silahkan!.`,
-  footer: "© Created By LiaaCans BOT",
+  footer: "© Created By SOFTBOTS",
   buttonText: "Click Here!",
   sections: [{
                     title: "Sosmed Store",
@@ -6311,7 +6765,7 @@ const sendMsg = await liaacans.sendMessage(m.chat, listMessage)
                 }
 const listMessage = {
   text: `Pilih layanan sesuai dengan yang anda inginkan!\nBerikut adalah list yang bisa anda pilih, silahkan!.`,
-  footer: "© Created By LiaaCans BOT",
+  footer: "© Created By SOFTBOTS",
   buttonText: "Click Here!",
   sections: [{
                     title: "Sosmed Store",
@@ -6342,7 +6796,7 @@ case 'view': { // Fix Aja Kalau Bisa
                 }
 const listMessage = {
   text: `Pilih layanan sesuai dengan yang anda inginkan!\nBerikut adalah list yang bisa anda pilih, silahkan!.`,
-  footer: "© Created By LiaaCans BOT",
+  footer: "© Created By SOFTBOTS",
   buttonText: "Click Here!",
   sections: [{
                     title: "Sosmed Store",
@@ -6377,7 +6831,7 @@ case 'confirmorderkunci': { //KUNCI = BIAR GA DIAKSES HEHE
   				liaacans.sendMessage(m.chat, {
     				caption: cap, image: {
       				url: feta.data.qris
-    				}, buttons: buto, footer: `©Created LiaaCans BOT`
+    				}, buttons: buto, footer: `©Created SOFTBOTS`
   				})
 				}
 				console.log(feta)
@@ -6425,7 +6879,7 @@ case 'chekstatus':
   				},
 				]
 				await liaacans.sendMessage(m.chat, {
-  				text: `${captionnye}`, templateButtons: menuButa, footer: `Copy id pesanan anda dibawah ini\n\nampibismm.my.id\n©LiaaCansBot`
+  				text: `${captionnye}`, templateButtons: menuButa, footer: `Copy id pesanan anda dibawah ini\n\nampibismm.my.id\ncopyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬`
 				}, {
   				quoted: m
 				})
@@ -6460,11 +6914,11 @@ fetchJson(`https://${hostwhm}:2087/json-api/listaccts?api.version=1`, authWhm)
 .then((risol) => {
 let lisol = risol.data
 var ttdy = lisol.data.acct
-let ogh = `*── 「 LIST CPANEL 」 ──*\nTotal Akun : ${ttdy.length}\n`
+let ogh = `*━━ 「 LIST CPANEL 」 ━━*\nTotal Akun : ${ttdy.length}\n`
 for (let i = 0; i < ttdy.length; i++) {
 ogh += `
 \n
-─────[\`\`\` ${ttdy[i].user} \`\`\` ]────────
+━━━━━[\`\`\` ${ttdy[i].user} \`\`\` ]━━━━━━━━
 *▢ Maxsub* : ${ttdy[i].maxsub}
 *▢ Maxsql* : ${ttdy[i].maxsql}
 *▢ Startdate* : ${ttdy[i].startdate}
@@ -6477,7 +6931,7 @@ ogh += `
 *▢ Diskused* : ${ttdy[i].diskused}
 *▢ Maxaddons* : ${ttdy[i].maxaddons}
 *▢ Suspendreason* : ${ttdy[i].suspendreason}
-─────────────────\n\n`
+━━━━━━━━━━━━━━━━━\n\n`
 }
 m.reply(ogh)
 })
@@ -6562,7 +7016,7 @@ break
             }
 const listMessage = {
   text: `${pushname} 👋\nBerikut Adalah List Item\nSilahkan Pilih Salah Satu!\n🕰 Jam : ${moment().format("HH:mm:ss z")} `,
-  footer: "© Created By LiaaCans BOT",
+  footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
   buttonText: "Click Here!",
   sections: [{
                     title: groupName, rows: arr_rows
@@ -6686,7 +7140,7 @@ liaacans.sendMessage(m.chat, { image: {url: anu}, caption: 'Done!'}, {quoted:m})
 break
 case 'sewabot': {
 if (cekUser("id", m.sender) == null) throw mess.user
-sewabot = `⌜  LIST SEWA LIAACANS BOT ⌟
+sewabot = `⌜  LIST SEWA SOFTBOTS ⌟
 
 HARGA :
 RP 5.000 → 20 DAY
@@ -6695,7 +7149,7 @@ RP 25.000 → PERMANEN
 
 APA ITU DAY? DAY ITU ADALAH HARI!
 
-⌜ KEUNTUNGAN SEWA LIAACANS BOT ⌟
+⌜ KEUNTUNGAN SEWA SOFTBOTS ⌟
 
 → BISA ADD BOT 1 GROUP
 → BISA GUNAIN FITUR ADMIN
@@ -6858,56 +7312,44 @@ break
 
 //---------------[ AUTO RESPON ]------------------//
 
-case 'rahman':{
-m.reply(`apasi manggil² owner bot? kangen ya??`)
-}
-break
-case 'mwachh':{
-m.reply(`mwachhh😘`)
-}
-break
 case 'assalamualaikum':{
-ucslm = `Waalaikumsalam Kak ${pushname}
-Ada Yang Kami Bisa Bantu?
-Kalau Bingung Ketik #menu Atau Klik Button Ya!`
-let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'Menu' }, type: 1 }]
+ucslm = `Waalaikumsalam Kak ${pushname}`
+let buttons = [{ buttonId: 'l', buttonText: { displayText: 'waalaikumsalam' }, type: 1 }]
+liaacans.sendButtonText(m.chat, buttons, ucslm, creator)
+}
+break
+case 'p':{
+ucslm = `salam dulu Kak ${pushname}`
+let buttons = [{ buttonId: 'assalamualaikum', buttonText: { displayText: 'assalamualaikum' }, type: 1 }]
 liaacans.sendButtonText(m.chat, buttons, ucslm, creator)
 }
 break
 case 'hai': {
 hai = `Hai Kak ${pushname}
-Ada Yang Kami Bisa Bantu?
-Kalau Bingung Ketik #menu Atau Klik Button Ya!`
-let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'Menu' }, type: 1 }]
+Ada Yang Kami Bisa Bantu?`
+let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
 liaacans.sendButtonText(m.chat, buttons, hai, creator)
 }
 break
 case 'hi': {
 hai = `Hi Kak ${pushname}
-Ada Yang Kami Bisa Bantu?
-Kalau Bingung Ketik #menu Atau Klik Button Ya!`
-let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'Menu' }, type: 1 }]
+Ada Yang Kami Bisa Bantu?`
+let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
 liaacans.sendButtonText(m.chat, buttons, hai, creator)
 }
 break
 case 'hii': {
 hai = `Hii Kak ${pushname}
-Ada Yang Kami Bisa Bantu?
-Kalau Bingung Ketik #menu Atau Klik Button Ya!`
-let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'Menu' }, type: 1 }]
+Ada Yang Kami Bisa Bantu?`
+let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
 liaacans.sendButtonText(m.chat, buttons, hai, creator)
 }
 break
 case 'halo':{
 halo = `Halo Kak ${pushname}
-Ada Yang Kami Bisa Bantu?
-Kalau Bingung Ketik #menu Atau Klik Button Ya!`
-let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'Menu' }, type: 1 }]
+Ada Yang Kami Bisa Bantu?`
+let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
 liaacans.sendButtonText(m.chat, buttons, halo, creator)
-}
-break
-case 'sayang':{
-m.reply(`apa sayang akuu🥰`)
 }
 break
 //━━━━━━━━━━━━━━━[ AKHIR FITUR ]━━━━━━━━━━━━━━━━━//
