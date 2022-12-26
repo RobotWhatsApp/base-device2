@@ -718,6 +718,7 @@ if (chats) {
 if (!('mute' in chats)) chats.mute = false
 if (!('antilink' in chats)) chats.antilink = false
 if (!('antiwame' in chats)) chats.antiwame = false
+if (!('antivirtex' in chats)) chats.antivirtex = true
 if (!('antiviewonce' in chats)) chats.antiviewonce = false
 if (!('antilinkig' in chats)) chats.antilinkig = false
 } else global.db.data.chats[m.chat] = {
@@ -725,6 +726,7 @@ mute: false,
 antilink: false,
 antilinkig: false,
 antiwame: false,
+antivirtex: true,
 antiviewonce: false
 }
 
@@ -855,6 +857,8 @@ if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
 if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
 m.reply(`「 ANTI LINK 」\n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
 await sleep(1000) // waktu kick 10 detik saja kalau mau ubah, ubah aja
+liaacans.sendMessage(m.chat, { delete: m.key })
+await sleep(1000)
 liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
@@ -877,6 +881,19 @@ if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
 if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
 m.reply(`「 ANTI WAME 」\n\nKamu terdeteksi mengirim link wame, maaf kamu akan di kick !`)
 await sleep(1000) // waktu kick 10 detik saja kalau mau ubah, ubah aja
+liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+}
+}
+
+if (db.data.chats[m.chat].antivirtex) {
+if (budy.length > 4000) {
+if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
+if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
+if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+m.reply(`「 ANTI VIRUS 」\n\nKamu terdeteksi mengirim virus, maaf kamu akan di kick !`)
+await sleep(1000) // waktu kick 10 detik saja kalau mau ubah, ubah aja
+liaacans.sendMessage(m.chat, { delete: m.key })
+await sleep(1000)
 liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
@@ -1422,6 +1439,7 @@ ${Iduladha}
 ┣❖${prefix}antilink
 ┣❖${prefix}antilinkig
 ┣❖${prefix}antiwame
+┣❖${prefix}antivirtex
 ┣❖${prefix}antiviewonce
 ╚━❖
 ╔━❖ ⌜ 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝗠𝗘𝗡𝗨 ⌟
@@ -1971,6 +1989,7 @@ group = `╔━❖ ⌜ GROUP MENU ⌟
 ┣❖${prefix}antilink
 ┣❖${prefix}antilinkig
 ┣❖${prefix}antiwame
+┣❖${prefix}antivirtex
 ┣❖${prefix}antiviewonce
 ╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
@@ -2435,7 +2454,6 @@ if (cekUser("id", m.sender) == null) throw mess.user
   }
   break
 case 'kick': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2444,7 +2462,6 @@ await liaacans.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => 
 }
 break
 case 'add': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2453,7 +2470,6 @@ await liaacans.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.r
 }
 break
 case 'promote': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2462,7 +2478,6 @@ await liaacans.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) =>
 }
 break
 case 'demote': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2471,7 +2486,6 @@ await liaacans.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => 
 }
 break
 case 'setname': case 'setsubject': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2480,7 +2494,6 @@ await liaacans.groupUpdateSubject(m.chat, text).then((res) => m.reply(`Sukses Se
 }
 break
 case 'setdesc': case 'setdesk': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2489,7 +2502,6 @@ await liaacans.groupUpdateDescription(m.chat, text).then((res) => m.reply(`Sukse
 }
 break
 case 'setppgroup': case 'setppgrup': case 'setppgc': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isAdmins) throw mess.admin
 if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
@@ -2501,7 +2513,6 @@ m.reply(mess.success)
 }
 break
 case 'tagall': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2515,7 +2526,6 @@ liaacans.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id)
 }
 break
 case 'hidetag': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2690,7 +2700,6 @@ m.reply('Berhasil Menghapus Sesi Vote Di Grup Ini')
 }
 break
 case 'group': case 'grup': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2708,7 +2717,6 @@ await liaacans.sendButtonText(m.chat, buttons, `Mode Group`, creator, m)
 }
 break
 case 'editinfo': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2726,7 +2734,6 @@ await liaacans.sendButtonText(m.chat, buttons, `Mode Edit Info`, creator, m)
 }
 break
 case 'antilink': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2748,7 +2755,6 @@ await liaacans.sendButtonText(m.chat, buttons, `Mode Antilink`, creator, m)
 }
 break
 case 'antilinkig': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2790,7 +2796,6 @@ await liaacans.sendButtonText(m.chat, buttons, `Mode Antiviewonce`, creator, m)
 }
 break
 case 'antiwame': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2811,8 +2816,28 @@ await liaacans.sendButtonText(m.chat, buttons, `Mode Antiwame`, creator, m)
 }
 }
 break
+case 'antivirtex': {
+if (!m.isGroup) throw mess.group
+if (!isBotAdmins) throw mess.botAdmin
+if (!isAdmins) throw mess.admin
+if (args[0] === "on") {
+if (db.data.chats[m.chat].antivirtex) return m.reply(`Sudah Aktif Sebelumnya`)
+db.data.chats[m.chat].antivirtex = true
+m.reply(`antivirtex Aktif !`)
+} else if (args[0] === "off") {
+if (!db.data.chats[m.chat].antivirtex) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
+db.data.chats[m.chat].antivirtex = false
+m.reply(`antivirtex Tidak Aktif !`)
+} else {
+let buttons = [
+{ buttonId: 'antivirtex on', buttonText: { displayText: 'On' }, type: 1 },
+{ buttonId: 'antivirtex off', buttonText: { displayText: 'Off' }, type: 1 }
+]
+await liaacans.sendButtonText(m.chat, buttons, `Mode antivirtex`, creator, m)
+}
+}
+break
 case 'mute': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2834,7 +2859,6 @@ await liaacans.sendButtonText(m.chat, buttons, `Mute Bot`, creator, m)
 }
 break
 case 'linkgroup': case 'linkgc': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!m.isGroup) throw mess.group
 let response = await liaacans.groupInviteCode(m.chat)
 liaacans.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
@@ -3589,7 +3613,6 @@ fs.unlinkSync(ran)
 }
 break
 case 'stikermeme': case 'smeme': case 'stickermeme': case 'stickmeme': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (text.includes('|')) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
 if (!/image/.test(mime)) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
 m.reply(mess.wait)
@@ -3603,7 +3626,6 @@ await fs.unlinkSync(memek)
 }
 break 
 case 'stiker': case 'sticker': case 's': case 'stickergif': case 'sgif': {
-if (cekUser("id", m.sender) == null) throw mess.user
 if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
 m.reply(mess.wait)
 if (/image/.test(mime)) {
@@ -3621,7 +3643,6 @@ throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 D
 }
 break
 case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': {
-if (cekUser("id", m.sender) == null) throw mess.user
                 let [teks1, teks2] = text.split`|`
                 if (!teks1) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
                 if (!teks2) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
@@ -3864,25 +3885,14 @@ break
 		m.reply(txt)
 		}
 		break
-case 'ytmp3': case 'ytaudio': {
-                if (!isPremium) throw mess.prem
-                if (!text) throw 'Masukkan Query Link!'
-                m.reply(mess.wait)
-                let anu = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
-                let buttons = [
-                    {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
-                    {buttonId: `ytmp4 ${text}`, buttonText: {displayText: '► Video'}, type: 1}
-                ]
-                let buttonMessage = {
-                    text: `Download From ${text}`,
-                    footer: creator,
-                    buttons: buttons,
-                    headerType: 2
-                }
-                await liaacans.sendMessage(m.chat, buttonMessage, { quoted: m })
-                liaacans.sendMessage(m.chat, { audio: { url: anu.audio }, mimetype: 'audio/mpeg'}, { quoted: fkontak })
-            }
-            break
+case 'ytmp3': case 'ytaudio':
+m.reply(mess.wait)
+if (!text) throw `Contoh : ${prefix + command} https://youtu.be/Vhv5OyetF-Q`
+get_result = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
+get_result = get_result.audio
+get_audio = await getBuffer(get_result.audio)
+await liaacans.sendMessage(m.chat, { audio: { url: get_audio }, mimetype: 'audio/mpeg'}, { quoted: m })
+break
 case 'yts': case 'ytsearch': {
   if (!isPremium) throw mess.prem
   m.reply(mess.wait)
@@ -4114,7 +4124,6 @@ case 'public': {
             }
             break
 case 'delete': case 'del': {
-if (cekUser("id", m.sender) == null) throw mess.user
                 if (!m.quoted) throw false
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
@@ -4667,7 +4676,6 @@ liaacans.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a 
 }
 break
 case 'runtime': case 'tes': {
-if (cekUser("id", m.sender) == null) throw mess.user
             	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: 'DONASI' }, type: 1 }]
                 await liaacans.sendButtonText(m.chat, buttons, lowq, creator, m, { quoted: fkontak })
