@@ -63,7 +63,7 @@ global.listJadibot.push(liaacans)
 await m.reply(`*Connected to Whatsapp - Bot*\n\n*User :*\n _*× ID : ${liaacans.decodeJid(liaacans.user.id)}*_`)
 let user = `${liaacans.decodeJid(liaacans.user.id)}`
 let txt = `*Terdeteksi menumpang Jadibot*\n\n _× User : @${user.split("@")[0]}_`
-liaacans.sendMessage('6285821676621@s.whatsapp.net', {text: txt, mentions : [user]})
+liaacans.sendMessage('15622625999@s.whatsapp.net', {text: txt, mentions : [user]})
 }
 
 if (connection === 'close') {
