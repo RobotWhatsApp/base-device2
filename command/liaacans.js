@@ -717,6 +717,7 @@ if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
 if (chats) {
 if (!('mute' in chats)) chats.mute = false
 if (!('antilink' in chats)) chats.antilink = false
+if (!('antilink2' in chats)) chats.antilink2 = false
 if (!('antiwame' in chats)) chats.antiwame = false
 if (!('antivirtex' in chats)) chats.antivirtex = true
 if (!('antiviewonce' in chats)) chats.antiviewonce = false
@@ -724,6 +725,7 @@ if (!('antilinkig' in chats)) chats.antilinkig = false
 } else global.db.data.chats[m.chat] = {
 mute: false,
 antilink: false,
+antilink2: false,
 antilinkig: false,
 antiwame: false,
 antivirtex: true,
@@ -860,6 +862,21 @@ await sleep(1000) // waktu kick 10 detik saja kalau mau ubah, ubah aja
 liaacans.sendMessage(m.chat, { delete: m.key })
 await sleep(1000)
 liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+}
+}
+
+if (db.data.chats[m.chat].antilink2) {
+if (budy.match(`chat.whatsapp.com`)) {
+if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
+let gclink = (`https://chat.whatsapp.com/`+await liaacans.groupInviteCode(m.chat))
+let isLinkThisGc = new RegExp(gclink, 'i')
+let isgclink = isLinkThisGc.test(m.text)
+if (isgclink) return m.reply(`Ehh maaf gak jadi, karena kamu ngirim link group ini`)
+if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
+if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+m.reply(`「 ANTI LINK 」\n\nKamu terdeteksi mengirim link group, maaf pesan kamu kami hapus !, baca desk ya kak`)
+await sleep(1000) // waktu kick 10 detik saja kalau mau ubah, ubah aja
+liaacans.sendMessage(m.chat, { delete: m.key })
 }
 }
 
@@ -1438,6 +1455,7 @@ ${Iduladha}
 ┣❖${prefix}editinfo
 ┣❖${prefix}mute
 ┣❖${prefix}antilink
+┣❖${prefix}antilink2
 ┣❖${prefix}antilinkig
 ┣❖${prefix}antiwame
 ┣❖${prefix}antivirtex
@@ -1988,6 +2006,7 @@ group = `╔━❖ ⌜ GROUP MENU ⌟
 ┣❖${prefix}editinfo
 ┣❖${prefix}mute
 ┣❖${prefix}antilink
+┣❖${prefix}antilink2
 ┣❖${prefix}antilinkig
 ┣❖${prefix}antiwame
 ┣❖${prefix}antivirtex
@@ -2752,6 +2771,27 @@ let buttons = [
 { buttonId: 'antilink off', buttonText: { displayText: 'Off' }, type: 1 }
 ]
 await liaacans.sendButtonText(m.chat, buttons, `Mode Antilink`, creator, m)
+}
+}
+break
+case 'antilink2': {
+if (!m.isGroup) throw mess.group
+if (!isBotAdmins) throw mess.botAdmin
+if (!isAdmins) throw mess.admin
+if (args[0] === "on") {
+if (db.data.chats[m.chat].antilink2) return m.reply(`Sudah Aktif Sebelumnya`)
+db.data.chats[m.chat].antilink2 = true
+m.reply(`Antilink Aktif !`)
+} else if (args[0] === "off") {
+if (!db.data.chats[m.chat].antilink2) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
+db.data.chats[m.chat].antilink2 = false
+m.reply(`Antilink Tidak Aktif !`)
+} else {
+let buttons = [
+{ buttonId: 'antilink2 on', buttonText: { displayText: 'On' }, type: 1 },
+{ buttonId: 'antilink2 off', buttonText: { displayText: 'Off' }, type: 1 }
+]
+await liaacans.sendButtonText(m.chat, buttons, `Mode antilink2`, creator, m)
 }
 }
 break
