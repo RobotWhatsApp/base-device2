@@ -3961,11 +3961,14 @@ break
 case 'ytmp3': case 'ytaudio':
 m.reply(mess.wait)
 if (!text) throw `Contoh : ${prefix + command} https://youtu.be/Vhv5OyetF-Q`
-get_result = await fetchJson(`https://zenzapis.xyz/downloader/y2mate?apikey=b6084a1b49&query=${text}`)
-get_result = get_result.result
-get_audio = await getBuffer(get_result.getAudio)
-await liaacans.sendMessage(m.chat, { audio: { url: get_audio }, mimetype: 'audio/mpeg'}, { quoted: m })
-break
+resi = await fetchJson(`https://api.akuari.my.id/downloader/youtube3?link=${text}&type=360`)
+let teks = `🔢 Id : ${resi.id}
+🎞️ Type : MP3
+📄 Title : ${resi.title}
+📤 Sizs : ${resi.audio.size}
+🔗 Klik Untuk Download : \n${resi.audio.audio}\n\n`
+  liaacans.sendMessage(m.chat, { image: { url: resi.thumbnail },  caption: teks }, { quoted: fkontak })
+  break
 case 'yts': case 'ytsearch': {
   if (!isPremium) throw mess.prem
   m.reply(mess.wait)
