@@ -26,7 +26,7 @@ const ytIdRegex = /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=
 async function yt(url, quality, type, bitrate, server = 'en68') {
   let ytId = ytIdRegex.exec(url)
   url = 'https://youtu.be/' + ytId[1]
-  let res = await post(`https://www.y2mate.com/mates/${server}/analyze/ajax`, {
+  let res = await post(`https://www.y2mate.com/mates/en58a5/analyze/ajax`, {
     url,
     q_auto: 0,
     ajax: 1
@@ -52,7 +52,7 @@ async function yt(url, quality, type, bitrate, server = 'en68') {
   let id = /var k__id = "(.*?)"/.exec(document.body.innerHTML) || ['', '']
   let thumb = document.querySelector('img').src
   let title = document.querySelector('b').innerHTML
-  let res2 = await post(`https://www.y2mate.com/mates/${server}/convert`, {
+  let res2 = await post(`https://www.y2mate.com/mates/en58a5/convert`, {
     type: 'youtube',
     _id: id[1],
     v_id: ytId[1],
@@ -81,12 +81,12 @@ module.exports = {
    * @param {String} url YouTube Video URL
    * @param {String} server (avaiable: `id4`, `en60`, `en61`, `en68`)
    */
-  yta(url, resol = '128kbps', server = 'en154') { return yt(url, resol, 'mp3', resol.endsWith('kbps') ? resol.replace(/kbps/g, '') : resol, server) },
+  yta(url, resol = '128kbps', server = 'en58a5') { return yt(url, resol, 'mp3', resol.endsWith('kbps') ? resol.replace(/kbps/g, '') : resol, server) },
   /**
    * Download YouTube Video as Video via y2mate
    * @param {String} url YouTube Video URL
    * @param {String} server (avaiable: `id4`, `en60`, `en61`, `en68`)
    */
-  ytv(url, resol = '360p', server = 'en154') { return yt(url, resol, 'mp4', resol.endsWith('p') ? resol.replace(/p/g, '') : resol, server) },
+  ytv(url, resol = '360p', server = 'en58a5') { return yt(url, resol, 'mp4', resol.endsWith('p') ? resol.replace(/p/g, '') : resol, server) },
   servers: ['en136', 'id4', 'en60', 'en61', 'en68']
 }
