@@ -717,7 +717,7 @@ if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
 if (chats) {
 if (!('mute' in chats)) chats.mute = false
 if (!('antilink' in chats)) chats.antilink = false
-if (!('antilink2' in chats)) chats.antilink2 = false
+if (!('antilink2' in chats)) chats.antilink2 = true
 if (!('antiwame' in chats)) chats.antiwame = false
 if (!('antivirtex' in chats)) chats.antivirtex = true
 if (!('antiviewonce' in chats)) chats.antiviewonce = false
@@ -725,7 +725,7 @@ if (!('antilinkig' in chats)) chats.antilinkig = false
 } else global.db.data.chats[m.chat] = {
 mute: false,
 antilink: false,
-antilink2: false,
+antilink2: true,
 antilinkig: false,
 antiwame: false,
 antivirtex: true,
@@ -817,7 +817,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-ultahgua = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+ultahgua = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
 
 countDownDate = new Date("2023-03-22").getTime();
 var now = new Date().getTime();
@@ -826,7 +826,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-Ramadhan = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+Ramadhan = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
 
 countDownDate = new Date("2023-06-29").getTime();
 var now = new Date().getTime();
@@ -835,7 +835,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-Iduladha = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+Iduladha = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
 
 countDownDate = new Date("2023-01-01").getTime();
 var now = new Date().getTime();
@@ -844,7 +844,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-tahunbaru = `${dayss}Hari ${hourss}Jam ${minutess}Menit ${secondss}Detik`
+tahunbaru = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
 
 //━━━━━━━━━━━━━━━[ FUNCTION GROUP ]━━━━━━━━━━━━━━━━━//
 
@@ -1343,10 +1343,6 @@ fs.writeFileSync('./json/user.json', JSON.stringify(db_user))}
 
 //Auto Block Nomor Luar Negeri
 if (m.sender.startsWith('212')) {
-liaacans.updateBlockStatus(m.sender, 'block')
-}
-if (m.sender.startsWith('62')) {
-if (m.isGroup) return
 liaacans.updateBlockStatus(m.sender, 'block')
 }
 if (m.sender.startsWith('237')) {
@@ -3615,7 +3611,43 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 m.reply(respon)
 }
 break
-case 'owner': case 'creator': {
+case 'owner': case 'creator': case 'pemilikbot': {
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
+const sections = [
+    {
+	title: `▢━━━━「 SEWABOT 」━━━━▢`,
+	rows: [
+	    {title: "$ • SEWA BOT", rowId: `${prefix}sewabot`}
+	]
+    },
+    {
+	title: `▢━━━━「 DONASI 」━━━━▢`,
+	rows: [
+	    {title: "$ • DONASI", rowId: `${prefix}donasi`}
+	]
+	},
+    {
+	title: `▢━━━━「 CONTACTS OWNER 」━━━━▢`,
+	rows: [
+	    {title: "☏︎ • OWNER", rowId: `${prefix}owner1`}
+	]
+    },
+]
+let menunyaa = `Hai Kak ${pushname}
+*${ucapanWaktu}*
+pemilik bot ini adalah Andi Saputra, klik di bawah ini untuk mengetahui lebih lanjut
+`
+const listMessage = {
+  text: menunyaa,
+  footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
+  buttonText: "Klik Disini",
+  sections
+}
+const tessgh = await liaacans.sendMessage(m.chat, listMessage, { quoted: kafloc })
+}
+break
+case 'owner1': case 'creator1': {
 if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
 let vcard = `BEGIN:VCARD\n` // metadata of the contact card
 + `VERSION:3.0\n`
