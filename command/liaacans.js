@@ -3958,14 +3958,27 @@ break
 		m.reply(txt)
 		}
 		break
-case 'ytmp3': case 'ytaudio':
-m.reply(mess.wait)
-if (!text) throw `Contoh : ${prefix + command} https://youtu.be/Vhv5OyetF-Q`
-get_result = await fetchJson(`https://saipulanuar.ga/api/download/ytmp3?url=${text}`)
-get_result = get_result.result
-get_audio = await getBuffer(get_result.url)
-await liaacans.sendMessage(m.chat, { audio: { url: get_audio }, mimetype: 'audio/mpeg'}, { quoted: m })
-break
+case 'ytmp3': case 'ytaudio': case 'yta': {
+  if (!isPremium) throw mess.prem
+  let { yta } = require('../message/y2mate')
+  if (!q) return m.reply(`Gunakan Format : ${command} linknya`)
+  if (!isUrl(q)) return m.reply('Link Invalid ❎')
+  if (!q.includes('youtube')/('youtu.be')) return m.reply('Link Invalid ❎')
+  await m.reply(mess.wait)
+  let quality = args[1] ? args[1] : '128kbps'
+  let media = await yta(text, quality)
+  if (media.filesize >= 100000) return m.reply('File Melebihi Batas Silahkan Download Sendiri : '+media.dl_link)
+  var caption = `*------ Youtube Downloader -----*
+
+📄 Title : ${media.title}
+🎚️ Size : ${media.filesizeF}
+🔗 Url : ${isUrl(text)}
+📥 Format : MP3
+📮 Resolusi : ${args[1] || '128kbps'}`
+  liaacans.sendImage(m.chat, media.thumb, caption, m)
+  liaacans.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: fkontak })
+  }
+  break
 case 'yts': case 'ytsearch': {
   if (!isPremium) throw mess.prem
   m.reply(mess.wait)
