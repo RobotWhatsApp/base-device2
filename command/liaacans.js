@@ -7400,10 +7400,11 @@ break
 
 case 'ai':
 if (!text) throw 'Teks Nya Mana Bos ?'
+try {
 const configuration = new Configuration({
                             apiKey: popy.keyopenai,
-                        });
-                        const openai = new OpenAIApi(configuration);
+                        })
+                        const openai = new OpenAIApi(configuration)
                     
                         const response = await openai.createCompletion({
                             model: "text-davinci-003",
@@ -7413,8 +7414,11 @@ const configuration = new Configuration({
                             top_p: 1.0,
                             frequency_penalty: 0.0,
                             presence_penalty: 0.0,
-                        });
+                        })
                         m.reply(`${response.data.choices[0].text}\n\n`)
+                        } catch (err) {
+m.reply(err)
+}
                         break
 case 'assalamualaikum':{
 ucslm = `Waalaikumsalam Kak ${pushname}`
