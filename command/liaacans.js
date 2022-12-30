@@ -45,6 +45,10 @@ var { csrfGenerator, listProduct, isProductValid, getDetailProduct, getQrCode, c
 var { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('../message/respon-list')
 var { addRespons, checkRespons, deleteRespons } = require('../message/respon')
 
+//open ai
+var { Configuration, OpenAIApi } = require("openai")
+let setting = require('./key.json')
+
 // HOST WHM
 let hostwhm = '' //Host server whm
 let usrwhm = '' //username whm
@@ -7394,6 +7398,24 @@ break
 
 //---------------[ AUTO RESPON ]------------------//
 
+case 'ai':
+if (!text) throw 'Teks Nya Mana Bos ?'
+const configuration = new Configuration({
+                            apiKey: setting.keyopenai,
+                        });
+                        const openai = new OpenAIApi(configuration);
+                    
+                        const response = await openai.createCompletion({
+                            model: "text-davinci-003",
+                            prompt: text,
+                            temperature: 0.3,
+                            max_tokens: 3000,
+                            top_p: 1.0,
+                            frequency_penalty: 0.0,
+                            presence_penalty: 0.0,
+                        });
+                        m.reply(`${response.data.choices[0].text}\n\n`)
+                        break
 case 'assalamualaikum':{
 ucslm = `Waalaikumsalam Kak ${pushname}`
 let buttons = [{ buttonId: 'l', buttonText: { displayText: 'waalaikumsalam' }, type: 1 }]
