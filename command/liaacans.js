@@ -47,7 +47,7 @@ var { addRespons, checkRespons, deleteRespons } = require('../message/respon')
 
 //open ai
 var { Configuration, OpenAIApi } = require("openai")
-let setting = require('./key.json')
+let popy = require('./key.json')
 
 // HOST WHM
 let hostwhm = '' //Host server whm
@@ -7401,7 +7401,7 @@ break
 case 'ai':
 if (!text) throw 'Teks Nya Mana Bos ?'
 const configuration = new Configuration({
-                            apiKey: setting.keyopenai,
+                            apiKey: popy.keyopenai,
                         });
                         const openai = new OpenAIApi(configuration);
                     
