@@ -837,7 +837,7 @@ var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
 Iduladha = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
 
-countDownDate = new Date("2023-01-01").getTime();
+countDownDate = new Date("2024-01-01").getTime();
 var now = new Date().getTime();
 var distance = countDownDate - now;
 var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
