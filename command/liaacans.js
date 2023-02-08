@@ -742,7 +742,7 @@ let setting = global.db.data.settings[botNumber]
 if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 if (setting) {
 if (!isNumber(setting.status)) setting.status = 0
-if (!('autobio' in setting)) setting.autobio = false
+if (!('autobio' in setting)) setting.autobio = true
 if (!('autotyping' in setting)) setting.autotyping = false
 if (!('autovn' in setting)) setting.autovn = true
 } else global.db.data.settings[botNumber] = {
@@ -3599,6 +3599,8 @@ Kecepatan Respon ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\
 
 💻 Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+
+new Date() * 1
 
 _NodeJS Memory Usaage_
 ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
