@@ -33,7 +33,7 @@ global.APIKeys = {
 global.thumb = fs.readFileSync('./image/thumbnail.jpg') // JGN DI UBAH!
 global.name = 'Andi Saputra (Owner)', // GNTI NAMA LU!
 global.creator = '𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬' // GANTI NAMA BOT LU BANH!
-global.owner = ['15622625999'] // GNTI NOMOR LU!
+global.owner = ['6285725220424', '6285643115199'] // GNTI NOMOR LU!
 global.premium = ['15622625999', '15622625854']
  // ADD PREM YG LU MAU BANH!!
 global.quotes = 'Kehidupan itu seperti roda, kadang diatas kadang di bawah' // Ganti Quotes, Tapi Trsrh Klian
@@ -54,7 +54,7 @@ group: 'Fitur Ini Digunakan Hanya Untuk Group!',
 private: 'Fitur Ini Digunakan Hanya Untuk Private Chat!',
 bot: 'Fitur Ini Khusus Pengguna Nomor Bot',
 user: 'Maaf Anda Belum Terdaftar Ke Database\n\nSilahkan Daftar Terlebih Dahulu\nKetik .register',
-wait: '*[WAIT]* SEDANG DIPROSES, HARAP TUNGGU SEBENTAR!',
+wait: 'Proses Ngab...',
 endLimit: 'Limit Harian Anda Telah Habis, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
