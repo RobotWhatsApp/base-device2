@@ -742,7 +742,7 @@ let setting = global.db.data.settings[botNumber]
 if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 if (setting) {
 if (!isNumber(setting.status)) setting.status = 0
-if (!('autobio' in setting)) setting.autobio = true
+if (!('autobio' in setting)) setting.autobio = false
 if (!('autotyping' in setting)) setting.autotyping = false
 if (!('autovn' in setting)) setting.autovn = true
 } else global.db.data.settings[botNumber] = {
