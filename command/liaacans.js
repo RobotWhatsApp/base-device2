@@ -1,25 +1,3 @@
-/*
-JNGN DIHPS CREATORNYA!
-CREATOR : AULIA RAHMAN
-JNGN DIHPS CREATORNYA!
-DONASI LAH BIAR ADMIN UP LAGI!
-DANA : 081528965381
-OVO : 085821676621
-PULSA : 081528965381
-SELAIN NO DIBAWAH INI CLONE YA!
-NOMOR WA OWNER : 085821676621
-SELAIN NO ITU CLONE YA!
-
-
-Thanks For To :
-• Allah Swt
-• Ortu
-• Aulia Rahman
-• Lexxy Official
-• ZeroYt7
-• Dan Pengguna Bot!
-Note : Thanks To nya jgn Di hps Ya Tod
-*/
 require('../options/config')
 var { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 var fs = require('fs')
@@ -817,7 +795,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-ultahgua = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
+ultahgua = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit*`
 
 countDownDate = new Date("2023-03-22").getTime();
 var now = new Date().getTime();
@@ -826,7 +804,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-Ramadhan = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
+Ramadhan = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit*`
 
 countDownDate = new Date("2023-06-29").getTime();
 var now = new Date().getTime();
@@ -835,7 +813,7 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-Iduladha = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
+Iduladha = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit*`
 
 countDownDate = new Date("2024-01-01").getTime();
 var now = new Date().getTime();
@@ -844,12 +822,15 @@ var dayss = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hourss = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var minutess = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 var secondss = Math.floor((distance % (1000 * 60)) / 1000);
-tahunbaru = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit, ${secondss} Detik*`
+tahunbaru = `*${dayss} Hari, ${hourss} Jam, ${minutess} Menit*`
+
+
 
 //━━━━━━━━━━━━━━━[ FUNCTION GROUP ]━━━━━━━━━━━━━━━━━//
 
 if (db.data.chats[m.chat].antilink) {
 if (budy.match(`chat.whatsapp.com`)) {
+if (m.isGroup) return
 if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
 let gclink = (`https://chat.whatsapp.com/`+await liaacans.groupInviteCode(m.chat))
 let isLinkThisGc = new RegExp(gclink, 'i')
@@ -867,6 +848,7 @@ liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 
 if (db.data.chats[m.chat].antilink2) {
 if (budy.match(`chat.whatsapp.com`)) {
+if (m.isGroup) return
 if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
 let gclink = (`https://chat.whatsapp.com/`+await liaacans.groupInviteCode(m.chat))
 let isLinkThisGc = new RegExp(gclink, 'i')
@@ -882,6 +864,7 @@ liaacans.sendMessage(m.chat, { delete: m.key })
 
 if (db.data.chats[m.chat].antilinkig) {
 if (budy.match(`instagram.com`)) {
+if (m.isGroup) return
 if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
 if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
 if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
@@ -893,6 +876,7 @@ liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 
 if (db.data.chats[m.chat].antiwame) {
 if (budy.match(`wa.me`)) {
+if (m.isGroup) return
 if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
 if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
 if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
@@ -904,6 +888,7 @@ liaacans.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 
 if (db.data.chats[m.chat].antivirtex) {
 if (budy.length > 4000) {
+if (m.isGroup) return
 if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
 if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
 if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
@@ -1375,7 +1360,7 @@ db_user.push(object_user)
 fs.writeFileSync('./json/user.json', JSON.stringify(db_user, 2, null))
 mentions(`𝖬𝖾𝗆𝗎𝖺𝗍 𝖴𝗌𝖾𝗋 @${m.sender.split("@")[0]}`, [m.sender])
 await sleep(1500)
-var verify_teks =`━━━「 𝗧𝗘𝗥𝗩𝗘𝗥𝗜𝗙𝗜𝗞𝗔𝗦𝗜 」━━━━
+var verify_teks =`━━━「 𝗧𝗘𝗥𝗗𝗔𝗙𝗧𝗔𝗥 」━━━━
 
 ○ ID : @${m.sender.split('@')[0]}
 ○ Name : ${user_name}
@@ -1397,38 +1382,18 @@ liaacans.sendMessage(m.chat, buttonMessage, {quoted:kafloc})
 }
 break
 case 'allmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
-allmenu = `Hy Kak ${pushname}
-*${ucapanWaktu}*
-╔━❖ ⌜ 𝗜𝗡𝗙𝗢 𝗨𝗦𝗘𝗥 ⌟
-┣ *Nama* : ${pushname}
-┣ *Premium* : ${isPremium ? '✅' : `❌`}
-┣ *Limit* : ${isPremium ? 'UNLIMITED' : `〽️${db.data.users[m.sender].limit}`}
-┣ *Mode* : ${liaacans.public ? 'Public' : `Self`}
-┣ *Prefix* :「 MULTI-PREFIX 」
+let allmenur = `*${ucapanWaktu} ${pushname}*
+𝗦𝗶𝗹𝗮𝗵𝗸𝗮𝗻 𝗗𝗶𝗹𝗶𝗵𝗮𝘁² 𝗙𝗶𝘁𝘂𝗿𝗻𝘆𝗮...
+
+▢━━「𝗡𝗘𝗪 𝗙𝗜𝗧𝗨𝗥」━━▢
+╔━━❍ 
+┣❖${prefix}ai _text_
 ╚━❖
 
-╔━❖ ⌜ 𝗜𝗡𝗗𝗢𝗡𝗘𝗦𝗜𝗔𝗡 𝗧𝗜𝗠𝗘 ⌟
-┣ *Hari Ini* : ${hariini}
-┣ *Wib* : ${barat} WIB
-┣ *Wita* : ${tengah} WITA
-┣ *Wit* : ${timur} WIT
-╚━❖
-❖━━━⬣𝗥𝗮𝗺𝗮𝗱𝗵𝗮𝗻⬣━━━❖
-${Ramadhan}
-
-❖━━━⬣𝗡𝗲𝘄 𝗬𝗲𝗮𝗿𝘀⬣━━━❖
-${tahunbaru}
-
-❖━━━⬣𝗨𝗹𝘁𝗮𝗵 𝗦𝗮𝗶𝗮⬣━━━❖
-${ultahgua}
-
-❖━━━⬣𝗜𝗱𝘂𝗹 𝗔𝗱𝗵𝗮⬣━━━❖
-${Iduladha}
-
-
-╔━❖ ⌜ 𝗚𝗥𝗨𝗣 𝗠𝗘𝗡𝗨 ⌟
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗚𝗥𝗨𝗣」━━▢
+╔━━❍ 
 ┣❖${prefix}kick
 ┣❖${prefix}add
 ┣❖${prefix}promote
@@ -1457,7 +1422,9 @@ ${Iduladha}
 ┣❖${prefix}antivirtex
 ┣❖${prefix}antiviewonce
 ╚━❖
-╔━❖ ⌜ 𝗧𝗘𝗫𝗧𝗣𝗥𝗢 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗧𝗘𝗫𝗧𝗣𝗥𝗢」━━▢
+╔━━❍ 
 ┣❖ ${prefix}3drainbow
 ┣❖ ${prefix}halloweenskeleton
 ┣❖ ${prefix}magma
@@ -1552,7 +1519,9 @@ ${Iduladha}
 ┣❖ ${prefix}horroblod 
 ┣❖ ${prefix}neon-love 
 ╚━❖
-╔━❖ ⌜ 𝗙𝗨𝗡 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗙𝗨𝗡」━━▢
+╔━━❍ 
 ┣❖${prefix}jadian
 ┣❖${prefix}jodohku
 ┣❖${prefix}apakah
@@ -1568,7 +1537,9 @@ ${Iduladha}
 ┣❖${prefix}math
 ┣❖${prefix}suitpvp
 ╚━❖
-╔━❖ ⌜ 𝗖𝗢𝗡𝗩𝗘𝗥𝗧 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗖𝗢𝗡𝗩𝗘𝗥𝗧」━━▢
+╔━━❍ 
 ┣❖${prefix}sticker
 ┣❖${prefix}smeme
 ┣❖${prefix}tourl
@@ -1579,14 +1550,18 @@ ${Iduladha}
 ┣❖${prefix}emojimix
 ┣❖${prefix}emojimix2
 ╚━❖
-╔━❖ ⌜ 𝗥𝗔𝗡𝗗𝗢𝗠 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗥𝗔𝗡𝗗𝗢𝗠」━━▢
+╔━━❍ 
 ┣❖${prefix}pinterest
 ┣❖${prefix}wallpaper
 ┣❖${prefix}couple
 ┣❖${prefix}quotesanime
 ┣❖${prefix}wikimedia
 ╚━❖
-╔━❖ ⌜ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗨𝗡𝗗𝗨𝗛」━━▢
+╔━━❍ 
 ┣❖${prefix}play
 ┣❖${prefix}yts
 ┣❖${prefix}ytmp3
@@ -1602,7 +1577,9 @@ ${Iduladha}
 ┣❖${prefix}pindl
 ┣❖${prefix}umma
 ╚━❖
-╔━❖ ⌜ 𝗖𝗛𝗔𝗥𝗚𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗖𝗛𝗔𝗥𝗚𝗘𝗥」━━▢
+╔━━❍ 
 ┣❖${prefix}bass
 ┣❖${prefix}blown
 ┣❖${prefix}deep
@@ -1615,7 +1592,9 @@ ${Iduladha}
 ┣❖${prefix}slow
 ┣❖${prefix}tupai
 ╚━❖
-╔━❖ ⌜ 𝗜𝗦𝗟𝗔𝗠 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗜𝗦𝗟𝗔𝗠」━━▢
+╔━━❍ 
 ┣❖${prefix}iqra
 ┣❖${prefix}hadist
 ┣❖${prefix}alquran
@@ -1623,7 +1602,9 @@ ${Iduladha}
 ┣❖${prefix}juzamma
 ┣❖${prefix}tafsirquran
 ╚━❖
-╔━❖ ⌜ 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗗𝗔𝗧𝗔𝗕𝗔𝗦𝗘」━━▢
+╔━━❍ 
 ┣❖${prefix}setcmd
 ┣❖${prefix}listcmd
 ┣❖${prefix}delcmd
@@ -1633,13 +1614,17 @@ ${Iduladha}
 ┣❖${prefix}getmsg
 ┣❖${prefix}delmsg
 ╚━❖
-╔━❖ ⌜ 𝗔𝗡𝗢𝗡𝗬𝗠𝗢𝗨𝗦 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗔𝗡𝗢𝗡𝗬𝗠𝗢𝗨𝗦」━━▢
+╔━━❍ 
 ┣❖${prefix}anonymous
 ┣❖${prefix}start
 ┣❖${prefix}next
 ┣❖${prefix}keluar
 ╚━❖
-╔━❖ ⌜ 𝗠𝗔𝗥𝗞𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗠𝗔𝗞𝗘𝗥」━━▢
+╔━━❍ 
 ┣❖${prefix}crossfire
 ┣❖${prefix}ffcover
 ┣❖${prefix}beach
@@ -1650,7 +1635,9 @@ ${Iduladha}
 ┣❖${prefix}galaxy
 ┣❖${prefix}neon
 ╚━❖
-╔━❖ ⌜ 𝗕𝗨𝗚 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗕𝗨𝗚」━━▢
+╔━━❍ 
 ┣❖${prefix}inibug
 ┣❖${prefix}poll
 ┣❖${prefix}troli2
@@ -1677,7 +1664,9 @@ ${Iduladha}
 ┣❖${prefix}bugie
 ┣❖${prefix}bugtag
 ╚━❖
-╔━❖ ⌜ 𝗦𝗢𝗨𝗡𝗗 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗦𝗢𝗨𝗡𝗗」━━▢
+╔━━❍ 
 ┣❖${prefix}sound1
 ┣❖${prefix}sound2
 ┣❖${prefix}sound3
@@ -1753,7 +1742,9 @@ ${Iduladha}
 ┣❖${prefix}sound73
 ┣❖${prefix}sound74
 ╚━❖
-╔━❖ ⌜ 𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗢𝗪𝗡𝗘𝗥」━━▢
+╔━━❍ 
 ┣❖${prefix}ping
 ┣❖${prefix}owner
 ┣❖${prefix}setppbot
@@ -1772,7 +1763,9 @@ ${Iduladha}
 ┣❖${prefix}self
 ┣❖${prefix}public
 ╚━❖
-╔━❖ ⌜ 𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨 ⌟
+
+▢━━「𝗙𝗜𝗧𝗨𝗥 𝗠𝗔𝗜𝗡」━━▢
+╔━━❍ 
 ┣❖${prefix}sewabot
 ┣❖${prefix}spamcall
 ┣❖${prefix}tts
@@ -1800,11 +1793,18 @@ ${Iduladha}
 ┣❖${prefix}changeitem
 ╚━❖`
 let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'RULES BOT' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER' }, type: 1 }]
-            await liaacans.sendButtonText(m.chat, buttons, allmenu, creator, m, { quoted: kafloc })
-            }
+         let buttonMessage = {
+                    image: { url: 'https://telegra.ph/file/26a4c9fb84afcd357990a.jpg' },
+                    caption: allmenur,
+                    footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
+                    buttons: buttons,
+                    headerType: 4
+                }
+                liaacans.sendMessage(m.chat, buttonMessage, { quoted: kafloc })
+                }
          break
 case 'menu': case 'help': case 'command': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 const sections = [
     {
@@ -1932,17 +1932,19 @@ let menunyaa = `Hai Kak ${pushname}
 ┣ *Wita* : ${tengah} WITA
 ┣ *Wit* : ${timur} WIT
 ╚━❖
-❖━━━⬣𝗥𝗮𝗺𝗮𝗱𝗵𝗮𝗻⬣━━━❖
-${Ramadhan}
 
-❖━━━⬣𝗡𝗲𝘄 𝗬𝗲𝗮𝗿𝘀⬣━━━❖
-${tahunbaru}
-
-❖━━━⬣𝗨𝗹𝘁𝗮𝗵 𝗦𝗮𝗶𝗮⬣━━━❖
-${ultahgua}
-
-❖━━━⬣𝗜𝗱𝘂𝗹 𝗔𝗱𝗵𝗮⬣━━━❖
-${Iduladha}
+╔━❖ ⌜ 𝗥𝗔𝗠𝗔𝗗𝗛𝗔𝗡 ⌟
+┣ ${Ramadhan}
+┃
+┣━❖ ⌜ 𝗡𝗘𝗪 𝗬𝗘𝗔𝗥 ⌟
+┣ ${tahunbaru}
+┃
+┣━❖ ⌜ 𝗨𝗟𝗧𝗔𝗛 𝗚𝗪 ⌟
+┣ ${ultahgua}
+┃
+┣━❖ ⌜ 𝗜𝗗𝗨𝗟 𝗔𝗗𝗛𝗔 ⌟
+┣ ${Iduladha}
+╚━❖
 `
 const listMessage = {
   text: menunyaa,
@@ -1954,7 +1956,7 @@ const tessgh = await liaacans.sendMessage(m.chat, listMessage, { quoted: kafloc 
 }
 break
 case 'funmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 funmenu = `╔━❖ ⌜ FUN MENU ⌟
 ┣❖${prefix}jadian
@@ -1977,7 +1979,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'groupmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 group = `╔━❖ ⌜ GROUP MENU ⌟
 ┣❖${prefix}kick
@@ -2013,7 +2015,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
             case 'textpromenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 group = `╔━❖ ⌜ TEXTPRO MENU ⌟
 ┣❖ ${prefix}3drainbow
@@ -2115,7 +2117,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'convertmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 convermenu = `╔━❖ ⌜ Converter Menu ⌟
 ┣❖${prefix}sticker
@@ -2133,7 +2135,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'randommenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 rm = `╔━❖ ⌜ Random Menu ⌟
 ┣❖${prefix}pinterest
@@ -2147,7 +2149,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'downloadmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if(!isPremium)throw`Fitur Ini Khusus Untuk Premium`
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 downloadme = `╔━❖ ⌜ Download Menu ⌟
@@ -2172,7 +2174,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             break
 case 'ownermenu': {
 if(!isCreator)throw`Fitur Ini Khusus Untuk Owner`
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 ownerme = `╔━❖ ⌜ Owner Menu ⌟
 ┣❖${prefix}createcp
@@ -2201,7 +2203,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'anonymousmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 cht = `╔━❖ ⌜ Anonymous Menu ⌟
 ┣❖${prefix}anonymous
@@ -2214,7 +2216,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'databasemenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 dbm = `╔━❖ ⌜ Database Menu ⌟
 ┣❖${prefix}setcmd
@@ -2231,7 +2233,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'islamicmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 islmm = `╔━❖ ⌜ Islamic Menu ⌟
 ┣❖${prefix}iqra
@@ -2246,7 +2248,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'chargermenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 chargermenu = `╔━❖ ⌜ Charger Menu ⌟
 ┣❖${prefix}bass
@@ -2266,7 +2268,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'makermenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 mkrmnu = `╔━❖ ⌜ Maker Menu ⌟
 ┣❖${prefix}crossfire
@@ -2284,7 +2286,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'bugmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!isCreator) throw mess.owner
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 bug = `╔━❖ ⌜ Bug Menu (khusus owner) ⌟
@@ -2319,7 +2321,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'soundmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!isPremium) throw mess.prem
 sm = `╔━❖ ⌜ SOUND MENU [KHUSUS PREM] ⌟
 ┣❖${prefix}sound1
@@ -2402,7 +2404,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
             break
 case 'donasi': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 donasi = `*「 🐰DONASI BY ANDIGANS🐰 」*
 
@@ -2416,7 +2418,7 @@ await liaacans.sendButtonText(m.chat, buttons, donasi, creator, m, { quoted: kaf
 }
 break
 case 'mainmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 mainmenu = `╔━❖ ⌜ Main Menu ⌟
 ┣❖${prefix}sewabot
@@ -2451,7 +2453,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️BACK MENU' }, 
             }
 break
 case 'sc': case 'script': case 'sourcecode': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 source =`Script Bot Ini Bersifat Private
 Kalau Mau Beli Script Bot Chat Owner Ya! 
@@ -2461,7 +2463,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '️Back Menu' }, 
             }
 break
 case 'revoke': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
   if (!m.isGroup) return m.reply(mess.group)
   if (!isBotAdmins) return m.reply(mess.botAdmin)
   if (!isAdmins) return m.reply(mess.admin)
@@ -2550,7 +2552,7 @@ liaacans.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a 
 
 break
 case 'vote': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (m.chat in vote) throw `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`
 if (!text) throw `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`
@@ -2593,7 +2595,7 @@ liaacans.sendMessage(m.chat, buttonMessageVote)
 }
 break
 case 'upvote': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
 isVote = vote[m.chat][1].concat(vote[m.chat][2])
@@ -2636,7 +2638,7 @@ liaacans.sendMessage(m.chat, buttonMessageUpvote)
 }
 break
 case 'devote': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
 isVote = vote[m.chat][1].concat(vote[m.chat][2])
@@ -2679,7 +2681,7 @@ liaacans.sendMessage(m.chat, buttonMessageDevote)
 }
 break
 case 'cekvote':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
 teks_vote = `*「 VOTE 」*
@@ -2708,7 +2710,7 @@ ${vote[m.chat][2].map((v, i) => `┣ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 liaacans.sendTextWithMentions(m.chat, teks_vote, m)
 break
 case 'deletevote': case'delvote': case 'hapusvote': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
 delete vote[m.chat]
@@ -2902,7 +2904,7 @@ liaacans.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group :
 }
 break
 case 'ephemeral': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 if (!isBotAdmins) throw mess.botAdmin
 if (!isAdmins) throw mess.admin
@@ -2915,7 +2917,7 @@ await liaacans.sendMessage(m.chat, { disappearingMessagesInChat: false }).then((
 }
 break
 case 'ffcover': case 'crossfire': case 'galaxy': case 'glass': case 'neon': case 'beach': case 'igcertificate': case 'ytcertificate': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (!text) throw 'No Query Text'
                 m.reply(mess.wait)
                 liaacans.sendMessage(m.chat, { image: { url: api('liaacans', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
@@ -3024,14 +3026,14 @@ case 'lava': case 'rock': case 'bloodglas': case 'hallowen': case 'darkgold': ca
              }
              break
 case 'blackpink': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
       if (!text) throw 'No Query Text'
                 m.reply(mess.wait)
                 liaacans.sendMessage(m.chat, { image: { url:  fetchJson('https://restapi-liaacans.herokuapp.com/api/textpro/black-pink?text=Revita&apikey=APIKEY') }, caption: `Ephoto ${command}` }, { quoted: m })
             }
             break
 case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'tupai':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 try {
                 let set
                 if (/bass/.test(command)) set = '-af equalizer=f=54:width_type=o:width=2:g=20'
@@ -3063,7 +3065,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
                 }
                 break
             case 'setcmd': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (!m.quoted) throw 'Reply Pesan!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 if (!text) throw `Untuk Command Apa?`
@@ -3080,7 +3082,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
             case 'delcmd': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 let hash = m.quoted.fileSha256.toString('base64')
                 if (!hash) throw `Tidak ada hash`
                 if (global.db.data.sticker[hash] && global.db.data.sticker[hash].locked) throw 'You have no permission to delete this sticker command'              
@@ -3089,7 +3091,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
             case 'listcmd': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 let teks = `
 *List Hash*
 Info: *bold* hash is Locked
@@ -3099,7 +3101,7 @@ ${Object.entries(global.db.data.sticker).map(([key, value], index) => `${index +
             }
             break
             case 'lockcmd': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (!isCreator) throw mess.owner
                 if (!m.quoted) throw 'Reply Pesan!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
@@ -3110,7 +3112,7 @@ ${Object.entries(global.db.data.sticker).map(([key, value], index) => `${index +
             }
             break
             case 'addmsg': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (!m.quoted) throw 'Reply Message Yang Ingin Disave Di Database'
                 if (!text) throw `Example : ${prefix + command} nama file`
                 let msgs = global.db.data.database
@@ -3124,7 +3126,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             }
             break
             case 'getmsg': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (!text) throw `Example : ${prefix + command} file name\n\nLihat list pesan dengan ${prefix}listmsg`
                 let msgs = global.db.data.database
                 if (!(text.toLowerCase() in msgs)) throw `'${text}' tidak terdaftar di list pesan`
@@ -3132,7 +3134,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             }
             break
             case 'listmsg': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 let msgs = JSON.parse(fs.readFileSync('./json/datamsg.json'))
 	        let seplit = Object.entries(global.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = '「 LIST DATABASE 」\n\n'
@@ -3143,7 +3145,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
 	    }
 	    break
             case 'delmsg': case 'deletemsg': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 	        let msgs = global.db.data.database
 	        if (!(text.toLowerCase() in msgs)) return m.reply(`'${text}' tidak terdaftar didalam list pesan`)
 		delete msgs[text.toLowerCase()]
@@ -3151,7 +3153,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             }
 	    break
 case 'anonymous': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
 		this.anonymous = this.anonymous ? this.anonymous : {}
 		let buttons = [
@@ -3161,7 +3163,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
 	    break
 	    case 'keluar': {
-	    if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+	    if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
@@ -3179,7 +3181,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
                 if (command === 'leave') break
             }
             case 'mulai': case 'start': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 if (Object.values(this.anonymous).find(room => room.check(m.sender))) {
@@ -3221,7 +3223,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
                 break
             }
             case 'next': case 'lanjut': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let romeo = Object.values(this.anonymous).find(room => room.check(m.sender))
@@ -3268,7 +3270,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             
 case 'jadian': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 let member = participants.map(u => u.id)
 let orang = member[Math.floor(Math.random() * member.length)]
@@ -3284,7 +3286,7 @@ await liaacans.sendButtonText(m.chat, buttons, jawab, creator, m, {mentions: men
 }
 break
 case 'jodohku': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!m.isGroup) throw mess.group
 let member = participants.map(u => u.id)
 let me = m.sender
@@ -3300,7 +3302,7 @@ await liaacans.sendButtonText(m.chat, buttons, jawab, creator, m, {mentions: men
 }
 break
 case 'gbtku': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 			if (!text) throw `Example : ${prefix + command} hai|halo`
             let jawab = `${text.split("|")[0]}`
             let buttons = [{ buttonId: 'menu', buttonText: { displayText: `Menu` }, type: 1 }]
@@ -3308,7 +3310,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
             case 'bisakah': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             	if (!text) throw `Example : ${prefix + command} saya menang?`
             	let bisa = ['Bisa','Coba Saja','Pasti Bisa','Mungkin Saja','Tidak Bisa','Tidak Mungkin','Coba Ulangi','Ngimpi kah?','yakin bisa?']
                 let keh = bisa[Math.floor(Math.random() * bisa.length)]
@@ -3318,7 +3320,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
             case 'apakah': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             	if (!text) throw `Example : ${prefix + command} saya bisa menang?`
             	let apa = ['Iya','Tidak','Bisa Jadi','Coba Ulangi','Mungkin Saja','Coba Tanyakan Ayam']
                 let kah = apa[Math.floor(Math.random() * apa.length)]
@@ -3328,7 +3330,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
             case 'kapan': case 'kapankah': {
-            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+            if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             	if (!text) throw `Example : ${prefix + command} saya menang?`
             	let kapan = ['Besok','Lusa','Nanti','4 Hari Lagi','5 Hari Lagi','6 Hari Lagi','1 Minggu Lagi','2 Minggu Lagi','3 Minggu Lagi','1 Bulan Lagi','2 Bulan Lagi','3 Bulan Lagi','4 Bulan Lagi','5 Bulan Lagi','6 Bulan Lagi','1 Tahun Lagi','2 Tahun Lagi','3 Tahun Lagi','4 Tahun Lagi','5 Tahun Lagi','6 Tahun Lagi','1 Abad lagi','3 Hari Lagi','Bulan Depan','Nanti','Tidak Akan Pernah']
                 let koh = kapan[Math.floor(Math.random() * kapan.length)]
@@ -3338,7 +3340,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
 case 'delttc': case 'delttt': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 this.game = this.game ? this.game : {}
 try {
 if (this.game) {
@@ -3353,7 +3355,7 @@ m.reply('rusak')
 }
 break
 case 'ttc': case 'ttt': case 'tictactoe': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let TicTacToe = require("../message/tictactoe")
 this.game = this.game ? this.game : {}
 if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'Kamu masih didalam game'
@@ -3404,7 +3406,7 @@ this.game[room.id] = room
 }
 break
 case 'couple': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                 m.reply(mess.wait)
                 let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
                 let random = anu[Math.floor(Math.random() * anu.length)]
@@ -3413,7 +3415,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
         break
 case 'family100': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if ('family100'+m.chat in _family100) {
 m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
 throw false
@@ -3431,7 +3433,7 @@ hadiah: 6,
 }
 break
 case 'tebak': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!text) throw `Example : ${prefix + command} lagu\n\nOption : \n1. lagu\n2. gambar\n3. kata\n4. kalimat\n5. lirik\n6. lontong`
 if (args[0] === "lagu") {
 if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) throw "Masih Ada Sesi Yang Belum Diselesaikan!"
@@ -3518,7 +3520,7 @@ delete caklontong_desk[m.sender.split('@')[0]]
 }
 break
 case 'kuismath': case 'math': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (kuismath.hasOwnProperty(m.sender.split('@')[0])) throw "Masih Ada Sesi Yang Belum Diselesaikan!"
 let { genMath, modes } = require('../json/math')
 if (!text) throw `Mode: ${Object.keys(modes).join(' | ')}\nContoh penggunaan: ${prefix}math medium`
@@ -3535,7 +3537,7 @@ delete kuismath[m.sender.split('@')[0]]
 }
 break
 case 'suitpvp': case 'suit': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 this.suit = this.suit ? this.suit : {}
 let poin = 10
 let poin_lose = 10
@@ -3564,7 +3566,7 @@ delete this.suit[id]
 }
 break
 case 'ping': case 'botstatus': case 'stats': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 const used = process.memoryUsage()
 const cpus = os.cpus().map(cpu => {
 cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
@@ -3600,7 +3602,6 @@ Kecepatan Respon ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\
 💻 Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
-new Date() * 1
 
 _NodeJS Memory Usaage_
 ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
@@ -3614,7 +3615,7 @@ m.reply(respon)
 }
 break
 case 'owner': case 'creator': case 'pemilikbot': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${global.fake}`,jpegThumbnail: global.thumb}}}
 const sections = [
     {
@@ -3650,7 +3651,7 @@ const tessgh = await liaacans.sendMessage(m.chat, listMessage, { quoted: kafloc 
 }
 break
 case 'owner1': case 'creator1': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let vcard = `BEGIN:VCARD\n` // metadata of the contact card
 + `VERSION:3.0\n`
 + `N:;${name}.;;;`
@@ -3672,7 +3673,6 @@ liaacans.sendMessage(m.chat, buttonMessage3, { quoted: fkontak })
 }
 break
 case 'toimage': case 'toimg': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!quoted) throw 'Reply Image'
 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
 m.reply(mess.wait)
@@ -3687,19 +3687,6 @@ fs.unlinkSync(ran)
 })
 }
 break
-case 'stikermeme': case 'smeme': case 'stickermeme': case 'stickmeme': {
-if (text.includes('|')) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
-if (!/image/.test(mime)) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
-m.reply(mess.wait)
-arg = args.join(' ')
-mee = await liaacans.downloadAndSaveMediaMessage(quoted)
-const { TelegraPh } = require('../message/uploader')
-mem = await TelegraPh(mee)
-meme = `https://api.memegen.link/images/custom/-/${arg}.png?background=${mem}`
-memek = await liaacans.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
-await fs.unlinkSync(memek)
-}
-break 
 case 'stiker': case 'sticker': case 's': case 'stickergif': case 'sgif': {
 if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
 m.reply(mess.wait)
@@ -3716,6 +3703,23 @@ await fs.unlinkSync(encmedia)
 throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`
 }
 }
+break
+case 'stikermeme': case 'smeme': case 'stickermeme': case 'stickmeme': {
+if (text.includes('|')) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
+if (!/image/.test(mime)) return m.reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
+m.reply(mess.wait)
+arg = args.join(' ')
+mee = await liaacans.downloadAndSaveMediaMessage(quoted)
+const { TelegraPh } = require('../message/uploader')
+mem = await TelegraPh(mee)
+meme = `https://api.memegen.link/images/custom/-/${arg}.png?background=${mem}`
+memek = await liaacans.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
+await fs.unlinkSync(memek)
+}
+break 
+case 'ai': case 'openai': case 'ngobrol':
+let ai = await fetchJson(`https://api.zahwazein.xyz/entertainment/openai?query=${text}&apikey=8d66b4b4aa`)
+liaacans.sendText(m.chat, `\n${ai.result.message}\n\n`, kafloc)
 break
 case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': {
                 let [teks1, teks2] = text.split`|`
@@ -3737,7 +3741,7 @@ case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': {
             }
             break
 case 'emojimix': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 	let [emoji1, emoji2] = text.split`+`
 	if (!emoji1) throw `Example : ${prefix + command} 😅+🤔`
 	if (!emoji2) throw `Example : ${prefix + command} 😅+🤔`
@@ -3749,7 +3753,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
         }
         break
         case 'emojimix2': {
-        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
         if (!text) throw `Example : ${prefix + command} 😅`
 	let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
 	for (let res of anu.results) {
@@ -3759,7 +3763,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
         }
         break
 case 'tomp3': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (/document/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
 if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
 if (!quoted) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
@@ -3771,7 +3775,7 @@ liaacans.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName:
 }
 break
 case 'tomp4': case 'tovideo': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!quoted) throw 'Reply Image'
 if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
 m.reply(mess.wait)
@@ -3783,7 +3787,7 @@ await fs.unlinkSync(media)
 }
 break
 case 'tourl': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
   m.reply(mess.wait)
   let { UploadFileUgu, webp2mp4File, TelegraPh } = require('../message/uploader')
   let media = await liaacans.downloadAndSaveMediaMessage(quoted)
@@ -3799,7 +3803,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
   break
 //Random Menu
 case 'pinterest': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
   if (!text) return m.reply(`Mau Cari Apa Di ${command}?\nExample : *${prefix + command} hinata*`)
   m.reply(mess.wait)
   let anu = await pinterest(text)
@@ -3809,7 +3813,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
   }
   break
 case 'wallpaper': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
   if (!text) return m.reply(`Mau Cari Apa Di ${command}?\nExample : *${prefix + command} hinata*`)
   m.reply(mess.wait)
   let anu = await wallpaper(text)
@@ -3819,7 +3823,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
   }
   break
 case 'quotesanime': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
   m.reply(mess.wait)
   let anu = await quotesAnime()
   result = anu[Math.floor(Math.random() * anu.length)]
@@ -3885,7 +3889,7 @@ Format yang tersedia : pdf, docx, pptx, xlsx`)
 		}
 		break**/
 		case 'hadis': case 'hadist': {
-		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 		if (!args[0]) throw `Contoh:
 ${prefix + command} bukhari 1
 ${prefix + command} abu-daud 1
@@ -3933,7 +3937,7 @@ ini_txt += `Isya : ${get_result1.hasil.today.Isya}`
 m.reply(ini_txt)
 break
 		case 'alquran': {
-		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
 		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
 		let res = await fetchJson(`https://saipulanuar.ga/api/muslim/quran?surah=${args[0]}&ayat=${args[1]}`)
@@ -3946,7 +3950,7 @@ break
 		}
 		break
 		case 'tafsirsurah': {
-		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+		if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
 		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
 		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
@@ -4207,7 +4211,7 @@ case 'delete': case 'del': {
             }
             break
 case 'menfes': case 'menfess': { 
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 		        if (m.isGroup) throw ('fitur tidak dapat digunakan di grup')
             	if (!text) throw `Example : ${prefix + command} 62858xxxxx|nama samaran|pesan`
             var mon = args.join(' ')
@@ -4227,7 +4231,7 @@ if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ b
             }
             break
 case 'menfessconfirm':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 		 liaacans.sendMessage(q, {text: `Sudah Di Confirmasi Nih Menfess nyaa🤭`})
 		  m.reply(`Terimakasih Menfess Telah Diterima.`)
 		break
@@ -4817,7 +4821,7 @@ m.reply(`Belum Ada User Yang Jadibot`)
 }
 break
 case 'topupmenu': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 topup = `*｢  TOPUP MENU OTOMATIS  ｣*
   ● ${prefix}topup
   ● ${prefix}topupff
@@ -4850,14 +4854,14 @@ liaacans.sendButtonText(m.chat, buttons, topup, creator)
 }
 break 
 case 'tts':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!q) return m.reply(`Contoh:\n${prefix+command} hallo bro`)
 var tts = `https://saipulanuar.ga/api/text-to-audio/tts?text=${q}&idbahasa=id&apikey=jPHjZpQF`
 liaacans.sendMessage(m.sender, {audio:{url:tts}, mimetype:'audio/mpeg', ptt:true}, {quoted:fvn})
 }
 break
 case 'shopeepay':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let noshp = text
 if (isNaN(parseInt(noshp))) return m.reply(`${command} 6285737134572`)
@@ -4930,7 +4934,7 @@ const tessgh = await liaacans.sendMessage(m.chat, listMessage)
 break
 }
 case 'ovo':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let noshp = text
 if (isNaN(parseInt(noshp))) return m.reply(`${command} 6281236167286`)
@@ -5033,7 +5037,7 @@ const tessgh = await liaacans.sendMessage(m.chat, listMessage)
 break
 }
 case 'cvspay': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idff = text.split("|")[0]
 let produkid = text.split("|")[1]
@@ -5052,7 +5056,7 @@ liaacans.sendMessage(m.chat, { image: { url: cvnya.img }, caption: `${byr}` }, {
 break
 }
 case 'topup':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 const sections = [
     {
 	title: `Format: ${prefix}topupff id|jumlah`,
@@ -5096,7 +5100,7 @@ const tessgh = await liaacans.sendMessage(m.chat, listMessage)
 break
 }
 case 'listdmff':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 lisnya = `*━━ 「 DIAMOND FREE FIRE 」 ━━*
 
 _》${list.ff.FF5.nama} : ${list.ff.FF5.harga}_
@@ -5187,7 +5191,7 @@ NOTE: Pembelian Akan Diproses Oleh Sistem Otomatis Jika Saldo User Anda Terisi D
 m.reply(lisnya)
 break
 case 'listdmml':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 lisya = `*━━ 「 DIAMOND MOBILE LEGENDS 」 ━━*
 
 _》${listml.ml.UPMBL5.nama} : ${listml.ml.UPMBL5.harga}_
@@ -5221,7 +5225,7 @@ NOTE: Pembelian Akan Diproses Oleh Sistem Otomatis Jika Saldo User Anda Terisi D
 m.reply(lisya)
 break
 case 'listdmml2':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 lisya = `*━━ 「 DIAMOND MOBILE LEGENDS 」 ━━*
 
 _》${listmlbb.ml.ZIDMBL17.nama} : ${listmlbb.ml.ZIDMBL17.harga}_
@@ -5243,7 +5247,7 @@ NOTE: Pembelian Akan Diproses Oleh Sistem Otomatis Jika Saldo User Anda Terisi D
 m.reply(lisya)
 break
 case 'buypulsa':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let dokid = text.split("|")[0]
 let cusid = text.split("|")[1]
 if (isNaN(parseInt(cusid))) return m.reply('Nomor Hp Harus Berupa Angka!')
@@ -5389,7 +5393,7 @@ m.reply(workd)
 break
 }
 case 'topupff':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idff = text.split("|")[0]
 let produkid = text.split("|")[1]
@@ -5664,7 +5668,7 @@ Jika Data Sudah Benar Silahkan Klik Lanjutkan Dan Jika Data Salah Silahkan Menge
 break
 }
 case 'topupffyes':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idff = text.split("|")[0]
 let produkid = text.split("|")[1]
@@ -6241,7 +6245,7 @@ m.reply(workd)
 break
 }
 case 'topupml':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idml1 = text.split("|")[0]
 let idml2 = text.split("|")[1]
@@ -6348,7 +6352,7 @@ Jika Data Sudah Benar Silahkan Klik Lanjutkan Dan Jika Data Salah Silahkan Menge
 }
 break
 case 'topupmlyes':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idml1 = text.split("|")[0]
 let idml2 = text.split("|")[1]
@@ -6599,7 +6603,7 @@ Jika Data Sudah Benar Silahkan Klik Lanjutkan Dan Jika Data Salah Silahkan Menge
 }
 break
 case 'topupml2yes':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Private Chat!')
 let idml1 = text.split("|")[0]
 let idml2 = text.split("|")[1]
@@ -6692,7 +6696,7 @@ m.reply(workd)
 break
 }
 case 'listdmff2':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let topupp = `*━━ 「 DIAMOND FREE FIRE 」 ━━*
 
 _》5 Diamond : Rp1.261_
@@ -6713,7 +6717,7 @@ NOTE: Pembelian Akan Diproses Oleh Sistem Otomatis Ketika Anda Telah Melakukan P
 m.reply(topupp)
 break
 case 'topupff2':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 let idff = text.split("|")[0]
 let totaldm = text.split("|")[1]
 let nopemu = m.sender.replace("@s.whatsapp.net", "")
@@ -6792,7 +6796,7 @@ wa.me/15622625999
              break
 case 'order':
 			case 'caraorder': {
-			if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+			if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 				if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
 				let capp = `*Hallo _${m.pushName}_ Berikut Cara Order*\n\n*Followers :*\nex1 : _${prefix}followers jumlah|target [ tanpa (@) ]_\nex2 : _${prefix}followers 500|auliarahman_ckep___\n\n*View :*\nex 1 : _${prefix}view jumlah|link_\nex 2 : _${prefix}view 10000|https://vm.tiktok.com/xxxxxxx_\n\n*Like :*\nex 1 : _${prefix}like jumlah|link_\nex 2 : _${prefix}like 10000|https://www.instagram.com/p/xxxxxxx_\n\nSekian penjelasan cara order\nSemoga anda faham dengan penjelasan ini🙏\nbeli = faham`
 				liaacans.sendMessage(m.chat, {text: capp}, {quoted:m})
@@ -7085,7 +7089,7 @@ break
 */
         // Menu Store
         case 'item':
-        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
                     if (!m.isGroup) throw `Perintah Ini Khusus Untuk Grup`
             if (db_respon_list.length === 0) return m.reply(`Belum ada list message di database`)
             if (!isAlreadyResponListGroup(m.chat, db_respon_list)) return m.reply(`Belum ada list message yang terdaftar di group ini`)
@@ -7112,7 +7116,7 @@ const sendMsg = await liaacans.sendMessage(m.chat, listMessage)
                break
         
         case 'additem':
-        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             if (!m.isGroup) throw `Perintah Ini Khusus Untuk Grup`
             if (!isAdmins && !isCreator) return m.reply('Only Admins')
             var args1 = text.split("@")[0]
@@ -7138,7 +7142,7 @@ const sendMsg = await liaacans.sendMessage(m.chat, listMessage)
             }
             break
         case 'delitem':
-        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             if (!m.isGroup) throw `Perintah Ini Khusus Group`
             if (!isAdmins && !isCreator) return m.reply('Only Admins')
             if (db_respon_list.length === 0) return m.reply(`Belum ada list message di database`)
@@ -7148,7 +7152,7 @@ const sendMsg = await liaacans.sendMessage(m.chat, listMessage)
             m.reply(`Sukses delete list message dengan key *${q}*`)
             break
         case 'changeitem': case 'change':
-        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+        if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
             if (!m.isGroup) throw `Perintah Ini Khusus Grup`
             if (!isAdmins && !isCreator) return m.reply('Only Admins')
             var args1 = q.split("@")[0]
@@ -7195,7 +7199,7 @@ case 'proses':
             liaacans.sendMessage(`${args[1]}@s.whatsapp.net`, {text: sukses })
             break
 case 'infogempa':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 fetchJson(`https://saipulanuar.ga/api/info/gempa?apikey=jPHjZpQF`)
 .then(xg =>{
 m.reply(`*INFO GEMPA*
@@ -7215,7 +7219,7 @@ m.reply(`*INFO GEMPA*
 break
 case 'ssweb-pc':
 case 'ssweb-hp':{
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 if (!q) return m.reply(`Masukan parameter url\n*Contoh:*\n${prefix+command} https://google.com`)
 m.reply(mess.wait)
 let anu =`https://leyscoders-api.herokuapp.com/api/${command}?url=${q}&apikey=IkyOgiwara`
@@ -7223,7 +7227,7 @@ liaacans.sendMessage(m.chat, { image: {url: anu}, caption: 'Done!'}, {quoted:m})
 }
 break
 case 'sewabot': {
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 sewabot = `⌜  LIST SEWA SOFTBOTS ⌟
 
 HARGA :
@@ -7258,7 +7262,7 @@ m.reply(data.logs)
 }
 break
 case 'readmore': case 'more':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
  if (!q.includes('|')) return  m.reply("Penggunaan teks| teks")
@@ -7285,7 +7289,7 @@ case 'sound59':case 'sound60':case 'sound61':case 'sound62':
 case 'sound63':case 'sound64':case 'sound65':case 'sound66':
 case 'sound67':case 'sound68':case 'sound69':case 'sound70':
 case 'sound71':case 'sound72':case 'sound73':case 'sound74':
-if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\n\nTekan button dibawah atau ketik #daftar`, creator, m)
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
 m.reply(mess.wait)
 var inicdd = await getBuffer(`https://github.com/saipulanuar/Api-Github/raw/main/sound/${command}.mp3`)
 liaacans.sendMessage(m.chat, {audio:inicdd, mimetype:'audio/mpeg', ptt:true}, {quoted: fvn})
@@ -7393,47 +7397,38 @@ m.reply(`*BROADCAST*
 
 _Broadcast › Chat All User_`)
 break
-
+case 'kirimkann': case 'kirimkan': { 
+if (cekUser("id", m.sender) == null) return liaacans.sendButtonText(m.chat, [{ buttonId: 'Daftar', buttonText: { displayText: 'DAFTAR' }, type: 1 }], `「 REGISTRASI 」\n\nSilahkan Daftar Terlebih Dahulu\nTekan button dibawah atau ketik #daftar`, creator, m)
+		        if (m.isGroup) throw ('fitur tidak dapat digunakan di grup')
+            	if (!text) throw `Example : ${prefix + command} 62858xxxxx|button|pesan`
+            var mon = args.join(' ')
+            var m1 = mon.split("|")[0]
+            var m2 = mon.split("|")[1]
+            var m3 = mon.split("|")[2]
+               let kafloc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `Softbots Official Whatsapp`,jpegThumbnail: global.thumb}}}
+               let mq1 = m1 + '@s.whatsapp.net'
+               let kawk = ('copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬')
+               let me = m.sender
+               let ments = [mq1, me]
+               let pjtxt = `${m3}`
+               let buttons = [{ buttonId: 't', buttonText: { displayText: `${m2}` }, type: 1 }]
+            await liaacans.sendButtonText(m1 + '@s.whatsapp.net', buttons, pjtxt, kawk, m, {mentions: ments, quoted: kafloc})
+            let akhji = `Pesan Telah Terkirim\nKe @${mq1.split('@')[0]}`
+            await liaacans.sendButtonText(m.chat, buttons, akhji, creator, m, {mentions: ments, quoted: kafloc})
+            }
+            break
 //---------------[ AUTO RESPON ]------------------//
 
 case 'assalamualaikum':{
-ucslm = `Waalaikumsalam Kak ${pushname}`
-let buttons = [{ buttonId: 'l', buttonText: { displayText: 'waalaikumsalam' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, ucslm, creator)
+liaacans.sendText(m.chat, `"Waalaikumsalam warahmatullahi wabarakatuh"`, kafloc)
 }
 break
 case 'p':{
-ucslm = `salam dulu Kak ${pushname}`
-let buttons = [{ buttonId: 'assalamualaikum', buttonText: { displayText: 'assalamualaikum' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, ucslm, creator)
+liaacans.sendText(m.chat, `"Salam dulu kak, sesuai agama masing masing"`, kafloc)
 }
 break
-case 'hai': {
-hai = `Hai Kak ${pushname}
-Ada Yang Kami Bisa Bantu?`
-let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, hai, creator)
-}
-break
-case 'hi': {
-hai = `Hi Kak ${pushname}
-Ada Yang Kami Bisa Bantu?`
-let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, hai, creator)
-}
-break
-case 'hii': {
-hai = `Hii Kak ${pushname}
-Ada Yang Kami Bisa Bantu?`
-let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, hai, creator)
-}
-break
-case 'halo':{
-halo = `Halo Kak ${pushname}
-Ada Yang Kami Bisa Bantu?`
-let buttons = [{ buttonId: 'i', buttonText: { displayText: 'Gak Ada Kak' }, type: 1 }]
-liaacans.sendButtonText(m.chat, buttons, halo, creator)
+case 'hai': case 'hii': case 'hi': case 'halo': case 'hallo': case 'hello': case 'haii':{
+liaacans.sendText(m.chat, `"${command} juga👋, Ada yang bisa gw bantu?"`, kafloc)
 }
 break
 //━━━━━━━━━━━━━━━[ AKHIR FITUR ]━━━━━━━━━━━━━━━━━//
