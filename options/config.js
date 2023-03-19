@@ -45,16 +45,16 @@ global.fake = 'SOFTBOTS VERIFIED' // GNTI NMA BOT LU BANH!
 global.prefa = ['','!','.','/','#','$']
 global.sp = '⭔' // JGN DI UBAH²! NTR EROR
 global.mess = {
-success: '*[SUCCESS]* SUKSES PERMINTAAN ANDA TERKIRIM!',
-admin: 'Fitur Ini Khusus Untuk Admin Group!',
-botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
-prem: 'Fitur Ini Khusus Untuk Premium',
-owner: 'Fitur Ini Khusus Untuk Owner Bot',
-group: 'Fitur Ini Digunakan Hanya Untuk Group!',
-private: 'Fitur Ini Digunakan Hanya Untuk Private Chat!',
-bot: 'Fitur Ini Khusus Pengguna Nomor Bot',
-user: 'Maaf Anda Belum Terdaftar Ke Database\n\nSilahkan Daftar Terlebih Dahulu\nKetik .register',
-wait: 'Proses Ngab...',
+success: '[ ✓ ] 𝐒𝐮𝐤𝐬𝐞𝐬 𝐍𝐠𝐚𝐛𝐛𝐛!',
+admin: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐀𝐝𝐦𝐢𝐧 𝐍𝐠𝐚𝐛!',
+botAdmin: '[ ! ] 𝐁𝐨𝐭 𝐁𝐮𝐤𝐚𝐧 𝐀𝐝𝐦𝐢𝐧 𝐍𝐠𝐚𝐛!',
+prem: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐏𝐫𝐞𝐦𝐢𝐮𝐦 𝐂𝐨𝐤𝐤',
+owner: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐆𝐰 𝐍𝐠𝐚𝐛',
+group: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐆𝐫𝐮𝐩 𝐍𝐠𝐚𝐛𝐛!',
+private: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐏𝐫𝐢𝐛𝐚𝐝𝐢 𝐂𝐡𝐚𝐭 𝐍𝐠𝐚𝐛𝐛!',
+bot: '[ ! ] 𝐊𝐡𝐮𝐬𝐮𝐬 𝐆𝐰 𝐘𝐞𝐤𝐚𝐧 :𝐯',
+user: '𝐃𝐚𝐟𝐭𝐚𝐫 𝐃𝐮𝐥𝐮 𝐍𝐠𝐚𝐛, 𝐕𝐞𝐫𝐢𝐟𝐢𝐤𝐚𝐬𝐢 𝐁𝐚𝐡𝐰𝐚 𝐀𝐧𝐝𝐚 𝐁𝐮𝐤𝐚𝐧 𝐁𝐮𝐝𝐢',
+wait: '[ ♲︎︎︎ ] 𝐋𝐨𝐚𝐝𝐢𝐧𝐠...',
 endLimit: 'Limit Harian Anda Telah Habis, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
