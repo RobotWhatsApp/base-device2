@@ -6,7 +6,7 @@
 ###################################-+
 # author   : aulia rahman                        #-+
 # insta    : instagram.com/auliarahman_ckep    #-+
-# tiktok   : tiktok.com@liaacans'                 #-+
+# tiktok   : tiktok.com@Andi'                 #-+
 # whatsapp : 085821676621                       #-+
 ###################################-+
 
