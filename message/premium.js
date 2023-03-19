@@ -1,124 +1,116 @@
-const fs = require('fs-extra');
-const toMs = require('ms');
+const fs = require("fs");
+const toMs = require("ms");
 
 /**
  * Add premium user.
- * @param {string} userId 
- * @param {string} expired 
- * @param {object} _premi
+ * @param {String} userId
+ * @param {String} expired
+ * @param {Object} _dir
  */
-const addPremiumUser = (userId, expired, _premi) => {
-    const obj = { id: userId, expired: Date.now() + toMs(expired) }
-    _premi.push(obj)
-    fs.writeFileSync('./json/premium.json', JSON.stringify(_premi))
-}
+const addPremiumUser = (userId, expired, _dir) => {
+	const cekUser = premium.find((user) => user.id == userId);
+	if (cekUser) {
+		cekUser.expired = cekUser.expired + toMs(expired);
+	} else {
+		const obj = { id: userId, expired: Date.now() + toMs(expired) };
+		_dir.push(obj);
+	}
+	fs.writeFileSync("./json/premium.json", JSON.stringify(_dir));
+};
 
 /**
- * Get premium user index position.
- * @param {string} userId
- * @param {object} _dir 
+ * Get premium user position.
+ * @param {String} userId
+ * @param {Object} _dir
  * @returns {Number}
  */
 const getPremiumPosition = (userId, _dir) => {
-    let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return position
-    }
-}
+	let position = null;
+	Object.keys(_dir).forEach((i) => {
+		if (_dir[i].id === userId) {
+			position = i;
+		}
+	});
+	if (position !== null) {
+		return position;
+	}
+};
 
 /**
- * Get premium user expired.
- * @param {string} userId 
- * @param {object} _dir 
+ * Get premium user expire.
+ * @param {String} userId
+ * @param {Object} _dir
  * @returns {Number}
  */
 const getPremiumExpired = (userId, _dir) => {
-    let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return _dir[position].expired
-    }
-}
+	let position = null;
+	Object.keys(_dir).forEach((i) => {
+		if (_dir[i].id === userId) {
+			position = i;
+		}
+	});
+	if (position !== null) {
+		return _dir[position].expired;
+	}
+};
 
 /**
- * Check if is user premium.
- * @param {string} userId 
- * @param {object} _dir 
- * @returns {boolean}
+ * Check user is premium.
+ * @param {String} userId
+ * @param {Object} _dir
+ * @returns {Boolean}
  */
 const checkPremiumUser = (userId, _dir) => {
-    let status = false
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
-            status = true
-        }
-    })
-    return status
-}
+	let status = false;
+	Object.keys(_dir).forEach((i) => {
+		if (_dir[i].id === userId) {
+			status = true;
+		}
+	});
+	return status;
+};
 
 /**
  * Constantly checking premium.
- * @param {object} _dir 
+ * @param {Object} _dir
  */
-const expiredCheck = (_dir) => {
-    setInterval(() => {
-        let position = null
-        Object.keys(_dir).forEach((i) => {
-            if (Date.now() >= _dir[i].expired) {
-                position = i
-            }
-        })
-        if (position !== null) {
-            console.log(`Premium user expired: ${_dir[position].id}`)
-            _dir.splice(position, 1)
-            fs.writeFileSync('./json/premium.json', JSON.stringify(_dir))
-        }
-    }, 1000)
-}
+const expiredCheck = (andi, msg, _dir) => {
+	setInterval(() => {
+		let position = null;
+		Object.keys(_dir).forEach((i) => {
+			if (Date.now() >= _dir[i].expired) {
+				position = i;
+			}
+		});
+		if (position !== null) {
+			idny = _dir[position].id;
+			console.log(`Premium expired: ${_dir[position].id}`);
+			_dir.splice(position, 1);
+			fs.writeFileSync("./json/premium.json", JSON.stringify(_dir));
+			idny ? Andi.sendMessage(idny, { text: "Premium anda sudah habis silahkan untuk membeli lagi." }) : "";
+			idny = false;
+		}
+	}, 1000);
+};
 
 /**
  * Get all premium user ID.
- * @param {object} _dir 
- * @returns {string[]}
+ * @param {Object} _dir
+ * @returns {String[]}
  */
 const getAllPremiumUser = (_dir) => {
-    const array = []
-    Object.keys(_dir).forEach((i) => {
-        array.push(_dir[i].id)
-    })
-    return array
-}
-/**
- * Check if is user premium.
- * @param {string} userId 
- * @param {object} _dir 
- * @returns {boolean}
- */
- const checkOwner = (userId, _dir) => {
-    let status = false
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === userId) {
-            status = true
-        }
-    })
-    return status
-}
+	const array = [];
+	Object.keys(_dir).forEach((i) => {
+		array.push(_dir[i].id);
+	});
+	return array;
+};
 
 module.exports = {
-    addPremiumUser,
-    getPremiumExpired,
-    getPremiumPosition,
-    expiredCheck,
-    checkPremiumUser,
-    getAllPremiumUser,
-    checkOwner
-}
+	addPremiumUser,
+	getPremiumExpired,
+	getPremiumPosition,
+	expiredCheck,
+	checkPremiumUser,
+	getAllPremiumUser,
+};
