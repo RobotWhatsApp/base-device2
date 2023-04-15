@@ -88,7 +88,6 @@ async function startAndi() {
     })
 
     Andi.ev.on('messages.upsert', async chatUpdate => {
-        //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
         mek = chatUpdate.messages[0]
         if (!mek.message) return
@@ -102,7 +101,7 @@ async function startAndi() {
             console.log(err)
         }
     })
-    
+
     // Group Update
     Andi.ev.on('groups.update', async pea => {
        //console.log(pea)
@@ -138,7 +137,7 @@ async function startAndi() {
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
-                
+
                 //Resize
          const reSize = async(buffer, ukur1, ukur2) => {
              return new Promise(async(resolve, reject) => {
@@ -167,11 +166,9 @@ async function startAndi() {
                 let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan Semena Mena!_`
                 let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Kasihan Turun Pangkat🤭_`
                 if (anu.action == 'add') {
-                if (db.data.chats[m.chat].welcome) {
-         const { TelegraPh } = require('../message/uploader')
-memn = await TelegraPh(ppuser)
+                if (db.data.chats[anu.id].welcome) {
          let buttonMessage = {
-                    image: { url: 'https://saipulanuar.ga/api/canvas/welcome4?name=${num.split(`@`)[0]}&gcname=${metadata.subject}&pp=${memn}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg' },
+                    image: { url: 'https://saipulanuar.ga/api/canvas/welcome4?name=${num.split(`@`)[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg' },
                     caption: teks1,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butwel,
