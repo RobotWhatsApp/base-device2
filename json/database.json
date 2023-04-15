@@ -3,23 +3,35 @@
     "6285725220424@s.whatsapp.net": {
       "afkTime": -1,
       "afkReason": "",
-      "limit": 10,
+      "limit": 9,
       "daftar": true,
-      "nama": "AndiGans"
+      "nama": "Player - 852d",
+      "premium": false,
+      "saldo": 0,
+      "exp": 0,
+      "premiumTime": 0
     },
     "6285643115199@s.whatsapp.net": {
       "afkTime": -1,
       "afkReason": "",
       "limit": 10,
       "daftar": true,
-      "nama": "Player - 9bf9"
+      "nama": "Player - 9bf9",
+      "premium": false,
+      "saldo": 0,
+      "exp": 0,
+      "premiumTime": 0
     },
     "62859148263217@s.whatsapp.net": {
       "afkTime": -1,
       "afkReason": "",
       "limit": 10,
       "daftar": false,
-      "nama": ""
+      "nama": "",
+      "premium": false,
+      "premiumTime": 0,
+      "saldo": 0,
+      "exp": 0
     },
     "6287770706136@s.whatsapp.net": {
       "afkTime": -1,
@@ -554,6 +566,93 @@
       "daftar": false,
       "nama": "",
       "limit": 10
+    },
+    "6282264322877@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6287823502296@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6282147460818@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6282286523306@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6285266639757@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6281255885881@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6285821369324@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
+    },
+    "6287765312881@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "daftar": false,
+      "premium": false,
+      "premiumTime": 0,
+      "nama": "",
+      "limit": 10,
+      "saldo": 0,
+      "exp": 0
     }
   },
   "chats": {
@@ -565,7 +664,8 @@
       "antiwame": false,
       "antivirtex": true,
       "antiviewonce": false,
-      "welcome": false
+      "welcome": false,
+      "antidelete": true
     },
     "120363046491540218@g.us": {
       "mute": false,
@@ -583,7 +683,9 @@
       "antilinkig": false,
       "antiwame": false,
       "antivirtex": true,
-      "antiviewonce": false
+      "antiviewonce": false,
+      "welcome": false,
+      "antidelete": false
     },
     "6287770706136@s.whatsapp.net": {
       "mute": false,
@@ -646,7 +748,9 @@
       "antilinkig": false,
       "antiwame": false,
       "antivirtex": true,
-      "antiviewonce": false
+      "antiviewonce": false,
+      "welcome": false,
+      "antidelete": false
     },
     "6283134409906@s.whatsapp.net": {
       "mute": false,
@@ -736,7 +840,8 @@
       "antilinkig": false,
       "antiwame": false,
       "antivirtex": true,
-      "antiviewonce": false
+      "antiviewonce": false,
+      "welcome": false
     },
     "120363048128692565@g.us": {
       "mute": false,
@@ -818,7 +923,8 @@
       "antiwame": false,
       "antivirtex": true,
       "antiviewonce": false,
-      "welcome": false
+      "welcome": false,
+      "antidelete": false
     },
     "6283194498970@s.whatsapp.net": {
       "mute": false,
@@ -911,6 +1017,28 @@
       "antiwame": false,
       "antivirtex": true,
       "antiviewonce": false
+    },
+    "120363031639292046@g.us": {
+      "mute": false,
+      "antilink": false,
+      "welcome": false,
+      "antilink2": false,
+      "antilinkig": false,
+      "antiwame": false,
+      "antivirtex": false,
+      "antiviewonce": false,
+      "antidelete": false
+    },
+    "120363050196060102@g.us": {
+      "mute": false,
+      "antilink": false,
+      "welcome": false,
+      "antilink2": false,
+      "antilinkig": false,
+      "antiwame": false,
+      "antivirtex": false,
+      "antidelete": false,
+      "antiviewonce": false
     }
   },
   "database": {},
@@ -933,7 +1061,9 @@
       "autotyping": false,
       "autovn": true,
       "menudoc": true,
-      "menuimg": false
+      "menuimg": false,
+      "menugam": true,
+      "menulist": false
     }
   },
   "others": {
@@ -941,5 +1071,13 @@
     "menfes": [],
     "user": []
   },
-  "sticker": {}
+  "sticker": {
+    "182,75,76,149,10,13,104,86,43,14,66,14,218,241,194,80,94,110,204,245,95,37,190,255,78,239,163,59,191,170,236,69": {
+      "text": "menu",
+      "mentionedJid": [],
+      "creator": "6285643115199@s.whatsapp.net",
+      "at": 1681465469841,
+      "locked": false
+    }
+  }
 }
