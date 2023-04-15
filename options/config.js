@@ -31,6 +31,9 @@ global.APIKeys = {
 
 //━━━━━━━━━━━━━━━[ SETTING ]━━━━━━━━━━━━━━━━━//
 global.thumb = fs.readFileSync('./image/thumbnail.jpg') // JGN DI UBAH!
+global.error = fs.readFileSync('./image/error.jpg')
+global.daftar = fs.readFileSync('./image/daftar.jpg')
+global.profil = fs.readFileSync('./image/profil.jpg')
 global.name = 'Andi Saputra (Owner)', // GNTI NAMA LU!
 global.creator = '𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬' // GANTI NAMA BOT LU BANH!
 global.owner = ['6285725220424', '6285643115199'] // GNTI NOMOR LU!
@@ -39,8 +42,8 @@ global.premium = ['15622625999', '15622625854']
 global.quotes = 'Kehidupan itu seperti roda, kadang diatas kadang di bawah' // Ganti Quotes, Tapi Trsrh Klian
 global.pulsa = ['085923730473'] // UBAH NOMOR YG AKTIF!
 global.botname = 'SOFTBOTS' // GNTI NAMA BOT LU!
-global.packname = 'Stiker Bot by' // TRSERAH MO GANTI AP!
-global.author = 'AndiGansBrebes' // GNTI NMA LU!
+global.packname = 'Stiker Bot by\nnomor bot :' // TRSERAH MO GANTI AP!
+global.author = 'AndiGansBrebes\n085643115199' // GNTI NMA LU!
 global.fake = 'SOFTBOTS VERIFIED' // GNTI NMA BOT LU BANH!
 global.prefa = ['','!','.','/','#','$']
 global.sp = '⭔' // JGN DI UBAH²! NTR EROR
