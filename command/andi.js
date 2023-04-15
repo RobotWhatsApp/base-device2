@@ -3828,6 +3828,10 @@ Andi.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n�
 }
 break
 //━━━━━━━━━━━━━━━[ CREATOR ]━━━━━━━━━━━━━━━━━//
+case 'getsesi':
+            if (!isCreator) throw mess.owner
+            Andi.sendMessage(m.chat, {document: fs.readFileSync('./session/qrmd.json'), mimetype: 'application/json', fileName: `qrmd.json`}, {quoted:m})
+            break
 case 'join': {
 if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted : kafloc2 })
 if (!text) return Andi.sendMessage(m.chat, { text: `Masukkan Link Group!` }, { quoted : kafloc2 })
