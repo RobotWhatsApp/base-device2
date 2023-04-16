@@ -137,7 +137,7 @@ async function startAndi() {
                     const { TelegraPh } = require('../message/uploader')
                     ppuser = await TelegraPh(ppnye)
                 } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                    ppuser = 'https://telegra.ph/file/10bc50d9bc1af3e8bb9eb.jpg'
                 }
 
                 //Resize
