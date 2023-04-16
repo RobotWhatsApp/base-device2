@@ -133,7 +133,9 @@ async function startAndi() {
             for (let num of participants) {
                 // Get Profile Picture User
                 try {
-                    ppuser = await Andi.profilePictureUrl(num, 'image')
+                    ppnye = await Andi.profilePictureUrl(num, 'image')
+                    const { TelegraPh } = require('../message/uploader')
+                    ppuser = await TelegraPh(ppnye)
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
