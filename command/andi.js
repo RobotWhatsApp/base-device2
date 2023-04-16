@@ -205,52 +205,29 @@ if (!m.key.fromMe) return
 //━━━━━━━━━━━━━━━[ LEVELNYA ]━━━━━━━━━━━━━━━━━//
 let user = global.db.data.users[m.sender]
 let levele = (user.exp <= 500) ? 'Bronze Ⅰ'
-
 : ((user.exp >= 500) && (user.exp <= 700)) ? 'Bronze Ⅱ'
-
 : ((user.exp >= 700) && (user.exp <= 900)) ? 'Bronze Ⅲ'
-
 : ((user.exp >= 900) && (user.exp <= 1100)) ? 'Silver Ⅰ'
-
 : ((user.exp >= 1100) && (user.exp <= 1300)) ? 'Silver Ⅱ'
-
 : ((user.exp >= 1300) && (user.exp <= 1500)) ? 'Silver Ⅲ'
 : ((user.exp >= 1500) && (user.exp <= 1700)) ? 'Gold Ⅰ'
-
 : ((user.exp >= 1700) && (user.exp <= 1900)) ? 'Gold Ⅱ'
-
 : ((user.exp >= 1900) && (user.exp <= 2100)) ? 'Gold Ⅲ'
-
 : ((user.exp >= 2100) && (user.exp <= 2300)) ? 'Gold Ⅳ'
-
 : ((user.exp >= 2300) && (user.exp <= 2500)) ? 'Platinum Ⅰ'
-
 : ((user.exp >= 2500) && (user.exp <= 2700)) ? 'Platinum Ⅱ'
-
 : ((user.exp >= 2700) && (user.exp <= 2900)) ? 'Platinum Ⅲ'
-
 : ((user.exp >= 2900) && (user.exp <= 3100)) ? 'Platinum Ⅳ'
-
 : ((user.exp >= 3100) && (user.exp <= 3300)) ? 'Diamond Ⅰ'
-
 : ((user.exp >= 3300) && (user.exp <= 3500)) ? 'Diamond Ⅱ'
-
 : ((user.exp >= 3500) && (user.exp <= 3700)) ? 'Diamond Ⅲ'
-
 : ((user.exp >= 3700) && (user.exp <= 3900)) ? 'Diamond Ⅳ'
-
 : ((user.exp >= 3900) && (user.exp <= 4100)) ? 'Master ⑴'
-
 : ((user.exp >= 4100) && (user.exp <= 4300)) ? 'Master ⑵'
-
 : ((user.exp >= 4300) && (user.exp <= 4500)) ? 'Master ⑶'
-
 : ((user.exp >= 4500) && (user.exp <= 4700)) ? 'Master ⑷'
-
 : ((user.exp >= 4700) && (user.exp <= 6600)) ? 'GrandMaster ①'
-
 : ((user.exp >= 6600) && (user.exp <= 9000)) ? 'GrandMaster ②'
-
 : 'Moderator ♔︎'
 
 
@@ -263,7 +240,7 @@ image: global.daftar,
 caption: `*-------「 VERIFIKASI 」-------*`,
 footer: `Harap melakukan verifikasi
 dahulu sebelum mengakses
-bot WhatsApp`,
+bot WhatsApp, tekan tombol dibawah`,
 buttons: daftar1,
 headerType: 4
 }
@@ -874,7 +851,6 @@ db.data.users[m.sender].premium = false
 //━━━━━━━━━━━━━━━[ FITURNYA ]━━━━━━━━━━━━━━━━━//
 
 switch(command) {
-
 case 'addprem': case 'addpremium': {
 if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted : kafloc2 })
 if (isNaN(parseInt(args[1]))) return m.reply('Harus Berupa Angka!')
@@ -882,7 +858,8 @@ let odgyy = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender :
 if (!args[1]) return Andi.sendMessage(m.chat, { text: `masukan harinya, contoh : addprem @tag 30` }, { quoted : kafloc2 })
 var jumlahHari = 86400000 * args[1]
 var now = new Date() * 1
-db.data.users[odgyy].premiumTime += now + jumlahHari
+var premi = now + jumlahHari
+db.data.users[odgyy].premiumTime += premi
 db.data.users[odgyy].premium = true
 Andi.sendMessage(m.chat, { text: `✔️ Success
 📛 *Name:* ${db.data.users[odgyy].nama}
@@ -3829,9 +3806,13 @@ Andi.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n�
 break
 //━━━━━━━━━━━━━━━[ CREATOR ]━━━━━━━━━━━━━━━━━//
 case 'getsesi':
-            if (!isCreator) throw mess.owner
-            Andi.sendMessage(m.chat, {document: fs.readFileSync('./session/qrmd.json'), mimetype: 'application/json', fileName: `qrmd.json`}, {quoted:m})
-            break
+if (!isCreator) throw mess.owner
+Andi.sendMessage(m.chat, {document: fs.readFileSync('./session/qrmd.json'), mimetype: 'application/json', fileName: `qrmd.json`}, {quoted:m})
+break
+case 'getdb':
+if (!isCreator) throw mess.owner
+Andi.sendMessage(m.chat, {document: fs.readFileSync('./json/database.json'), mimetype: 'application/json', fileName: `database.json`}, {quoted:m})
+break
 case 'join': {
 if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted : kafloc2 })
 if (!text) return Andi.sendMessage(m.chat, { text: `Masukkan Link Group!` }, { quoted : kafloc2 })
