@@ -167,9 +167,8 @@ async function startAndi() {
                 let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Kasihan Turun Pangkat🤭_`
                 if (anu.action == 'add') {
                 if (!db.data.chats[anu.id].welcome) return
-                let igmk = await getBuffer(`https://saipulanuar.ga/api/canvas/welcome4?name=${num.split('@')[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg`)
          let buttonMessage = {
-                    image: { url: igmk },
+                    image: { url: `https://saipulanuar.ga/api/canvas/welcome4?name=${num.split('@')[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
                     caption: teks1,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butwel,
@@ -178,9 +177,8 @@ async function startAndi() {
                 Andi.sendMessage(anu.id, buttonMessage, { quoted: kafloc })
                 } else if (anu.action == 'remove') {
                 if (!db.data.chats[anu.id].welcome) return
-                    let igimk = await getBuffer(`https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg`)
                     let buttonMessage = {
-                    image: { url: igimk },
+                    image: { url: `https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
                     caption: teks2,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butleav,
