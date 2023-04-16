@@ -124,7 +124,6 @@ if (!isNumber(user.afkTime)) user.afkTime = -1
 if (!('afkReason' in user)) user.afkReason = ''
 if (!('daftar' in user)) user.daftar = false
 if (!('premium' in user)) user.premium = false
-if (!isNumber(user.premiumTime)) user.premiumTime = 0
 if (!('nama' in user)) user.nama = ''
 if (!isNumber(user.limit)) user.limit = limitUser
 if (!isNumber(user.saldo)) user.saldo = 0
@@ -134,7 +133,6 @@ afkTime: -1,
 afkReason: '',
 daftar: false,
 premium: false,
-premiumTime: 0,
 nama: '',
 limit: limitUser,
 saldo: 0,
@@ -843,34 +841,23 @@ if (command) {
 console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m ANDIGANS \x1b[1;37m]', time, chalk.green(budy || m.mtype), 'Dari', chalk.blue(pushname), 'Di', chalk.yellow(groupName ? groupName : 'Private Chat' ), 'args :', chalk.white(args.length))
 }
 
-//━━━━━━━━━━━━━━━[ PREMIUM ]━━━━━━━━━━━━━━━━━//
-if (new Date() - db.data.users[m.sender].premiumTime > 0) {
-db.data.users[m.sender].premiumTime = 0
-db.data.users[m.sender].premium = false
-}
 //━━━━━━━━━━━━━━━[ FITURNYA ]━━━━━━━━━━━━━━━━━//
 
 switch(command) {
 case 'addprem': case 'addpremium': {
 if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted : kafloc2 })
-if (isNaN(parseInt(args[1]))) return m.reply('Harus Berupa Angka!')
+if (isNaN(parseInt(args[0]))) return m.reply('Harus 628xxx!')
 let odgyy = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-if (!args[1]) return Andi.sendMessage(m.chat, { text: `masukan harinya, contoh : addprem @tag 30` }, { quoted : kafloc2 })
-jumlahHari = `86400000 * args[1]`
-now = `new Date() * 1`
-db.data.users[odgyy].premiumTime = now + jumlahHari
 db.data.users[odgyy].premium = true
 Andi.sendMessage(m.chat, { text: `✔️ Success
 📛 *Name:* ${db.data.users[odgyy].nama}
-📆 *Days:* ${args[1]} days
-📉 *Countdown:* ${db.data.users[odgyy].premiumTime - now}` }, { quoted : kafloc2 })
+📆 *Days:* unlimited days` }, { quoted : kafloc2 })
 }
 break
 case 'delprem': case 'deletepremium': {
 if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted : kafloc2 })
 let odgyy = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 db.data.users[odgyy].premium = false
-db.data.users[odgyy].premiumTime = 0
 Andi.sendMessage(m.chat, { text: mess.success }, { quoted : kafloc2 })
 }
 break
@@ -4529,14 +4516,10 @@ if (args[0] === 'premium'){
 if (global.db.data.users[m.sender].saldo < 5000) return m.reply('Saldo Kamu Tidak Cukup!!')
 if (db.data.users[m.sender].premium) return m.reply('Kamu sudah premium, tidak dapat menukar lagi')
 db.data.users[m.sender].saldo -= 5000
-var jumlahHari = 86400000 * 7
-var now = new Date() * 1
-db.data.users[m.sender].premiumTime += now + jumlahHari
 db.data.users[m.sender].premium = true
 Andi.sendMessage(m.chat, { text: `✔️ Success
 📛 *Name:* ${db.data.users[m.sender].nama}
-📆 *Days:* 7 days
-📉 *Countdown:* ${db.data.users[m.sender].premiumTime - now}` }, { quoted : kafloc2 })
+📆 *Days:* 7 days` }, { quoted : kafloc2 })
 } else if (args[0] === 'uang'){
 if (global.db.data.users[m.sender].saldo < 5000) return m.reply('Saldo Kamu Tidak Cukup!!')
 db.data.users[m.sender].saldo -= 5000
