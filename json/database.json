@@ -1039,6 +1039,16 @@
       "antivirtex": false,
       "antidelete": false,
       "antiviewonce": false
+    },
+    "120363145145999648@g.us": {
+      "mute": false,
+      "antilink": false,
+      "welcome": true,
+      "antilink2": false,
+      "antilinkig": false,
+      "antiwame": false,
+      "antivirtex": false,
+      "antiviewonce": false
     }
   },
   "database": {},
