@@ -152,7 +152,7 @@ async function startAndi() {
                 try {
                     ppgroup = await Andi.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                    ppgroup = 'https://telegra.ph/file/b38c043193705d875ea6b.jpg'
                 }
                 
                 const kafloc = {key : {participant : '0@s.whatsapp.net', ...(anu.id ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `Softbots Official`,jpegThumbnail: global.thumb}}}
@@ -161,14 +161,14 @@ async function startAndi() {
                 let butselamat = [{ buttonId: '', buttonText: { displayText: 'SELAMAT' }, type: 1 }]
                 let butsebar = [{ buttonId: '', buttonText: { displayText: 'SABAR' }, type: 1 }]
                 let nyoutube = ('copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬')
-                let teks1 = `*Halo Kak @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro Yahh*\n_~Bot WhatsApp_`
+                let teks1 = `*Halo Kak @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro Yahh*\n_~Bot WhatsApp_\n\nhttps://api.akuari.my.id/canvas/welcome?name=${num.split('@')[0]}&gcname=${metadata.subject}&ppgc=${ppgroup}&member=${metadata.participants}&pp=${ppuser}&bg=https://i.ibb.co/tYgwwT2/images-2.jpg`
                 let teks2 = `*Selamat Tinggal Kak @${num.split('@')[0]}*\n*Semoga Tenang Di Alam Sana*\n_~Bot WhatsApp_`
                 let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan Semena Mena!_`
                 let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Kasihan Turun Pangkat🤭_`
                 if (anu.action == 'add') {
                 if (db.data.chats[anu.id].welcome) {
          let buttonMessage = {
-                    image: { url: 'https://saipulanuar.ga/api/canvas/welcome4?name=${num.split(`@`)[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg' },
+                    image: { url: "https://api.akuari.my.id/canvas/welcome?name=${num.split('@')[0]}&gcname=${metadata.subject}&ppgc=${ppgroup}&member=${metadata.participants}&pp=${ppuser}&bg=https://i.ibb.co/tYgwwT2/images-2.jpg" },
                     caption: teks1,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butwel,
