@@ -859,7 +859,7 @@ if (!args[1]) return Andi.sendMessage(m.chat, { text: `masukan harinya, contoh :
 var jumlahHari = 86400000 * args[1]
 var now = new Date() * 1
 var premi = now + jumlahHari
-db.data.users[odgyy].premiumTime += premi
+db.data.users[odgyy].premiumTime = premi
 db.data.users[odgyy].premium = true
 Andi.sendMessage(m.chat, { text: `✔️ Success
 📛 *Name:* ${db.data.users[odgyy].nama}
