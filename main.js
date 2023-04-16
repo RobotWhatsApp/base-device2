@@ -161,7 +161,8 @@ async function startAndi() {
                 let butselamat = [{ buttonId: '', buttonText: { displayText: 'SELAMAT' }, type: 1 }]
                 let butsebar = [{ buttonId: '', buttonText: { displayText: 'SABAR' }, type: 1 }]
                 let nyoutube = ('copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬')
-                gcname = `${metadata.subject.replace(/[^0-9A-Za-z]/g, '')}`
+                gcnama = `${metadata.subject}`
+                gcname = `${gcnama.replace(/[^0-9A-Za-z]/g, '')}`
                 let teks1 = `*Halo Kak @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro Yahh*\n_~Bot WhatsApp_`
                 let teks2 = `*Selamat Tinggal Kak @${num.split('@')[0]}*\n*Semoga Tenang Di Alam Sana*\n_~Bot WhatsApp_`
                 let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan Semena Mena!_`
