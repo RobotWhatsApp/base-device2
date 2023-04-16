@@ -856,10 +856,9 @@ if (!isCreator) return Andi.sendMessage(m.chat, { text: mess.owner }, { quoted :
 if (isNaN(parseInt(args[1]))) return m.reply('Harus Berupa Angka!')
 let odgyy = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 if (!args[1]) return Andi.sendMessage(m.chat, { text: `masukan harinya, contoh : addprem @tag 30` }, { quoted : kafloc2 })
-var jumlahHari = 86400000 * args[1]
-var now = new Date() * 1
-var premi = now + jumlahHari
-db.data.users[odgyy].premiumTime = premi
+jumlahHari = `86400000 * args[1]`
+now = `new Date() * 1`
+db.data.users[odgyy].premiumTime = now + jumlahHari
 db.data.users[odgyy].premium = true
 Andi.sendMessage(m.chat, { text: `✔️ Success
 📛 *Name:* ${db.data.users[odgyy].nama}
