@@ -156,8 +156,8 @@ async function startAndi() {
                 }
                 
                 const kafloc = {key : {participant : '0@s.whatsapp.net', ...(anu.id ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `Softbots Official`,jpegThumbnail: global.thumb}}}
-                let butwel = [{ buttonId: 'mu', buttonText: { displayText: 'WELCOME' }, type: 1 }]
-                let butleav = [{ buttonId: '', buttonText: { displayText: 'Sayonara👋' }, type: 1 }]
+                let butwel = [{ buttonId: 'wel', buttonText: { displayText: 'WELCOME' }, type: 1 }]
+                let butleav = [{ buttonId: 'lev', buttonText: { displayText: 'Sayonara👋' }, type: 1 }]
                 let butselamat = [{ buttonId: '', buttonText: { displayText: 'SELAMAT' }, type: 1 }]
                 let butsebar = [{ buttonId: '', buttonText: { displayText: 'SABAR' }, type: 1 }]
                 let nyoutube = ('copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬')
