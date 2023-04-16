@@ -145,8 +145,8 @@ if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
 if (chats) {
 if (!('mute' in chats)) chats.mute = false
 if (!('antilink' in chats)) chats.antilink = false
-if (!('welcome' in chats)) chats.welcome = false
-if (!('antilink2' in chats)) chats.antilink2 = false
+if (!('welcome' in chats)) chats.welcome = true
+if (!('antilink2' in chats)) chats.antilink2 = true
 if (!('antiwame' in chats)) chats.antiwame = false
 if (!('antivirtex' in chats)) chats.antivirtex = false
 if (!('antiviewonce' in chats)) chats.antiviewonce = false
@@ -154,8 +154,8 @@ if (!('antilinkig' in chats)) chats.antilinkig = false
 } else global.db.data.chats[m.chat] = {
 mute: false,
 antilink: false,
-welcome: false,
-antilink2: false,
+welcome: true,
+antilink2: true,
 antilinkig: false,
 antiwame: false,
 antivirtex: false,
