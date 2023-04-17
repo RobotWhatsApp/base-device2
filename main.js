@@ -156,13 +156,13 @@ async function startAndi() {
                 }
                 
                 const kafloc = {key : {participant : '0@s.whatsapp.net', ...(anu.id ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `Softbots Official`,jpegThumbnail: global.thumb}}}
-                let butwel = [{ buttonId: 'wel', buttonText: { displayText: 'WELCOME' }, type: 1 }]
-                let butleav = [{ buttonId: 'lev', buttonText: { displayText: 'Sayonara👋' }, type: 1 }]
+                let butwel = [{ buttonId: 'yyuuiioo', buttonText: { displayText: 'Selamat Datang👋' }, type: 1 }]
+                let butleav = [{ buttonId: 'ooiiuuyy', buttonText: { displayText: 'Goodbye👋' }, type: 1 }]
                 let butselamat = [{ buttonId: '', buttonText: { displayText: 'SELAMAT' }, type: 1 }]
                 let butsebar = [{ buttonId: '', buttonText: { displayText: 'SABAR' }, type: 1 }]
                 let nyoutube = ('copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬')
                 gcnama = `${metadata.subject}`
-                gcname = `${gcnama.replace(/[^0-9A-Za-z]/g, '')}`
+                gcname = `${gcnama.replace(/[^0-9A-Za-z ]/g, '')}`
                 let teks1 = `*Halo Kak @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro Yahh*\n_~Bot WhatsApp_`
                 let teks2 = `*Selamat Tinggal Kak @${num.split('@')[0]}*\n*Semoga Tenang Di Alam Sana*\n_~Bot WhatsApp_`
                 let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan Semena Mena!_`
@@ -170,7 +170,7 @@ async function startAndi() {
                 if (anu.action == 'add') {
                 if (!db.data.chats[anu.id].welcome) return
          let buttonMessage = {
-                    image: { url: `https://saipulanuar.ga/api/canvas/welcome4?name=${num.split('@')[0]}&gcname=${gcname}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
+                    image: { url: `https://saipulanuar.ga/api/canvas/welcome4?name=${num.split('@')[0]}&gcname=${gcname}&pp=https://telegra.ph/file/10bc50d9bc1af3e8bb9eb.jpg&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
                     caption: teks1,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butwel,
@@ -180,7 +180,7 @@ async function startAndi() {
                 } else if (anu.action == 'remove') {
                 if (!db.data.chats[anu.id].welcome) return
                     let buttonMessage = {
-                    image: { url: `https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${gcname}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
+                    image: { url: `https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${gcname}&pp=https://telegra.ph/file/10bc50d9bc1af3e8bb9eb.jpg&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
                     caption: teks2,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butleav,
