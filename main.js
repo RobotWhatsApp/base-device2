@@ -180,7 +180,7 @@ async function startAndi() {
                 } else if (anu.action == 'remove') {
                 if (!db.data.chats[anu.id].welcome) return
                     let buttonMessage = {
-                    image: { url: `https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${metadata.subject}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
+                    image: { url: `https://saipulanuar.ga/api/canvas/goodbye4?name=${num.split('@')[0]}&gcname=${gcname}&pp=${ppuser}&bg=https://t-2.tstatic.net/lampung/foto/bank/images/arti-mimpi-berjalan-di-hutan-pertanda-diri-sedang-cemas.jpg` },
                     caption: teks2,
                     footer: "copyright © 2023•𝐀𝐧𝐝𝐢𝐆𝐚𝐧𝐬",
                     buttons: butleav,
